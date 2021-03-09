@@ -15,6 +15,13 @@ class CreateGroupCustomTable extends Migration
     {
         Schema::create('group_custom', function (Blueprint $table) {
             $table->id();
+            $table->string('group_custom_description'); //descrición grupo personalizado
+            $table->integer('c');//create grupo personalizado
+            $table->integer('r');//read grupo personalizado
+            $table->integer('u');//update grupo personalizado
+            $table->integer('d');//delit grupo personalizado
+            $table->integer('s');//shared grupo personalizado
+            $table->integer('dalit');//desactivo grupo personalizado
             $table->timestamps();
         });
     }
