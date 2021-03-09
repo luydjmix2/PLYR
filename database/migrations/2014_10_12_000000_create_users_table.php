@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('bloomber_email'); //correo bloomberg
             $table->string('signing'); //firma
-            $table->date('date_admission'); //Fecha de ingreso
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
