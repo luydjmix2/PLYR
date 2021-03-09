@@ -16,6 +16,14 @@ class CreateProyectsTable extends Migration
         Schema::create('proyects', function (Blueprint $table) {
             $table->id();
             $table->string('proyect_name'); //nombre proyecto
+            $table->string('proyect_description'); //descrición proyecto
+            $table->string('proyect_start'); //inicio proyecto
+            $table->string('proyect_end'); //final proyecto
+            $table->integer('c');//create proyecto
+            $table->integer('r');//read proyecto
+            $table->integer('u');//update proyecto
+            $table->integer('d');//delit proyecto
+            $table->integer('s');//shared proyecto
             $table->unsignedBigInteger('userId'); //usuario asignado
             $table->timestamps();
         });
