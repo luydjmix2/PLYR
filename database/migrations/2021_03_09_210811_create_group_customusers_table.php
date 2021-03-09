@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupCustomTwoTable extends Migration
+class CreateGroupCustomusersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGroupCustomTwoTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_custom_two', function (Blueprint $table) {
+        Schema::create('group_customusers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateGroupCustomTwoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_custom_two');
+        Schema::dropIfExists('group_customusers');
     }
 }
