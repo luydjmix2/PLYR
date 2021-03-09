@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name'); //Nombre
             $table->string('appointment'); //Cargo
-            $table->int('phone'); //telefono
-            $table->int('movil'); //movil - celular
+            $table->unsignedInteger('phone'); //telefono
+            $table->unsignedInteger('movil'); //movil - celular
             $table->string('email')->unique(); //correo electronico
             $table->timestamp('email_verified_at')->nullable();
             $table->string('bloomber_email'); //correo bloomberg
