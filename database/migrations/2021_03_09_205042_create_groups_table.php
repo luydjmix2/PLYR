@@ -15,6 +15,13 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
+            $table->string('group_description'); //descrición grupo
+            $table->integer('c');//create grupo
+            $table->integer('r');//read grupo
+            $table->integer('u');//update grupo
+            $table->integer('d');//delit grupo
+            $table->integer('s');//shared grupo
+            $table->integer('delit');//desactivar grupo
             $table->timestamps();
         });
     }

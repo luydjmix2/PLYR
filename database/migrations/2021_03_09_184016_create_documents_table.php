@@ -15,11 +15,13 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('proyect_Id'); //documentos
-            $table->unsignedInteger('group_Id'); //documentos
+            $table->unsignedInteger('proyect_Id'); //id proyectos documentos
+            $table->unsignedInteger('group_Id'); //id grupos documentos
+            $table->unsignedInteger('groupCustom_Id'); //id grupos personalizados documentos
             $table->string('name'); //nombre
             $table->string('formato'); //nombre
-            $table->string('url'); //nombre     
+            $table->string('url'); //nombre 
+            $table->integer('delit'); //desactivo
             $table->timestamps();
         });
     }
