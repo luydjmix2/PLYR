@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGroupCustomTable extends Migration
+class CreateGroupCustomUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateGroupCustomTable extends Migration
      */
     public function up()
     {
-        Schema::create('group_custom', function (Blueprint $table) {
-            $table->id();
+        Schema::create('group_custom_user', function (Blueprint $table) {
+            $table->id();//group_custom
+            $table->unsignedInteger('groupCustom_Id');
+            $table->unsignedBigInteger('userId'); //usuario asignado
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateGroupCustomTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('group_custom');
+        Schema::dropIfExists('group_custom_user');
     }
 }
