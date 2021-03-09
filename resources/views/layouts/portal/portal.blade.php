@@ -73,6 +73,8 @@
         <div id="page-container">
             <!-- Main Container -->
             <main id="main-container">
+                @include('layouts.portal.header')
+                @include('layouts.portal.miga')
                 @yield('content')
                 @include('layouts.portal.footer')
             </main>
