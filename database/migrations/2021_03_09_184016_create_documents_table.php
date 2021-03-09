@@ -20,7 +20,8 @@ class CreateDocumentsTable extends Migration
             $table->unsignedInteger('groupCustom_Id'); //id grupos personalizados documentos
             $table->string('name'); //nombre
             $table->string('formato'); //nombre
-            $table->string('url'); //nombre     
+            $table->string('url'); //nombre 
+            $table->integer('delit'); //desactivo
             $table->timestamps();
         });
     }
