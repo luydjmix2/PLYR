@@ -17,12 +17,6 @@ class CreateProyectsTable extends Migration
             $table->id();
             $table->string('proyect_name'); //nombre proyecto
             $table->unsignedBigInteger('userId'); //usuario asignado
-            $table->unsignedInteger('documentId'); //documentos
-
-            $table->foreign('userId')->references('id')->on('users');
-
-            $table->foreign('documentId')->references('id')->on('documents');
-
             $table->timestamps();
         });
     }
