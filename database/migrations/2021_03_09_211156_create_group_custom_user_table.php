@@ -14,7 +14,9 @@ class CreateGroupCustomUserTable extends Migration
     public function up()
     {
         Schema::create('group_custom_user', function (Blueprint $table) {
-            $table->id();
+            $table->id();//group_custom
+            $table->unsignedInteger('groupCustom_Id');
+            $table->unsignedBigInteger('userId'); //usuario asignado
             $table->timestamps();
         });
     }
