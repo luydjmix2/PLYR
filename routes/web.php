@@ -20,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 //portal web
-Route::get('/', [App\Http\Controllers\PortalController::class, 'index'])->name('index');
+//Route::get('/', [App\Http\Controllers\PortalController::class, 'index'])->name('index');
+Route::get('/', function(){
+    return redirect()->route('login');
+})->name('index');
 
 
 
