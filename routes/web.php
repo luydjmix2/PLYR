@@ -21,15 +21,16 @@ Auth::routes();
 
 //portal web
 //Route::get('/', [App\Http\Controllers\PortalController::class, 'index'])->name('index');
-Route::get('/', function(){
+Route::get('/', function () {
     return redirect()->route('login');
 })->name('index');
-
-
 
 //administracion
 Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
 Route::get('/edirUser', [App\Http\Controllers\AdminController::class, 'editUser'])->name('editUser');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/databases', function () {
+    return 'esta es una ruta vacia';
+});
 
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -6,14 +6,16 @@
         <div class="d-flex align-items-center">
             <!-- Toggle Sidebar -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-            <button type="button" class="btn btn-sm btn-dual mr-2 d-lg-none" data-toggle="layout" data-action="sidebar_toggle">
+            <button type="button" class="btn btn-sm btn-dual mr-2 d-lg-none" data-toggle="layout"
+                data-action="sidebar_toggle">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
             <!-- END Toggle Sidebar -->
 
             <!-- Toggle Mini Sidebar -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-            <button type="button" class="btn btn-sm btn-dual mr-2 d-none d-lg-inline-block" data-toggle="layout" data-action="sidebar_mini_toggle">
+            <button type="button" class="btn btn-sm btn-dual mr-2 d-none d-lg-inline-block" data-toggle="layout"
+                data-action="sidebar_mini_toggle">
                 <i class="fa fa-fw fa-ellipsis-v"></i>
             </button>
             <!-- END Toggle Mini Sidebar -->
@@ -27,7 +29,8 @@
 
             <!-- Open Search Section (visible on smaller screens) -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-dual d-sm-none" data-toggle="layout" data-action="header_search_on">
+            <button type="button" class="btn btn-sm btn-dual d-sm-none" data-toggle="layout"
+                data-action="header_search_on">
                 <i class="fa fa-fw fa-search"></i>
             </button>
             <!-- END Open Search Section -->
@@ -36,7 +39,8 @@
             <form class="d-none d-sm-inline-block" action="/dashboard" method="POST">
                 @csrf
                 <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
+                    <input type="text" class="form-control form-control-alt" placeholder="Search.."
+                        id="page-header-search-input2" name="page-header-search-input2">
                     <div class="input-group-append">
                         <span class="input-group-text bg-body border-0">
                             <i class="fa fa-fw fa-search"></i>
@@ -52,36 +56,52 @@
         <div class="d-flex align-items-center">
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ml-2">
-                <button type="button" class="btn btn-sm btn-dual d-flex align-items-center" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
+                <button type="button" class="btn btn-sm btn-dual d-flex align-items-center"
+                    id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar"
+                        style="width: 21px;">
                     <span class="d-none d-sm-inline-block ml-2">Adam</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block ml-1 mt-1"></i>
                 </button>
-                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 border-0" aria-labelledby="page-header-user-dropdown">
+                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 border-0"
+                    aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary-dark rounded-top">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb"
+                            src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
                         <p class="mt-2 mb-0 text-white font-w500">Adam Smith</p>
                         <p class="mb-0 text-white-50 font-size-sm">Web Developer</p>
                     </div>
                     <div class="p-2">
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="javascript:void(0)">
                             <span class="font-size-sm font-w500">Inbox</span>
                             <span class="badge badge-pill badge-primary ml-2">3</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="javascript:void(0)">
                             <span class="font-size-sm font-w500">Profile</span>
                             <span class="badge badge-pill badge-primary ml-2">1</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="javascript:void(0)">
                             <span class="font-size-sm font-w500">Settings</span>
                         </a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="javascript:void(0)">
                             <span class="font-size-sm font-w500">Lock Account</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        {{-- <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                            <span class="font-size-sm font-w500">Log Out</span>
+                        </a> --}}
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
                             <span class="font-size-sm font-w500">Log Out</span>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}</form>
+
                     </div>
                 </div>
             </div>
@@ -89,11 +109,13 @@
 
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block ml-2">
-                <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-bell"></i>
                     <span class="text-primary">•</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-notifications-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 border-0 font-size-sm"
+                    aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-2 bg-primary-dark text-center rounded-top">
                         <h5 class="dropdown-header text-uppercase text-white">Notifications</h5>
                     </div>
@@ -176,7 +198,8 @@
 
             <!-- Toggle Side Overlay -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout" data-action="side_overlay_toggle">
+            <button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout"
+                data-action="side_overlay_toggle">
                 <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
             </button>
             <!-- END Toggle Side Overlay -->
@@ -193,11 +216,13 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-alt-danger" data-toggle="layout" data-action="header_search_off">
+                        <button type="button" class="btn btn-alt-danger" data-toggle="layout"
+                            data-action="header_search_off">
                             <i class="fa fa-fw fa-times-circle"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
+                    <input type="text" class="form-control" placeholder="Search or hit ESC.."
+                        id="page-header-search-input" name="page-header-search-input">
                 </div>
             </form>
         </div>

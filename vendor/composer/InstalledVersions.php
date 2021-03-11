@@ -30,11 +30,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3025505e332dbbf2295839fcc9428bdce7e5a4f9',
+    'reference' => '6286dc3ae4b74c20600c4d830db39768fe72ef86',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'alexusmai/laravel-file-manager' => 
+    array (
+      'pretty_version' => 'v2.5.3',
+      'version' => '2.5.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '74bd977ae6336c4e2f5f1b237a221ab540f78946',
+    ),
     'asm89/stack-cors' => 
     array (
       'pretty_version' => 'v2.0.2',
@@ -446,6 +455,24 @@ private static $installed = array (
         0 => 'v8.29.0',
       ),
     ),
+    'intervention/image' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'abbf18d5ab8367f96b3205ca3c89fb2fa598c69e',
+    ),
+    'intervention/imagecache' => 
+    array (
+      'pretty_version' => '2.5.1',
+      'version' => '2.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e714f13298ecaf9b2d11cb7106a0415d5615cbe5',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -469,7 +496,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3025505e332dbbf2295839fcc9428bdce7e5a4f9',
+      'reference' => '6286dc3ae4b74c20600c4d830db39768fe72ef86',
     ),
     'laravel/sail' => 
     array (

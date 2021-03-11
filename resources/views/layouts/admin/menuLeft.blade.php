@@ -28,33 +28,41 @@
         <div>
             <!-- Options -->
             <div class="dropdown d-inline-block ml-2">
-                <a class="btn btn-sm btn-dual" id="sidebar-themes-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                <a class="btn btn-sm btn-dual" id="sidebar-themes-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" href="#">
                     <i class="si si-drop"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right font-size-sm smini-hide border-0" aria-labelledby="sidebar-themes-dropdown">
+                <div class="dropdown-menu dropdown-menu-right font-size-sm smini-hide border-0"
+                    aria-labelledby="sidebar-themes-dropdown">
                     <!-- Color Themes -->
                     <!-- Layout API, functionality initialized in Template._uiHandleTheme() -->
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="default" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="default" href="#">
                         <span>Default</span>
                         <i class="fa fa-circle text-default"></i>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="{{ mix('css/themes/amethyst.css') }}" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="{{ mix('css/themes/amethyst.css') }}" href="#">
                         <span>Amethyst</span>
                         <i class="fa fa-circle text-amethyst"></i>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="{{ mix('css/themes/city.css') }}" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="{{ mix('css/themes/city.css') }}" href="#">
                         <span>City</span>
                         <i class="fa fa-circle text-city"></i>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="{{ mix('css/themes/flat.css') }}" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="{{ mix('css/themes/flat.css') }}" href="#">
                         <span>Flat</span>
                         <i class="fa fa-circle text-flat"></i>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="{{ mix('css/themes/modern.css') }}" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="{{ mix('css/themes/modern.css') }}" href="#">
                         <span>Modern</span>
                         <i class="fa fa-circle text-modern"></i>
                     </a>
-                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500" data-toggle="theme" data-theme="{{ mix('css/themes/smooth.css') }}" href="#">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between font-w500"
+                        data-toggle="theme" data-theme="{{ mix('css/themes/smooth.css') }}" href="#">
                         <span>Smooth</span>
                         <i class="fa fa-circle text-smooth"></i>
                     </a>
@@ -89,7 +97,8 @@
 
             <!-- Close Sidebar, Visible only on mobile screens -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <a class="d-lg-none btn btn-sm btn-dual ml-1" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+            <a class="d-lg-none btn btn-sm btn-dual ml-1" data-toggle="layout" data-action="sidebar_close"
+                href="javascript:void(0)">
                 <i class="fa fa-fw fa-times"></i>
             </a>
             <!-- END Close Sidebar -->
@@ -103,31 +112,39 @@
         <!-- Side Navigation -->
         <div class="content-side">
             <ul class="nav-main">
-                <li class="nav-main-item">
-                    <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                <li class="nav-main-item {{ setActiveRoute('dashboard') }}">
+                    {{-- <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                        <i class="nav-main-link-icon si si-cursor"></i>
+                        <span class="nav-main-link-name">Dashboard</span>
+                    </a> --}}
+                    <a class="nav-main-link {{ setActiveRoute('dashboard') }}" href="{{ route('dashboard') }}">
                         <i class="nav-main-link-icon si si-cursor"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-main-heading">Various</li>
-                <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                <li class="nav-main-item {{ setActiveRoute(['pages/*']) }}">
+                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
+                        aria-expanded="true" href="#">
                         <i class="nav-main-link-icon si si-bulb"></i>
                         <span class="nav-main-link-name">Examples</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">
+                            <a class="nav-main-link {{ setActiveRoute('admin.users.index', 'admin.users.create', 'admin.users.edit') }}"
+                                href="#">
                                 <span class="nav-main-link-name">DataTables</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}" href="/edirUser">
+                            <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}"
+                                href="/edirUser">
                                 <span class="nav-main-link-name">Slick Slider</span>
                             </a>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
+                            <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}"
+                                href="/pages/blank">
                                 <span class="nav-main-link-name">Blank</span>
                             </a>
                         </li>
