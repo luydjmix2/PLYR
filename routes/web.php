@@ -34,3 +34,10 @@ Route::get('/databases', function () {
 });
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//rutas usuarios
+
+Route::resource('/admin/users', 'App\Http\Controllers\UserController');
+Route::resource('/admin/documents', 'App\Http\Controllers\DocumentController');
+Route::resource('/admin/groups', 'App\Http\Controllers\GroupController');
+Route::resource('/admin/proyects', 'App\Http\Controllers\ProyectController');

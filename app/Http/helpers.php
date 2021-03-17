@@ -7,5 +7,5 @@
 
     function setOpenRoute($name)
     {
-        return request()->routeIs($name) ? ' open' : '';
+        return request()->routeIs($name) ? 'open' : '';
     }

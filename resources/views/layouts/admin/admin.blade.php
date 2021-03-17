@@ -212,7 +212,8 @@
     <!-- scripts file manager-->
     <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
 
-    @yield('js_after')
+    {{-- @yield('js_after') --}}
+    @stack('js_after')
 
 </body>
 

@@ -16,7 +16,14 @@ class Proyect extends Model
      */
     protected $fillable = [
         'proyect_name',
+        'proyect_description',
+        'proyect_start',
+        'proyect_end',
+        'c',
+        'r',
+        'u',
+        'd',
+        's',
         'userId',
-        'documentId',
     ];
 }
