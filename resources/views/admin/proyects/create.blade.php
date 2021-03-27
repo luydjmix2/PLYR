@@ -25,8 +25,7 @@
                     <h3 class="block-title">&nbsp;</h3>
                 </div>
                 <div class="block-content">
-                    <form action="" method="POST">
-                        @csrf
+                    {!! Form::open([ 'method' => 'POST', 'files'=>'true', 'id' => 'proyectCreate' ]) !!}
                         <div class="form-group">
                             <label for="wizard-progress-name">Nombre proyectto</label>
                             <input type="text" class="form-control" name="proyect_name">
@@ -51,6 +50,17 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label for="wizard-progress-name">Usuario asignado</label>
+                            <div class="dropzone">
+                                <div class="dz-message" style="height:200px;">
+                                    Drop your files here
+                                </div>
+                                <div class="dropzone-previews"></div>
+                                <button type="submit" class="btn btn-success" id="submit">Save</button>
+                            </div>
+                        </div>
+
 
                         <div class="mb-2 text-right col-12">
 
@@ -59,7 +69,7 @@
                             </button>
                         </div>
 
-                    </form>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
@@ -74,6 +84,7 @@
 @endsection
 
 @push('js_after')
+<link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
 <!-- Page JS Plugins -->
 <script src="{{ asset('js/plugins/jquery-bootstrap-wizard/bs4/jquery.bootstrap.wizard.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
@@ -81,4 +92,5 @@
 
 <!-- Page JS Code -->
 <script src="{{ asset('js/pages/be_forms_wizard.min.js') }}"></script>
+<script src="{{ asset('js/dropzone.js') }}"></script>
 @endpush
