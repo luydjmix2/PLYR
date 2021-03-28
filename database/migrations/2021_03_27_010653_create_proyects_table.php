@@ -19,8 +19,8 @@ class CreateProyectsTable extends Migration
             $table->string('proyect_description'); //descrición proyecto
             $table->string('proyect_start'); //inicio proyecto
             $table->string('proyect_end'); //final proyecto
-            $table->string('proyect_url'); //final proyecto
-            $table->string('proyect_shared'); //final proyecto
+            $table->string('proyect_url')->nullable(); //final proyecto
+            $table->string('proyect_shared')->nullable(); //final proyecto
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

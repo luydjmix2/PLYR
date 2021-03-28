@@ -2,6 +2,9 @@
 
 @section('content')
 <!-- Subir documento -->
+<link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/basic.css') }}">
+
 
 @section('title-page')
 {{ __('proyects.name')}}
@@ -9,8 +12,6 @@
 @section('breadcrumbs')
 {{ Breadcrumbs::render('proyects') }}
 @endsection
-
-
 
 <!-- Page Content -->
 <div class="content">
@@ -25,49 +26,38 @@
                     <h3 class="block-title">&nbsp;</h3>
                 </div>
                 <div class="block-content">
-                    {!! Form::open([ 'method' => 'POST', 'files'=>'true', 'id' => 'proyectCreate' ]) !!}
-                        <div class="form-group">
-                            <label for="wizard-progress-name">Nombre proyectto</label>
-                            <input type="text" class="form-control" name="proyect_name">
-                        </div>
-                        <div class="form-group">
-                            <label for="wizard-progress-name">Descripción proyecto</label>
-                            <textarea class="form-control" id="example-textarea-input" name="proyect_description"
-                                      rows="8" placeholder="Descripción grupo"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="wizard-progress-name"> Fecha inicio</label>
-                            <input type="date" name="proyect_start" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="wizard-progress-name">Fecha final</label>
-                            <input type="date" name="proyect_end" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="wizard-progress-name">Usuario asignado</label>
-                            <select name="user_id" class="form-control" id="">Seleccione una opcion
-                                <option value="1">user name</option>
-                            </select>
-                        </div>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    {!! Form::open(['route'=> 'proyects.store', 'method' => 'POST', 'files'=>'true', 'id' => 'proyectCreate' ]) !!}
+                    @csrf
+                    <div class="form-group">
+                        {{Form::label('wizard-progress-name', __('proyects.nameProyects'))}}
+                        {{Form::text('proyect_name',old('proyect_name'), ['class'=>'form-control'])}}
+                    </div>
+                    <div class="form-group">                        
+                        {{Form::label('wizard-progress-name', __('proyects.description'))}}
+                        {{Form::textarea('proyect_description',old('proyect_name'), ['class'=>'form-control', 'row'=> '8'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('wizard-progress-name', __('proyects.start_date'))}}
+                        {{Form::date('proyect_start', \Carbon\Carbon::now(),['class'=>'form-control'])}}
+                    </div>
+                    <div class="form-group">
+                        {{Form::label('wizard-progress-name', __('proyects.end_date'))}}
+                        {{Form::date('proyect_end', \Carbon\Carbon::tomorrow(), ['class'=>'form-control'])}}
+                    </div>
+                    {{Form::hidden('user_id', '1')}}
+                    <div class="mb-2 text-right col-12">
 
-                        <div class="form-group">
-                            <label for="wizard-progress-name">Usuario asignado</label>
-                            <div class="dropzone">
-                                <div class="dz-message" style="height:200px;">
-                                    Drop your files here
-                                </div>
-                                <div class="dropzone-previews"></div>
-                                <button type="submit" class="btn btn-success" id="submit">Save</button>
-                            </div>
-                        </div>
-
-
-                        <div class="mb-2 text-right col-12">
-
-                            <button type="submit" class="btn btn-primary ">
-                                <i class="mr-1 fa fa-check"></i> Enviar
-                            </button>
-                        </div>
+                        {{Form::button('<i class="fa fa-archive"></i> Create', ['type' => 'submit', 'id' => 'submit', 'class' => 'btn btn-primary'])}}
+                    </div>
 
                     {!! Form::close() !!}
                 </div>
@@ -83,14 +73,13 @@
 
 @endsection
 
-@push('js_after')
-<link href="{{ asset('/css/dropzone.css') }}" rel="stylesheet">
-<!-- Page JS Plugins -->
+@section('js_after') 
+
 <script src="{{ asset('js/plugins/jquery-bootstrap-wizard/bs4/jquery.bootstrap.wizard.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
 
 <!-- Page JS Code -->
-<script src="{{ asset('js/pages/be_forms_wizard.min.js') }}"></script>
 <script src="{{ asset('js/dropzone.js') }}"></script>
-@endpush
+<script src="{{ asset('js/pages/dropzone.js') }}"></script>
+@endsection

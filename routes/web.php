@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Example Routes
-//Route::view('/', 'landing');
+Route::get('/', function (){
+    return \Illuminate\Support\Facades\Redirect::route('dashboard');
+});
 Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
 //Route::match(['get', 'post'], '/dashboard', function(){
 //    return view('admin.dashboard');
@@ -29,6 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //proyectos
 Route::get('/proyects', [App\Http\Controllers\ProyectController::class, 'index'])->name('proyects');
-Route::match(['get', 'post'], '/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
+Route::get( '/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
+Route::put( '/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
 
 

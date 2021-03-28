@@ -21,11 +21,12 @@
             <thead>
                 <tr>
                     <th class="text-center" style="width: 80px;">#</th>
-                    <th>{{ __('proyects.nameUser')}}</th>
+                    <th>{{ __('proyects.nameProyects')}}</th>
                     <th>{{ __('proyects.description')}}</th>
                     <th>{{ __('proyects.start_date')}}</th>
                     <th>{{ __('proyects.end_date')}}</th>
                     <th>{{ __('proyects.user')}}</th>
+                    <th>{{ __('proyects.upload_file')}}</th>
                     <th style="width: 11,25%;">{{ __('proyects.acctions')}}</th>
                 </tr>
             </thead>
@@ -48,9 +49,11 @@
                     <td class="font-w600 font-size-sm">
                         {{ $proyect->user_id }}
                     </td>
-
-
-
+                    <td class="font-w600 font-size-sm">
+                        <button type="button" class="mb-3 mr-1 btn btn-warning">
+                            <i class="fa fa-file-upload"></i>
+                        </button>
+                    </td>
                     <td>
                         <a href="#">
                             <button type="button" class="mb-3 mr-1 btn btn-warning">
