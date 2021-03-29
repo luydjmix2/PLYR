@@ -3,18 +3,18 @@
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 
 // Example Routes
-Route::get('/', function (){
+Route::get('/', function () {
     return \Illuminate\Support\Facades\Redirect::route('dashboard');
 });
 Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
@@ -31,7 +31,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //proyectos
 Route::get('/proyects', [App\Http\Controllers\ProyectController::class, 'index'])->name('proyects');
-Route::get( '/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
-Route::put( '/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
-
-
+Route::get('/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
+Route::post('/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
+Route::get('/proyect/{nameproyect?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('proyect.view');
