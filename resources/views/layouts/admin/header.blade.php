@@ -79,9 +79,10 @@
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                             <span class="font-size-sm font-w500">Lock Account</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span class="font-size-sm font-w500">Log Out</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item d-flex align-items-center justify-content-between">Log Out</button>
+                        </form>
                     </div>
                 </div>
             </div>

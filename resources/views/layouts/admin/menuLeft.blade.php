@@ -44,14 +44,14 @@
         <!-- Side Navigation -->
         <div class="content-side">
             <ul class="nav-main">
-                <li class="nav-main-item {{ setActiveRoute('dashboard') }}">
-                    {{-- <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                <li class="nav-main-item {{ setActiveRoute('home') }}">
+                    {{-- <a class="nav-main-link {{ request()->is('home') ? ' active' : '' }}" href="/home">
                         <i class="nav-main-link-icon si si-cursor"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a> --}}
-                    <a class="nav-main-link {{ setActiveRoute('dashboard') }}" href="{{ route('dashboard') }}">
+                    <a class="nav-main-link {{ setActiveRoute('home') }}" href="{{ route('home') }}">
                         <i class="nav-main-link-icon si si-cursor"></i>
-                        <span class="nav-main-link-name">Dashboard</span>
+                        <span class="nav-main-link-name">Home</span>
                     </a>
                 </li>
                 <li class="nav-main-heading">Servicios</li>

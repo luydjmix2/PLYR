@@ -9,12 +9,12 @@
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 // Inicio
 
-Breadcrumbs::for('dashboard', function ($trail) {
-$trail->push('Dashboard', route('dashboard'));
+Breadcrumbs::for('home', function ($trail) {
+$trail->push('Home', route('home'));
 });
 
 Breadcrumbs::for('proyects', function ($trail) {
-$trail->parent('dashboard', 'Servicios');
+$trail->parent('home', 'Servicios');
 $trail->push('Droyects', route('proyects'));
 });
 

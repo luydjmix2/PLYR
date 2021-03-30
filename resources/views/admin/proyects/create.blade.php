@@ -1,10 +1,6 @@
 @extends('layouts.admin.admin')
 
 @section('content')
-<!-- Subir documento -->
-<link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
-<link rel="stylesheet" href="{{ asset('/css/basic.css') }}">
-
 
 @section('title-page')
 {{ __('proyects.name')}}
@@ -79,7 +75,4 @@
 <script src="{{ asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('js/plugins/jquery-validation/additional-methods.js') }}"></script>
 
-<!-- Page JS Code -->
-<script src="{{ asset('js/dropzone.js') }}"></script>
-<script src="{{ asset('js/pages/dropzone.js') }}"></script>
 @endsection

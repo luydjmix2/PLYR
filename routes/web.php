@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
   |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 // Example Routes
 Route::get('/', function () {
-    return \Illuminate\Support\Facades\Redirect::route('dashboard');
+    return Redirect::route('login');
 });
-Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+//Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 //Route::match(['get', 'post'], '/dashboard', function(){
 //    return view('admin.dashboard');
 //});
@@ -34,7 +35,7 @@ Route::get('/proyects', [App\Http\Controllers\ProyectController::class, 'index']
 Route::get('/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
 Route::post('/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
 Route::get('/proyect/{nameproyect?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('proyect.view');
-
+Route::post('/proyect/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('proyect.file');
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');

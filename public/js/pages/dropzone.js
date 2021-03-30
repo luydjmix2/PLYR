@@ -7,8 +7,7 @@
 Dropzone.autoDiscover = false;
 jQuery(document).ready(function ($) {
     //   alert($('#proyectCreate').attr("action")); 
-    var urlform = $('#proyectCreate').attr("action");
-    let myDropzone = new Dropzone("#dropzone-div", {url: urlform});
+    let myDropzone = new Dropzone("#my-dropzone", {url: urlform});
     //    $("#dropzone-div").dropzone({ url: "/file/post" });
     Dropzone.options.myDropzone = {
         autoProcessQueue: false,

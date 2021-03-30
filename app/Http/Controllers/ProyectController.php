@@ -12,6 +12,10 @@ use Auth;
 
 class ProyectController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +56,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
-        return redirect()->route('proyect.view',['nameproyect' => $rulproyect]);
+        return redirect()->route('proyect.view', ['nameproyect' => $rulproyect]);
     }
 
     /**
@@ -62,12 +66,13 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(string $slug = '') {
-        if ($slug=='') {
+        if ($slug == '') {
             $slug = 'demo';
         }
         $proyect_data = Proyect::where('proyect_url', $slug)->get()->toArray();
-        $user = User::where('id',$proyect_data[0]['user_id'])->get()->toArray();
-        return view('admin.proyects.views', compact('proyect_data', 'user'));
+        $user = User::where('id', $proyect_data[0]['user_id'])->get()->toArray();
+        $files = Document::where('proyect_id', $proyect_data[0]['id'])->get()->toArray();
+        return view('admin.proyects.views', compact('proyect_data', 'user', 'files'));
     }
 
     /**
@@ -88,6 +93,17 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
+        //
+    }
+
+    /**
+     * Upfile the specified proyect resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFile(Request $request, $id) {
         //
     }
 
