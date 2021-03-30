@@ -41,7 +41,7 @@ Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('db:seed --class=UserSeeder');
     $exitCode = Artisan::call('db:seed --class=ProyectSeeder');
     $exitCode = Artisan::call('db:seed --class=DocumentSeeder');
-    return 'refresh Ok';
+    return 'refresh db Ok';
 });
 
 Route::get('/config-clean-cache-dev-2021-03-29', function() {
@@ -49,5 +49,5 @@ Route::get('/config-clean-cache-dev-2021-03-29', function() {
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
     $exitCode = Artisan::call('route:cache');
-    return 'refresh Ok';
+    return 'refresh cache Ok';
 });
