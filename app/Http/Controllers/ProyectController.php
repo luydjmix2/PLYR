@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\ProyectCreateRequest;
+use App\Models\Document;
 use App\Models\Proyect;
 use app\Models\User;
 use Validator;
@@ -28,9 +29,8 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $user =  Auth::id();
-        return view('admin.proyects.create', compact('user'));
-
+        $user_id = Auth::id();
+        return view('admin.proyects.create', compact('user_id'));
     }
 
     /**
@@ -39,8 +39,20 @@ class ProyectController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        //
+    public function store(ProyectCreateRequest $request) {
+        $rulproyect = preg_replace('([^A-Za-z0-9 ])', '', str_replace(' ', '_', $request->proyect_name));
+//        dd(Auth::id());
+        Proyect::create([
+            'proyect_name' => $request->proyect_name,
+            'proyect_description' => $request->proyect_description,
+            'proyect_start' => $request->proyect_start,
+            'proyect_end' => $request->proyect_end,
+            'proyect_url' => $rulproyect,
+            'proyect_shared' => '1',
+            'user_id' => Auth::id(),
+//            'user_id' => $request->user_id,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -49,8 +61,12 @@ class ProyectController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
-        //
+    public function show(string $slug = '') {
+        if ($slug=='') {
+            $slug = 'demo';
+        }
+        $proyect_data = Proyect::where('proyect_url', $slug)->get()->toArray();
+        return view('admin.proyects.views', compact('proyect_data'));
     }
 
     /**
