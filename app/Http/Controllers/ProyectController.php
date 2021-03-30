@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProyectCreateRequest;
 use App\Models\Document;
 use App\Models\Proyect;
-use app\Models\User;
+use App\Models\User;
 use Validator;
 use Auth;
 
@@ -52,7 +52,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
-        return redirect()->back();
+        return redirect()->route('proyect.view',['nameproyect' => $rulproyect]);
     }
 
     /**
@@ -66,7 +66,8 @@ class ProyectController extends Controller {
             $slug = 'demo';
         }
         $proyect_data = Proyect::where('proyect_url', $slug)->get()->toArray();
-        return view('admin.proyects.views', compact('proyect_data'));
+        $user = User::where('id',$proyect_data[0]['user_id'])->get()->toArray();
+        return view('admin.proyects.views', compact('proyect_data', 'user'));
     }
 
     /**

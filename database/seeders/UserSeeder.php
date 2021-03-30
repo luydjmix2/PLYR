@@ -17,6 +17,7 @@ class UserSeeder extends Seeder {
             'name' => 'Admin',
             'email' => 'asd@asd.asd',
             'password' => Hash::make('123456789'),
+            'signing' => 'MyCompania',
         ]);
     }
 
