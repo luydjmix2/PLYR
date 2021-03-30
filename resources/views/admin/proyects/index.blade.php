@@ -50,20 +50,16 @@
                         {{ $proyect->user_id }}
                     </td>
                     <td class="font-w600 font-size-sm">
-                        <button type="button" class="mb-3 mr-1 btn btn-warning">
+                        <a href="/proyect/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
                             <i class="fa fa-file-upload"></i>
-                        </button>
+                        </a>
                     </td>
                     <td>
-                        <a href="#">
-                            <button type="button" class="mb-3 mr-1 btn btn-warning">
-                                <i class="fa fa-fw fa-eye"></i>
-                            </button>
+                        <a href="/proyect/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
+                            <i class="fa fa-fw fa-eye"></i>
                         </a> &nbsp;
-                        <a href="">
-                            <button type="button" class="mb-3 mr-1 btn btn-info">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                            </button>
+                        <a href="" class="mb-3 mr-1 btn btn-info">
+                            <i class="fa fa-fw fa-pencil-alt"></i>
                         </a> &nbsp;
                         <form method="POST" action=""
                               style="display:inline;">

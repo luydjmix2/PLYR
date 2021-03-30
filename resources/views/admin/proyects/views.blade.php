@@ -31,7 +31,14 @@ print_r($files);
     </div>
 </div>
 <!-- END Hero Content -->
-
+<br><br>
+<div class="row justify-content-md-center">
+    <div class="col-10">
+        <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
+            <i class="fa fa-fw fa-share-square"></i>
+        </button>
+    </div>
+</div>
 <!-- Page Content -->
 <div class="bg-white">
     <div class="content content-boxed">
@@ -86,7 +93,7 @@ print_r($files);
                                                 <i class="fa fa-fw fa-times"></i>
                                             </button>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
-                                                <i class="fa fa-fw fa-times"></i>
+                                                <i class="fa fa-fw fa-share-square"></i>
                                             </button>
                                         </div>
                                     </td>
