@@ -34,3 +34,20 @@ Route::get('/proyects', [App\Http\Controllers\ProyectController::class, 'index']
 Route::get('/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
 Route::post('/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
 Route::get('/proyect/{nameproyect?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('proyect.view');
+
+
+Route::get('/config-db-refactori-dev-2021-03-29', function() {
+    $exitCode = Artisan::call('migrate:fresh');
+    $exitCode = Artisan::call('db:seed --class=UserSeeder');
+    $exitCode = Artisan::call('db:seed --class=ProyectSeeder');
+    $exitCode = Artisan::call('db:seed --class=DocumentSeeder');
+    return 'refresh Ok';
+});
+
+Route::get('/config-clean-cache-dev-2021-03-29', function() {
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('route:cache');
+    return 'refresh Ok';
+});
