@@ -56,7 +56,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
-        return redirect()->route('proyect.view', ['nameproyect' => $rulproyect]);
+        return redirect()->route('group.view', ['nameproyect' => $rulproyect]);
     }
 
     /**

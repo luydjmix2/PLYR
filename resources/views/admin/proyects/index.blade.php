@@ -5,7 +5,7 @@
 {{ __('proyects.name')}}
 @endsection
 @section('breadcrumbs')
-{{ Breadcrumbs::render('proyects') }}
+{{ Breadcrumbs::render('Groups') }}
 @endsection
 <!-- Dynamic Table with Export Buttons -->
 <div class="block block-rounded">
@@ -13,8 +13,8 @@
     <div class="block-content block-content-full">
         <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
         <div class="float-right col-md-1">
-            <a href="{{route('proyects.create')}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
-                    <i class="fa fa-fw fa-plus"></i> {{ __('proyects.add')}}
+            <a href="{{route('groups.create')}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
+                    <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
                 </button></a>
         </div>
         <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
@@ -47,15 +47,15 @@
                         {{ $proyect->proyect_end }}
                     </td>
                     <td class="font-w600 font-size-sm">
-                        {{ $proyect->user_id }}
+                        {{ dataUserName($proyect->user_id) }}
                     </td>
                     <td class="font-w600 font-size-sm">
-                        <a href="/proyect/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
+                        <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
                             <i class="fa fa-file-upload"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="/proyect/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
+                        <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
                             <i class="fa fa-fw fa-eye"></i>
                         </a> &nbsp;
                         <a href="" class="mb-3 mr-1 btn btn-info">
@@ -63,7 +63,7 @@
                         </a> &nbsp;
                         <form method="POST" action=""
                               style="display:inline;">
-                            {{ csrf_field() }} {{ method_field('proyects.delete') }}
+                            {{ csrf_field() }} {{ method_field('groups.delete') }}
                             <button class="mb-3 mr-1 btn btn-danger"
                                     onclick="return confirm('{{ __('proyects.alert_delete')}}')"><i
                                     class="fa fa-fw fa-times"></i></button>

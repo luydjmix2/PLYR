@@ -20,10 +20,10 @@ $trail->push(__('proyects.name'), route('groups'));
 
 Breadcrumbs::for(__('proyects.name').'.create', function ($trail) {
 $trail->parent(__('proyects.name'), 'Service');
-$trail->push('Create', route(__('proyects.name').'.create'));
+$trail->push('Create', route('groups.create'));
 });
 
 
 Breadcrumbs::for('proyect.view', function ($trail, $nameProyect) {
-$trail->push($nameProyect, route('proyect.view', ['name' => $nameProyect]));
+$trail->push($nameProyect, route('group.view', ['name' => $nameProyect]));
 });

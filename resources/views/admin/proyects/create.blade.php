@@ -6,7 +6,7 @@
 {{ __('proyects.name')}}
 @endsection
 @section('breadcrumbs')
-{{ Breadcrumbs::render('proyects') }}
+{{ Breadcrumbs::render(__('proyects.name').'.create') }}
 @endsection
 
 <!-- Page Content -->
@@ -31,7 +31,7 @@
                         </ul>
                     </div>
                     @endif
-                    {!! Form::open(['route'=> 'proyects.store', 'method' => 'POST', 'files'=>'true', 'id' => 'proyectCreate' ]) !!}
+                    {!! Form::open(['route'=> 'groups.store', 'method' => 'POST', 'files'=>'true', 'id' => 'proyectCreate' ]) !!}
                     @csrf
                     <div class="form-group">
                         {{Form::label('wizard-progress-name', __('proyects.nameProyects'))}}

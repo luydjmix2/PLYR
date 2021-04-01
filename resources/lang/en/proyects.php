@@ -18,10 +18,10 @@ return [
       |
      */
 
-    'name' => 'Proyects',
+    'name' => 'Groups',
     'list' => 'List',
     'add' => 'Add',
-    'nameProyects' => 'Project Name',
+    'nameProyects' => 'Group Name',
     'description' => 'Description',
     'start_date' => 'Star Date',
     'end_date' => 'End Date',
