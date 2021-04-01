@@ -9,13 +9,18 @@
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 // Inicio
 
-Breadcrumbs::for('home', function ($trail) {
-$trail->push('Home', route('home'));
+Breadcrumbs::for('dashboard', function ($trail) {
+$trail->push('Dashboard', route('dashboard'));
 });
 
-Breadcrumbs::for('proyects', function ($trail) {
-$trail->parent('home', 'Servicios');
-$trail->push('Droyects', route('proyects'));
+Breadcrumbs::for(__('proyects.name'), function ($trail) {
+$trail->parent('dashboard', 'Service');
+$trail->push(__('proyects.name'), route('groups'));
+});
+
+Breadcrumbs::for(__('proyects.name').'.create', function ($trail) {
+$trail->parent(__('proyects.name'), 'Service');
+$trail->push('Create', route(__('proyects.name').'.create'));
 });
 
 

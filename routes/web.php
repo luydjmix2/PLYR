@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Redirect;
 Route::get('/', function () {
     return Redirect::route('login');
 });
-//Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 //Route::match(['get', 'post'], '/dashboard', function(){
 //    return view('admin.dashboard');
 //});
@@ -28,14 +28,14 @@ Route::view('/pages/blank', 'pages.blank');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//proyectos
-Route::get('/proyects', [App\Http\Controllers\ProyectController::class, 'index'])->name('proyects');
-Route::get('/proyects/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('proyects.create');
-Route::post('/proyects/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('proyects.store');
-Route::get('/proyect/{nameproyect?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('proyect.view');
-Route::post('/proyect/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('proyect.file');
+//Grupos
+Route::get("/__('proyects.name')", [App\Http\Controllers\ProyectController::class, 'index'])->name('groups');
+Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('groups.create');
+Route::post('/groups/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('groups.store');
+Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('group.view');
+Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');
@@ -45,7 +45,7 @@ Route::get('/config-db-refactori-dev-2021-03-29', function() {
     return 'refresh db Ok';
 });
 
-Route::get('/config-clean-cache-dev-2021-03-29', function() {
+    Route::get('/config-clean-cache-dev-2021-03-29', function() {
     $exitCode = Artisan::call('config:cache');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
