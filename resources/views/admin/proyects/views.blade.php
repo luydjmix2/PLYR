@@ -61,20 +61,31 @@ print_r($files);
                         <table class="table table-sm table-vcenter">
                             <thead>
                                 <tr>
-                                    <th class="text-center" style="width: 50px;">#</th>
-                                    <th>Name</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
-                                    <th class="text-center" style="width: 100px;">Actions</th>
+                                    <th>{{__('users.name_full')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.position')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.email')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.movil')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.phone')}}</th>
+                                    <th class="text-center" style="width: 100px;">{{__('proyects.acctions')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($files as $file)
+                                @foreach($team as $team_user)
                                 <tr>
-                                    <th class="text-center" scope="row">{{$file['id']}}</th>
                                     <td class="font-w600 font-size-sm">
-                                        <a href="#">{{$file['document_name']}}</a>
+                                        {{$team_user['name']}}
+                                    </td>
+                                    <td class="font-w600 font-size-sm">
+                                        {{$team_user['position']}}
+                                    </td>
+                                    <td class="font-w600 font-size-sm">
+                                        {{$team_user['email']}}
+                                    </td>
+                                    <td class="font-w600 font-size-sm">
+                                        {{$team_user['movil']}}
                                     </td>
                                     <td class="d-none d-sm-table-cell">
+                                        {{$team_user['phone']}}
                                         <span class="badge badge-warning">Trial</span>
                                     </td>
                                     <td class="text-center">

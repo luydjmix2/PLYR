@@ -119,7 +119,7 @@
                     <!-- END Step 3 -->
                 </div>
                 <!-- END Steps Content -->
-
+                {{Form::hidden('id_group', $id_group)}}
                 <!-- Steps Navigation -->
                 <div class="block-content block-content-sm block-content-full bg-body-light rounded-bottom">
                     <div class="row">

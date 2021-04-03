@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class GroupUserController extends Controller {
 
@@ -37,7 +38,7 @@ class GroupUserController extends Controller {
         User::create([
             'name' => $name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'position' => $request->position,
@@ -47,8 +48,10 @@ class GroupUserController extends Controller {
             'firm' => $request->firm,
             'start_date' => $request->start_date,
             'company' => $request->company,
+            'id_group' => $request->id_group,
         ]);
-        return $request;
+        return redirect()->route('group.view', ['id_group' => $request->id_group]);
+//        return $request;
     }
 
     /**
