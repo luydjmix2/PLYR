@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
 use App\Models\User;
+use App\Models\team;
 use Illuminate\Support\Facades\Hash;
 
 class GroupUserController extends Controller {
@@ -48,6 +49,11 @@ class GroupUserController extends Controller {
             'firm' => $request->firm,
             'start_date' => $request->start_date,
             'company' => $request->company,
+        ]);
+        $user = User::where('email', $request->email)->get()->toArray();
+
+        team::create([
+            'user_id' => $user[0]['id'],
             'id_group' => $request->id_group,
         ]);
         return redirect()->route('group.view', ['id_group' => $request->id_group]);

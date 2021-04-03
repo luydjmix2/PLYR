@@ -86,7 +86,6 @@ print_r($files);
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         {{$team_user['phone']}}
-                                        <span class="badge badge-warning">Trial</span>
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
@@ -103,6 +102,7 @@ print_r($files);
                                     </td>
                                 </tr>
                                 @endforeach
+
                             </tbody>
                         </table>
                     </div>

@@ -7,8 +7,10 @@ use App\Http\Requests\ProyectCreateRequest;
 use App\Models\Document;
 use App\Models\Proyect;
 use App\Models\User;
+use App\Models\team;
 use Validator;
 use Auth;
+use App\Helpers\Helper;
 
 class ProyectController extends Controller {
 
@@ -71,7 +73,9 @@ class ProyectController extends Controller {
         }
         $proyect_data = Proyect::where('proyect_url', $slug)->get()->toArray();
         $user = User::where('id', $proyect_data[0]['user_id'])->get()->toArray();
-        $team = User::where('id_group', $proyect_data[0]['id'])->get()->toArray();
+        $teamLoop = team::where('id_group', $proyect_data[0]['id'])->get()->toArray();
+//        dd($proyect_data[0]['id']);
+        $team = Helper::dataTeamGroup($proyect_data[0]['id']);
         $files = Document::where('proyect_id', $proyect_data[0]['id'])->get()->toArray();
         return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team'));
     }
