@@ -24,7 +24,7 @@ print_r($files);
      <div class="bg-primary-op">
         <div class="content content-full overflow-hidden">
             <div class="my-8 text-center">
-                <h1 class="text-white mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$user[0]['signing']}}</h1>
+                <h1 class="text-white mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$user[0]['company']}}</h1>
                 <h2 class="h4 font-w400 text-white-75 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$proyect_data[0]['proyect_description']}}</h2>
             </div>
         </div>
@@ -48,7 +48,7 @@ print_r($files);
                     <div class="block-header">
                         <h3 class="block-title">Group Team</h3>
                         <div class="float-right col-md-1">
-                            <a href="{{route('group.user.create')}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
+                            <a href="{{route('group.user.create', $proyect_data[0]['id'])}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
                                     <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
                                 </button></a>
                         </div>

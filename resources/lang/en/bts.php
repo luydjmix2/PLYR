@@ -24,4 +24,7 @@ return [
     'delete' => 'Delete',
     'view' => 'View',
     'update' => 'Update',
+    'previous' => 'Previous',
+    'next' => 'Next',
+    'submit' => 'Submit',
 ];

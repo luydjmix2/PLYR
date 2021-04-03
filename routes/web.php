@@ -36,8 +36,8 @@ Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'cr
 Route::post('/groups/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('groups.store');
 Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('group.view');
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
-Route::post('/group/user/create', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
-
+Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
+Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
 
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {

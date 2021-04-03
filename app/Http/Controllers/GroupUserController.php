@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserCreateRequest;
+use App\Models\User;
 
-class GroupUserController extends Controller
-{
+class GroupUserController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -21,9 +22,8 @@ class GroupUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
-    {
-        return $id;
+    public function create($id_group) {
+        return view('admin.users.create', compact('id_group'));
     }
 
     /**
@@ -32,9 +32,23 @@ class GroupUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(UserCreateRequest $request) {
+        $name = $request->first_name . " " . $request->last_name;
+        User::create([
+            'name' => $name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'position' => $request->position,
+            'bloomberg_email' => $request->bloomberg_email,
+            'phone' => $request->phone,
+            'movil' => $request->movil,
+            'firm' => $request->firm,
+            'start_date' => $request->start_date,
+            'company' => $request->company,
+        ]);
+        return $request;
     }
 
     /**
@@ -43,8 +57,7 @@ class GroupUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -54,8 +67,7 @@ class GroupUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -66,8 +78,7 @@ class GroupUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -77,8 +88,8 @@ class GroupUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
