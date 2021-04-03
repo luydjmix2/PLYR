@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Subir documento -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/basic.css') }}">
 <script src="{{ asset('js/dropzone.js') }}"></script>
@@ -116,7 +117,7 @@ print_r($files);
                     Drop your files here
                 </div>
                 <div class="dropzone-previews"></div>
-                <button type="submit" class="btn btn-success" id="submit">Save</button>
+                {{Form::hidden('id_group', $proyect_data[0]['id'])}}
                 {!! Form::close() !!}
             </div>
         </div>

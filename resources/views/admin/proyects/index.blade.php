@@ -47,7 +47,7 @@
                         {{ $proyect->proyect_end }}
                     </td>
                     <td class="font-w600 font-size-sm">
-                        {{ dataUserName($proyect->user_id) }}
+                        {{Helper::dataUserName($proyect->user_id) }}
                     </td>
                     <td class="font-w600 font-size-sm">
                         <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">

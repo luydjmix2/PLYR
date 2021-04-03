@@ -98,7 +98,7 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        // return $request;
     }
 
     /**
@@ -108,8 +108,18 @@ class ProyectController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateFile(Request $request, $id) {
-        //
+    public function updateFile(Request $request) {
+        $path = public_path() . '/groupsFiles/'.$request->id_group.'/';
+//        dd($request);
+        $files = $request->file('file');
+        foreach ($files as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->move($path, $fileName);
+        }
+//        dd($files);
+//        $fileName = $files->getClientOriginalName();
+//        $files->move($path, $fileName);
+        return $fileName;
     }
 
     /**
