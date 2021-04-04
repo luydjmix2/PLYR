@@ -32,10 +32,10 @@ class ProyectCreateRequest extends FormRequest {
 
     public function messages() {
         return [
-            'proyect_name.required' => 'The Project name: attribute is required.',
-            'proyect_name.unique' => 'The Project name already exists.',
-            'proyect_name.max' => 'The name of the Project is too long.',
-            'proyect_description.required' => 'The Project description: attribute is required.',
+            'proyect_name.required' => 'The Group name: attribute is required.',
+            'proyect_name.unique' => 'The Group name already exists.',
+            'proyect_name.max' => 'The name of the Group is too long.',
+            'proyect_description.required' => 'The Group description: attribute is required.',
             'proyect_start.required' => 'The Start date: attribute is required.',
             'proyect_end.required' => 'The End date: attribute is required.',
         ];
@@ -43,8 +43,8 @@ class ProyectCreateRequest extends FormRequest {
 
     public function attributes() {
         return [
-            'proyect_name' => 'Project name',
-            'proyect_description' => 'Project description',
+            'proyect_name' => 'Group name',
+            'proyect_description' => 'Group description',
             'proyect_start' => 'Start date',
             'proyect_end' => 'End date',
         ];

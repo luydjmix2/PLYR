@@ -6,14 +6,13 @@
             <file>file:/D:/xampp/htdocs/PLYR/public/js/pages/dropzone.js</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/breadcrumbs.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/ProyectController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/lang/en/proyects.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/admin.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/create.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Models/Proyect.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/users/create.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/views.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/GroupUserController.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/header.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/web.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/index.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/menuLeft.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Requests/ProyectCreateRequest.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/CompanyControllers.php</file>
         </group>
     </open-files>
 </project-private>

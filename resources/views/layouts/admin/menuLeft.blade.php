@@ -44,27 +44,26 @@
         <!-- Side Navigation -->
         <div class="content-side">
             <ul class="nav-main">
-                <li class="nav-main-item {{ setActiveRoute('dashboard') }}">
+                <li class="nav-main-item {{ Helper::setActiveRoute('dashboard') }}">
                     {{-- <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
                         <i class="nav-main-link-icon si si-cursor"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a> --}}
-                    <a class="nav-main-link {{ setActiveRoute('dashboard') }}" href="{{ route('dashboard') }}">
+                    <a class="nav-main-link {{ Helper::setActiveRoute('dashboard') }}" href="{{ route('dashboard') }}">
                         <i class="nav-main-link-icon si si-cursor"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-main-heading">Servicios</li>
-                <li class="nav-main-item {{ setOpenRoute('documents', 'users', 'proyects', 'groups') }}">
+                <li class="nav-main-item {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"
                         aria-expanded="true" href="#">
                         <i class="nav-main-link-icon fa fa-gem"></i>
-                        <span class="nav-main-link-name">Mis servicios</span>
+                        <span class="nav-main-link-name">My Service</span>
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('proyects') }}">
-                                <span class="nav-main-link-name">Proyectos</span>
+                            <a class="nav-main-link" href="{{ route('groups') }}">
+                                <span class="nav-main-link-name">{{ __('proyects.name')}}</span>
                             </a>
                         </li>
                     </ul>

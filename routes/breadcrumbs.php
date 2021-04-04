@@ -13,12 +13,17 @@ Breadcrumbs::for('dashboard', function ($trail) {
 $trail->push('Dashboard', route('dashboard'));
 });
 
-Breadcrumbs::for('proyects', function ($trail) {
-$trail->parent('dashboard', 'Servicios');
-$trail->push('Droyects', route('proyects'));
+Breadcrumbs::for(__('proyects.name'), function ($trail) {
+$trail->parent('dashboard', 'Service');
+$trail->push(__('proyects.name'), route('groups'));
+});
+
+Breadcrumbs::for(__('proyects.name').'.create', function ($trail) {
+$trail->parent(__('proyects.name'), 'Service');
+$trail->push('Create', route('groups.create'));
 });
 
 
 Breadcrumbs::for('proyect.view', function ($trail, $nameProyect) {
-$trail->push($nameProyect, route('proyect.view', ['name' => $nameProyect]));
+$trail->push($nameProyect, route('group.view', ['name' => $nameProyect]));
 });

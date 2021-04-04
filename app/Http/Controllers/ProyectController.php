@@ -6,11 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProyectCreateRequest;
 use App\Models\Document;
 use App\Models\Proyect;
-use app\Models\User;
+use App\Models\User;
+use App\Models\team;
 use Validator;
 use Auth;
+use App\Helpers\Helper;
 
 class ProyectController extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -52,7 +58,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
-        return redirect()->back();
+        return redirect()->route('group.view', ['nameproyect' => $rulproyect]);
     }
 
     /**
@@ -62,11 +68,16 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(string $slug = '') {
-        if ($slug=='') {
+        if ($slug == '') {
             $slug = 'demo';
         }
         $proyect_data = Proyect::where('proyect_url', $slug)->get()->toArray();
-        return view('admin.proyects.views', compact('proyect_data'));
+        $user = User::where('id', $proyect_data[0]['user_id'])->get()->toArray();
+        $teamLoop = team::where('id_group', $proyect_data[0]['id'])->get()->toArray();
+//        dd($proyect_data[0]['id']);
+        $team = Helper::dataTeamGroup($proyect_data[0]['id']);
+        $files = Document::where('proyect_id', $proyect_data[0]['id'])->get()->toArray();
+        return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team'));
     }
 
     /**
@@ -87,7 +98,28 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        // return $request;
+    }
+
+    /**
+     * Upfile the specified proyect resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFile(Request $request) {
+        $path = public_path() . '/groupsFiles/'.$request->id_group.'/';
+//        dd($request);
+        $files = $request->file('file');
+        foreach ($files as $file) {
+            $fileName = $file->getClientOriginalName();
+            $file->move($path, $fileName);
+        }
+//        dd($files);
+//        $fileName = $files->getClientOriginalName();
+//        $files->move($path, $fileName);
+        return $fileName;
     }
 
     /**
