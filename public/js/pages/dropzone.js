@@ -15,16 +15,11 @@ jQuery(document).ready(function ($) {
         maxFilezise: 10
     });
 
-//    myDropzone.on("addedfile", file => {
-//        console.log("A file has been added");
-//        $.each(file, function (keyFile, valueFile) {
-//            console.log(valueFile);
-//            console.log(valueFile.filename);
-//        });
-////        $('#target_div').append(
-////            $('<input/>').attr('type', "file").attr('name', "file").attr('id', "someName").attr('class', "multi").attr('onchange', "return Plugins.handleFileSelect(this);")
-////        );
-//    });
+    myDropzone.on("complete", file => {
+        alert('Se realizara la carga de los achivos.');
+        location.reload();
+    });
+    
 
     //    $("#dropzone-div").dropzone({ url: "/file/post" });
 //    Dropzone.options.myDropzone = {

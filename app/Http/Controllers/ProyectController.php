@@ -109,17 +109,25 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function updateFile(Request $request) {
-        $path = public_path() . '/groupsFiles/'.$request->id_group.'/';
+//        $path = '/home/mefurthe/public_html/groupsFiles/'.$request->id_group.'/';
+        $path = public_path() . '/groupsFiles/' . $request->id_group . '/';
 //        dd($request);
         $files = $request->file('file');
         foreach ($files as $file) {
             $fileName = $file->getClientOriginalName();
             $file->move($path, $fileName);
         }
-//        dd($files);
-//        $fileName = $files->getClientOriginalName();
-//        $files->move($path, $fileName);
-        return $fileName;
+        $arrayFile = explode(".", $fileName);
+        $url_file = '/groupsFiles/' . $request->id_group . '/' . $fileName;
+        Document::create([
+            'document_name_full' => $fileName,
+            'document_name' => $arrayFile[0],
+            'document_format' => $arrayFile[1],
+            'document_url' => $url_file,
+            'proyect_id' => $request->id_group,
+        ]);
+        $group_data = Proyect::where('id', $request->id_group)->get()->toArray();
+        return redirect()->route('group.view', $group_data[0]['proyect_url']);
     }
 
     /**
