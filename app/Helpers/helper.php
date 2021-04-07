@@ -53,5 +53,10 @@ class Helper {
 //        dd($team);
         return $team;
     }
+    
+    public function getUrlEditUserGroup($id_group, $id) {
+       //url('/group/user/edit/'.$id_group.'/$team_user[id]');
+        return $id;
+    }
 
 }

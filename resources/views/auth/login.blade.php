@@ -33,7 +33,7 @@
                             <div class="py-3">
                                 <div class="form-group">
 <!--                                    <input type="text" class="form-control form-control-lg form-control-alt" id="login-username" name="login-username" placeholder="Username">-->
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="asd@asd.asd" required autocomplete="email" autofocus>
 
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="form-group">
                                     <!--<input type="password" class="form-control form-control-lg form-control-alt" id="login-password" name="login-password" placeholder="Password">-->
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="123456789" required autocomplete="current-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">

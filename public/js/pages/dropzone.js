@@ -8,18 +8,42 @@ Dropzone.autoDiscover = false;
 jQuery(document).ready(function ($) {
 //       alert($('#my-dropzone').attr("action")); 
     var urlform = $('#my-dropzone').attr("action");
+
     let myDropzone = new Dropzone("#my-dropzone", {
         url: urlform,
-        method: "post",
         uploadMultiple: true,
-        maxFilezise: 10
+        addRemoveLinks: true,
+        parallelUploads: 1,
+        maxFiles: 25,
+
+        accept: function (file, done) {
+            console.log("uploaded");
+            done();
+        },
+
+        init: function () {
+            this.on("addedfile", function () {
+                if (this.files[25] != null) {
+                    this.removeFile(this.files[0]);
+                }
+            });
+        }
     });
 
-    myDropzone.on("complete", file => {
-        alert('Se realizara la carga de los achivos.');
-        location.reload();
-    });
-    
+
+//    myDropzone.on("success", file => {
+////        myDropzone.processQueue.bind(myDropzone);
+////        alert('Se realizara la carga de los achivos.');
+////        location.reload();
+//    });
+
+//    var submitBtn = document.querySelector("#submit");
+//    submitBtn.addEventListener("click", function (e) {
+//        e.preventDefault();
+//        e.stopPropagation();
+//        alert(myDropzone.processQueue());
+//        myDropzone.processQueue();
+//    });
 
     //    $("#dropzone-div").dropzone({ url: "/file/post" });
 //    Dropzone.options.myDropzone = {

@@ -58,7 +58,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
-        return redirect()->route('group.view', ['nameproyect' => $rulproyect]);
+        return redirect()->route('group.view', ['namegroup' => $rulproyect]);
     }
 
     /**
@@ -113,10 +113,12 @@ class ProyectController extends Controller {
         $path = public_path() . '/groupsFiles/' . $request->id_group . '/';
 //        dd($request);
         $files = $request->file('file');
+//        dd($files);
         foreach ($files as $file) {
             $fileName = $file->getClientOriginalName();
             $file->move($path, $fileName);
         }
+//        dd($fileName);
         $arrayFile = explode(".", $fileName);
         $url_file = '/groupsFiles/' . $request->id_group . '/' . $fileName;
         Document::create([

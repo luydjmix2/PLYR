@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserCreateRequest extends FormRequest
+class UserEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,8 +23,8 @@ class UserCreateRequest extends FormRequest
      */
     public function rules() {
         return [
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => 'required|string|email|max:255',
+            'password' => 'string|min:8|confirmed',
             'first_name' => 'required|max:255',
             'last_name' => 'required|max:255',
             'position' => 'required|max:255',
@@ -40,7 +40,6 @@ class UserCreateRequest extends FormRequest
             'email.required' => 'The Email: attribute is required.',
             'email.email' => 'The Email: it is not an email.',
             'email.max' => "The Email: It's too long.",
-            'email.unique' => "The Email: exists in the registry and is assigned to another user",
             'password.required' => 'The Password: attribute is required.',
             'password.min' => 'The Password: must be at least 8 characters.',
             'first_name.required' => 'The First Name: attribute is required.',

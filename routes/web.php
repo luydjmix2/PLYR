@@ -38,6 +38,9 @@ Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
 Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
+Route::get('/group/user/edit/{id_group}/{id}', [App\Http\Controllers\GroupUserController::class, 'edit'])->name('group.user.edit');
+Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController::class, 'update'])->name('group.user.update');
+Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
