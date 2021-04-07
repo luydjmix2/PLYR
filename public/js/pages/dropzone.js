@@ -8,22 +8,41 @@ Dropzone.autoDiscover = false;
 jQuery(document).ready(function ($) {
 //       alert($('#my-dropzone').attr("action")); 
     var urlform = $('#my-dropzone').attr("action");
+
     let myDropzone = new Dropzone("#my-dropzone", {
         url: urlform,
-        method: "post",
         uploadMultiple: true,
-        maxFilezise: 10
+        addRemoveLinks: true,
+        parallelUploads: 1,
+        maxFiles: 25,
+
+        accept: function (file, done) {
+            console.log("uploaded");
+            done();
+        },
+
+        init: function () {
+            this.on("addedfile", function () {
+                if (this.files[25] != null) {
+                    this.removeFile(this.files[0]);
+                }
+            });
+        }
     });
 
-//    myDropzone.on("addedfile", file => {
-//        console.log("A file has been added");
-//        $.each(file, function (keyFile, valueFile) {
-//            console.log(valueFile);
-//            console.log(valueFile.filename);
-//        });
-////        $('#target_div').append(
-////            $('<input/>').attr('type', "file").attr('name', "file").attr('id', "someName").attr('class', "multi").attr('onchange', "return Plugins.handleFileSelect(this);")
-////        );
+
+//    myDropzone.on("success", file => {
+////        myDropzone.processQueue.bind(myDropzone);
+////        alert('Se realizara la carga de los achivos.');
+////        location.reload();
+//    });
+
+//    var submitBtn = document.querySelector("#submit");
+//    submitBtn.addEventListener("click", function (e) {
+//        e.preventDefault();
+//        e.stopPropagation();
+//        alert(myDropzone.processQueue());
+//        myDropzone.processQueue();
 //    });
 
     //    $("#dropzone-div").dropzone({ url: "/file/post" });

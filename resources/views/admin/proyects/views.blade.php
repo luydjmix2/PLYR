@@ -11,7 +11,7 @@
 {{ __($proyect_data[0]['proyect_name'])}}
 @endsection
 @section('breadcrumbs')
-{{ Breadcrumbs::render('proyect.view', $proyect_data[0]['proyect_name']) }}
+{{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
 @php
 print_r($proyect_data);
@@ -90,12 +90,12 @@ print_r($files);
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
+                                            <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            </a>
+                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
-                                            </button>
+                                            </a>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>

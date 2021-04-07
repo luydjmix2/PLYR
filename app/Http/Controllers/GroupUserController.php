@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Facades\DB;
+use App\Models\Proyect;
 use App\Models\User;
 use App\Models\team;
 use Illuminate\Support\Facades\Hash;
@@ -56,7 +59,9 @@ class GroupUserController extends Controller {
             'user_id' => $user[0]['id'],
             'id_group' => $request->id_group,
         ]);
-        return redirect()->route('group.view', ['id_group' => $request->id_group]);
+
+        $group = Proyect::where('id', $request->id_group)->get()->toArray();
+        return redirect()->route('group.view', ['namegroup' => $group[0]['proyect_url']]);
 //        return $request;
     }
 
@@ -76,8 +81,11 @@ class GroupUserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        //
+    public function edit($id_group, $id) {
+        $group = Proyect::where('id', $id_group)->get()->toArray();
+//        dd($group);
+        $user = User::where('id', $id)->get()->toArray();
+        return view('admin.users.edit', compact('user', 'group'));
     }
 
     /**
@@ -87,8 +95,24 @@ class GroupUserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
-        //
+    public function update(UserEditRequest $request) {
+        $name = $request->first_name . " " . $request->last_name;
+        User::where('id', $request->id)->update([
+            'name' => $name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'position' => $request->position,
+            'bloomberg_email' => $request->bloomberg_email,
+            'phone' => $request->phone,
+            'movil' => $request->movil,
+            'firm' => $request->firm,
+            'start_date' => $request->start_date,
+            'company' => $request->company,
+        ]);
+        $group = Proyect::where('id', $request->id_group)->get()->toArray();
+        return redirect()->route('group.view', ['namegroup' => $group[0]['proyect_url']]);
     }
 
     /**
@@ -97,8 +121,11 @@ class GroupUserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-        //
+    public function destroy($id_user) {
+        $user = User::find($id_user);
+        $user->delete();
+
+        return redirect()->back();
     }
 
 }

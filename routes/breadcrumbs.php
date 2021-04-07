@@ -24,6 +24,11 @@ $trail->push('Create', route('groups.create'));
 });
 
 
-Breadcrumbs::for('proyect.view', function ($trail, $nameProyect) {
-$trail->push($nameProyect, route('group.view', ['name' => $nameProyect]));
+Breadcrumbs::for('group.view', function ($trail, $nameProyect) {
+$trail->push($nameProyect, route('group.view', ['namegroup' => $nameProyect]));
+});
+
+Breadcrumbs::for('group.user.edit', function ($trail, $id_group, $id, $slug) {
+$trail->parent('group.view',$slug);
+$trail->push('Edit', route('group.user.edit', ['id_group' => $id_group, 'id' => $id]));
 });
