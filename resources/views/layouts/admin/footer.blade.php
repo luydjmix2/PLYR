@@ -6,7 +6,7 @@
                 Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
             </div>
             <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
-                <a class="font-w600" href="https://1.envato.market/AVD6j" target="_blank">OneUI</a> &copy; <span data-toggle="year-copy"></span>
+                <a class="font-w600" href="https://1.envato.market/AVD6j" target="_blank">PL&R</a> &copy; <span data-toggle="year-copy"></span>
             </div>
         </div>
     </div>

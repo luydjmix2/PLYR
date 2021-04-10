@@ -1,5 +1,8 @@
 @extends('layouts.admin.admin')
 
+@section('title-page')
+Dashboard
+@endsection
 @section('content')
     <!-- Page Content -->
     <div class="content">

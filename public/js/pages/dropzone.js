@@ -22,21 +22,48 @@ jQuery(document).ready(function ($) {
         },
 
         init: function () {
-            this.on("addedfile", function () {
-                if (this.files[25] != null) {
-                    this.removeFile(this.files[0]);
-                }
+//            this.on("addedfile", function () {
+//                if (this.files[25] != null) {
+//                    this.removeFile(this.files[0]);
+//                }
+//            });
+            this.on("maxfilesexceeded", function () {
+                alert('Se realizara la carga de los achivos. ');
             });
         }
     });
 
 
-//    myDropzone.on("success", file => {
-////        myDropzone.processQueue.bind(myDropzone);
-////        alert('Se realizara la carga de los achivos.');
-////        location.reload();
-//    });
+    myDropzone.on("queuecomplete", file => {
+        if (confirm('The files were loaded you want to load more Ok, if you want to reload Cancel?')) {
+            console.log('si.');
+        } else {
+            console.log('no.');
+            location.reload();
+        }
+    });
 
+    $('.document-destroy').click(function (eventDest) {
+        eventDest.preventDefault();
+        if (confirm('do you want to delete the file?')) {
+            console.log($(this).prop("href"));
+            window.location = $(this).prop("href");
+        } else {
+            console.log('decline destroy');
+            return false;
+        }
+    });
+
+    $('.users-delete').click(function (eventDelUser) {
+        eventDelUser.preventDefault();
+        if (confirm('do you want to delete the user?')) {
+            console.log($(this).prop("href"));
+            window.location = $(this).prop("href");
+        } else {
+            console.log('decline destroy');
+            return false;
+        }
+    });
 //    var submitBtn = document.querySelector("#submit");
 //    submitBtn.addEventListener("click", function (e) {
 //        e.preventDefault();

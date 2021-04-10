@@ -13,12 +13,6 @@
 @section('breadcrumbs')
 {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
-@php
-print_r($proyect_data);
-print_r($user);
-print_r($files);
-@endphp
-
 
 <!-- Hero Content -->
 <div class="bg-image" style="background-image: url('{{asset("/media/photos/photo23@2x.jpg")}}');">
@@ -93,7 +87,7 @@ print_r($files);
                                             <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
-                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
@@ -119,6 +113,7 @@ print_r($files);
                 <div class="dropzone-previews"></div>
                 {{Form::hidden('id_group', $proyect_data[0]['id'])}}
                 {!! Form::close() !!}
+
             </div>
         </div>
         <br><br>
@@ -143,9 +138,9 @@ print_r($files);
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($files as $file)
+                                @foreach($files as $keyFile => $file)
                                 <tr>
-                                    <th class="text-center" scope="row">{{$file['id']}}</th>
+                                    <th class="text-center" scope="row">{{$keyFile+1}}</th>
                                     <td class="font-w600 font-size-sm">
                                         <a href="#">{{$file['document_name']}}</a>
                                     </td>
@@ -154,12 +149,9 @@ print_r($files);
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
-                                                <i class="fa fa-fw fa-pencil-alt"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <a href="{{route('group.file.delite', $file['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled document-destroy" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
-                                            </button>
+                                            </a>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>
