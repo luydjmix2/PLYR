@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProyectCreateRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use App\Models\Document;
 use App\Models\Proyect;
 use App\Models\User;
@@ -76,7 +78,7 @@ class ProyectController extends Controller {
         $teamLoop = team::where('id_group', $proyect_data[0]['id'])->get()->toArray();
 //        dd($proyect_data[0]['id']);
         $team = Helper::dataTeamGroup($proyect_data[0]['id']);
-        $files = Document::where('proyect_id', $proyect_data[0]['id'])->get()->toArray();
+        $files = Document::where('group_id', $proyect_data[0]['id'])->get()->toArray();
         return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team'));
     }
 
@@ -126,10 +128,28 @@ class ProyectController extends Controller {
             'document_name' => $arrayFile[0],
             'document_format' => $arrayFile[1],
             'document_url' => $url_file,
-            'proyect_id' => $request->id_group,
+            'group_id' => $request->id_group,
         ]);
         $group_data = Proyect::where('id', $request->id_group)->get()->toArray();
         return redirect()->route('group.view', $group_data[0]['proyect_url']);
+    }
+
+    /**
+     * Remove the specified file resource from storage.
+     * 
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyFile($id) {
+        $file = Document::where('id', $id)->get()->toArray();
+        $pathNew = '/groupsFilesDestroy/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
+        $pathOld = '/groupsFiles/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
+        $content = Storage::disk('public_uploads')->get($pathOld);
+        Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
+        Storage::disk('public_uploads')->delete($pathOld);
+        $user = Document::find($id);
+        $user->delete();
+        return back();
     }
 
     /**

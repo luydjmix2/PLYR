@@ -28,7 +28,7 @@
         @yield('css_after')
 
         <!-- Scripts -->
-        <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
+        <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(), ]) !!};</script>
     </head>
     <body>
         <!-- Page Container -->
@@ -113,7 +113,9 @@
             <!-- Main Container -->
             <main id="main-container">
                 @yield('breadcrumbs')
-                @yield('content')
+                <div class="content content-boxed">
+                    @yield('content')
+                </div>
             </main>
             <!-- END Main Container -->
             @include('layouts.admin.footer')
@@ -199,6 +201,6 @@
         <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->
 
         @yield('js_after')
-        
+
     </body>
 </html>

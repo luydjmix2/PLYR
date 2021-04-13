@@ -19,8 +19,8 @@ class CreateDocumentsTable extends Migration
             $table->string('document_name'); //nombre de documento 
             $table->string('document_format'); //formato de documento 
             $table->string('document_url'); //url de documento 
-            $table->unsignedBigInteger('proyect_id');// id de proyecto
-            $table->foreign('proyect_id')->references('id')->on('proyects');
+            $table->unsignedBigInteger('group_id');// id de proyecto
+            $table->foreign('group_id')->references('id')->on('proyects');
             $table->timestamps();
         });
     }

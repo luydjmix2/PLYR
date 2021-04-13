@@ -15,7 +15,7 @@ class Document extends Model {
         'document_name',
         'document_format',
         'document_url',
-        'proyect_id',
+        'group_id',
     ];
 
 }

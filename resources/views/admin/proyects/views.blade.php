@@ -5,20 +5,16 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <link rel="stylesheet" href="{{ asset('/css/dropzone.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/basic.css') }}">
+<link rel="stylesheet" href="{{ asset('/css/plyr.css') }}">
 <script src="{{ asset('js/dropzone.js') }}"></script>
 <script src="{{ asset('js/pages/dropzone.js') }}"></script>
+<script src="{{ asset('js/plyr.js') }}"></script>
 @section('title-page')
 {{ __($proyect_data[0]['proyect_name'])}}
 @endsection
 @section('breadcrumbs')
 {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
-@php
-print_r($proyect_data);
-print_r($user);
-print_r($files);
-@endphp
-
 
 <!-- Hero Content -->
 <div class="bg-image" style="background-image: url('{{asset("/media/photos/photo23@2x.jpg")}}');">
@@ -93,7 +89,7 @@ print_r($files);
                                             <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
-                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </a>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
@@ -115,10 +111,17 @@ print_r($files);
                 {!! Form::open(['route'=> 'group.file', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
                 <div class="dz-message" style="height:200px;">
                     Drop your files here
+                    <br>
+                    Maximum weight per file is 20 MG
+                    <br>
+                    10 files at a time per upload
+                    <br>
+                    Only allows documents (word, excel and pdf) and images
                 </div>
                 <div class="dropzone-previews"></div>
                 {{Form::hidden('id_group', $proyect_data[0]['id'])}}
                 {!! Form::close() !!}
+
             </div>
         </div>
         <br><br>
@@ -143,23 +146,26 @@ print_r($files);
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($files as $file)
+                                @foreach($files as $keyFile => $file)
                                 <tr>
-                                    <th class="text-center" scope="row">{{$file['id']}}</th>
+                                    <th class="text-center" scope="row">{{$keyFile+1}}</th>
                                     <td class="font-w600 font-size-sm">
-                                        <a href="#">{{$file['document_name']}}</a>
+                                        <a href="{{url($file['document_url'])}}">{{$file['document_name']}}</a>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <span class="badge badge-warning">Trial</span>
                                     </td>
                                     <td class="text-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
-                                                <i class="fa fa-fw fa-pencil-alt"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                        <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-{{$file['id']}}">{{__('bts.actions')}}</button>
+                                        <br>
+                                        <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts" id="toltips-alert-acctions-{{$file['id']}}">
+                                            <a href="{{route('group.file.delite', $file['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled document-destroy" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
-                                            </button>
+                                            </a>
+                                            <br>
+                                            <a href="{{url($file['document_url'])}}" target="_black" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="download file" download>                                                <i class="fa fa-fw fa-download"></i>
+                                            </a>
+                                            <br>
                                             <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>

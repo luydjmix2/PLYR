@@ -22,21 +22,23 @@ jQuery(document).ready(function ($) {
         },
 
         init: function () {
-            this.on("addedfile", function () {
-                if (this.files[25] != null) {
-                    this.removeFile(this.files[0]);
-                }
+            this.on("maxfilesexceeded", function () {
+                alert('Se realizara la carga de los achivos. ');
             });
         }
     });
 
 
-//    myDropzone.on("success", file => {
-////        myDropzone.processQueue.bind(myDropzone);
-////        alert('Se realizara la carga de los achivos.');
-////        location.reload();
-//    });
+    myDropzone.on("queuecomplete", file => {
+        if (confirm('The files were loaded you want to load more Ok, if you want to reload Cancel?')) {
+            console.log('si.');
+        } else {
+            console.log('no.');
+            location.reload();
+        }
+    });
 
+    
 //    var submitBtn = document.querySelector("#submit");
 //    submitBtn.addEventListener("click", function (e) {
 //        e.preventDefault();
