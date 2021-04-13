@@ -27,4 +27,5 @@ return [
     'previous' => 'Previous',
     'next' => 'Next',
     'submit' => 'Submit',
+    'actions'=>'Actions',
 ];
