@@ -22,11 +22,6 @@ jQuery(document).ready(function ($) {
         },
 
         init: function () {
-//            this.on("addedfile", function () {
-//                if (this.files[25] != null) {
-//                    this.removeFile(this.files[0]);
-//                }
-//            });
             this.on("maxfilesexceeded", function () {
                 alert('Se realizara la carga de los achivos. ');
             });
@@ -43,27 +38,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('.document-destroy').click(function (eventDest) {
-        eventDest.preventDefault();
-        if (confirm('do you want to delete the file?')) {
-            console.log($(this).prop("href"));
-            window.location = $(this).prop("href");
-        } else {
-            console.log('decline destroy');
-            return false;
-        }
-    });
-
-    $('.users-delete').click(function (eventDelUser) {
-        eventDelUser.preventDefault();
-        if (confirm('do you want to delete the user?')) {
-            console.log($(this).prop("href"));
-            window.location = $(this).prop("href");
-        } else {
-            console.log('decline destroy');
-            return false;
-        }
-    });
+    
 //    var submitBtn = document.querySelector("#submit");
 //    submitBtn.addEventListener("click", function (e) {
 //        e.preventDefault();
