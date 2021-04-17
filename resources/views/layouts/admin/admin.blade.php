@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ config('app.locale') }}">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -10,25 +10,32 @@
         <meta name="author" content="pixelcave">
         <meta name="robots" content="noindex, nofollow">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework">
+        <meta property="og:site_name" content="OneUI">
+        <meta property="og:description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="">
+        <meta property="og:image" content="">
 
         <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
         <link rel="shortcut icon" href="{{ asset('media/favicons/favicon.png') }}">
-        <link rel="icon" sizes="192x192" type="image/png" href="{{ asset('media/favicons/favicon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('media/favicons/favicon-192x192.png') }}">
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('media/favicons/apple-touch-icon-180x180.png') }}">
+        <!-- END Icons -->
 
-        <!-- Fonts and Styles -->
+        <!-- Stylesheets -->
         @yield('css_before')
+        <!-- Fonts and OneUI framework -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-        <link rel="stylesheet" id="css-main" href="{{ mix('/css/oneui.css') }}">
+        <link rel="stylesheet" id="css-main" href="{{ asset('css/oneui.css') }}">
 
-        <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('/css/themes/amethyst.css') }}"> -->
+        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+        <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
         @yield('css_after')
-
-        <!-- Scripts -->
-        <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(), ]) !!};</script>
+        <!-- END Stylesheets -->
+        @yield('js_before')
     </head>
     <body>
         <!-- Page Container -->
@@ -70,54 +77,22 @@
             'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
             'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
         -->
-        <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed main-content-narrow">
-            <!-- Side Overlay-->
-            <aside id="side-overlay" class="font-size-sm">
-                <!-- Side Header -->
-                <div class="content-header border-bottom">
-                    <!-- User Avatar -->
-                    <a class="img-link mr-1" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-                    </a>
-                    <!-- END User Avatar -->
-
-                    <!-- User Info -->
-                    <div class="ml-2">
-                        <a class="text-dark font-w600 font-size-sm" href="javascript:void(0)">Adam McCoy</a>
-                    </div>
-                    <!-- END User Info -->
-
-                    <!-- Close Side Overlay -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="ml-auto btn btn-sm btn-alt-danger" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_close">
-                        <i class="fa fa-fw fa-times"></i>
-                    </a>
-                    <!-- END Close Side Overlay -->
-                </div>
-                <!-- END Side Header -->
-
-                <!-- Side Content -->
-                <div class="content-side">
-                    <p>
-                        Content..
-                    </p>
-                </div>
-                <!-- END Side Content -->
-            </aside>
-            <!-- END Side Overlay -->
-
-            @include('layouts.admin.menuLeft')
+        <div id="page-container" class="page-header-dark main-content-boxed">
 
             @include('layouts.admin.header')
 
+
             <!-- Main Container -->
             <main id="main-container">
-                @yield('breadcrumbs')
-                <div class="content content-boxed">
+                @include('layouts.admin.menuTop')
+                <div class="content">
+                    @yield('breadcrumbs')
                     @yield('content')
                 </div>
+
             </main>
             <!-- END Main Container -->
+
             @include('layouts.admin.footer')
 
             <!-- Apps Modal -->
@@ -191,14 +166,41 @@
                 </div>
             </div>
             <!-- END Apps Modal -->
+
         </div>
         <!-- END Page Container -->
 
-        <!-- OneUI Core JS -->
-        <script src="{{ mix('js/oneui.app.js') }}"></script>
+        <!--
+            OneUI JS Core
 
-        <!-- Laravel Scaffolding JS -->
-        <!-- <script src="{{ mix('/js/laravel.app.js') }}"></script> -->
+            Vital libraries and plugins used in all pages. You can choose to not include this file if you would like
+            to handle those dependencies through webpack. Please check out assets/_js/main/bootstrap.js for more info.
+
+            If you like, you could also include them separately directly from the assets/js/core folder in the following
+            order. That can come in handy if you would like to include a few of them (eg jQuery) from a CDN.
+
+            assets/js/core/jquery.min.js
+            assets/js/core/bootstrap.bundle.min.js
+            assets/js/core/simplebar.min.js
+            assets/js/core/jquery-scrollLock.min.js
+            assets/js/core/jquery.appear.min.js
+            assets/js/core/js.cookie.min.js
+        -->
+        <script src="{{ asset('js/oneui.core.min.js') }}"></script>
+
+        <!--
+            OneUI JS
+
+            Custom functionality including Blocks/Layout API as well as other vital and optional helpers
+            webpack is putting everything together at assets/_js/main/app.js
+        -->
+        <script src="{{ asset('js/oneui.app.min.js') }}"></script>
+
+        <!-- Page JS Plugins -->
+        <script src="{{ asset('js/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+
+        <!-- Page JS Code -->
+        <script src="{{ asset('js/pages/be_pages_dashboard_v1.min.js') }}"></script>
 
         @yield('js_after')
 

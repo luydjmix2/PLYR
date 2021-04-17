@@ -16,6 +16,7 @@ class TeamSeeder extends Seeder {
         team::create([
             'user_id' => '2',
             'id_group' => '1',
+            'id_company' => '1',
         ]);
     }
 

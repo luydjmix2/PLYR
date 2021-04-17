@@ -16,15 +16,15 @@ class CreateCompaniesTable extends Migration {
             $table->id();
             $table->string('company_name')->unique(); //nombre empresa
             $table->string('company_bio')->nullable(); //biografia empresa
-            $table->string('company_addres')->unique(); //direccion empresa
-            $table->string('company_phone')->unique(); //telefon empresa
-            $table->string('company_web')->unique(); //pagina web empresa
-            $table->string('company_url_logo')->nullable(); //nombre empresa
-            $table->string('company_code')->unique(); //codigo postal empresa
-            $table->string('company_id')->unique(); //Rut o numero unico de identificacion empresa
-            $table->string('company_politics')->nullable(); //aceptacion politicas empresa
+            $table->string('company_address')->unique()->nullable(); //direccion empresa
+            $table->string('company_phone')->unique()->nullable(); //telefon empresa
+            $table->string('company_web')->unique()->nullable(); //pagina web empresa
+            $table->string('company_url_logo')->nullable()->nullable(); //nombre empresa
+            $table->string('company_code')->unique()->nullable(); //codigo postal empresa
+            $table->string('company_nid')->unique()->nullable(); //Rut o numero unico de identificacion empresa
+            $table->string('company_politics')->nullable()->nullable(); //aceptacion politicas empresa
             $table->unsignedBigInteger('user_id'); // usuario que crea la empresa
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

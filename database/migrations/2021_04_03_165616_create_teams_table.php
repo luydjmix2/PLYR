@@ -17,8 +17,10 @@ class CreateTeamsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_group');
+            $table->unsignedBigInteger('id_company');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_group')->references('id')->on('proyects');
+            $table->foreign('id_company')->references('id')->on('companies');
             $table->timestamps();
         });
     }

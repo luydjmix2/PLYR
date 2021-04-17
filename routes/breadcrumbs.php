@@ -23,7 +23,6 @@ $trail->parent(__('proyects.name'), 'Service');
 $trail->push('Create', route('groups.create'));
 });
 
-
 Breadcrumbs::for('group.view', function ($trail, $nameProyect) {
 $trail->push($nameProyect, route('group.view', ['namegroup' => $nameProyect]));
 });
@@ -31,4 +30,8 @@ $trail->push($nameProyect, route('group.view', ['namegroup' => $nameProyect]));
 Breadcrumbs::for('group.user.edit', function ($trail, $id_group, $id, $slug) {
 $trail->parent('group.view',$slug);
 $trail->push('Edit', route('group.user.edit', ['id_group' => $id_group, 'id' => $id]));
+});
+
+Breadcrumbs::for('company.index', function ($trail, $name) {
+$trail->push(__('company.name'), route('company.index',['name' => $name]));
 });

@@ -3,16 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/PLYR/public/js/pages/dropzone.js</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/breadcrumbs.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/ProyectController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/admin.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/views.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/GroupUserController.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/Auth/RegisterController.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/lang/en/dashboard.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/auth/register.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/database/seeders/UserSeeder.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/header.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/auth/login.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/database/seeders/CompanySeeder.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/web.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/index.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/CompanyControllers.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/lang/en/company.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/company/index.blade.php</file>
         </group>
     </open-files>
 </project-private>
+
