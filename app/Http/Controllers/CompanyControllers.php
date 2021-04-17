@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\company;
+use App\Models\User;
 
 class CompanyControllers extends Controller
 {
@@ -11,9 +13,10 @@ class CompanyControllers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($name)
     {
-        //
+        $company =company::where('company_name', $name)->get()->toArray();
+        return view('admin.company.index', compact("company"));
     }
 
     /**
