@@ -13,6 +13,7 @@ class team extends Model {
         'id',
         'user_id',
         'id_group',
+        'id_company',
     ];
 
 }

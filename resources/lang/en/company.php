@@ -1,11 +1,10 @@
 <?php
 
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 
 return [
     /* To change this license header, choose License Headers in Project Properties.
@@ -19,13 +18,18 @@ return [
       |
      */
 
-    'add' => 'Add',
-    'add-icon' => 'plus',
-    'delete' => 'Delete',
-    'view' => 'View',
-    'update' => 'Update',
-    'previous' => 'Previous',
-    'next' => 'Next',
-    'submit' => 'Submit',
-    'actions'=>'Actions',
+    'name' => 'Company',
+    'form_title' => 'Profile Company',
+    
+//    data of form company
+    'company_name' => 'Company name',
+    'company_bio' => 'Company biography',
+    'company_address' => 'Company name',
+    'company_phone' => 'Company phone',
+    'company_web' => 'Company web',
+    'company_url_logo' => 'Company logo',
+    'company_code' => 'Company code ',
+    'company_nit' => 'Company identification number',
+    'company_politics' => 'accept terms and conditions of use',
 ];
+?>

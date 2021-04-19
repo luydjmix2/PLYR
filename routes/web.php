@@ -44,10 +44,13 @@ Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController
 Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 
 
+Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
+
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');
     $exitCode = Artisan::call('db:seed --class=UserSeeder');
     $exitCode = Artisan::call('db:seed --class=ProyectSeeder');
+    $exitCode = Artisan::call('db:seed --class=CompanySeeder');
     $exitCode = Artisan::call('db:seed --class=DocumentSeeder');
     $exitCode = Artisan::call('db:seed --class=TeamSeeder');
     return 'refresh db Ok';

@@ -1,11 +1,10 @@
 <?php
 
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 
 return [
     /* To change this license header, choose License Headers in Project Properties.
@@ -19,13 +18,6 @@ return [
       |
      */
 
-    'add' => 'Add',
-    'add-icon' => 'plus',
-    'delete' => 'Delete',
-    'view' => 'View',
-    'update' => 'Update',
-    'previous' => 'Previous',
-    'next' => 'Next',
-    'submit' => 'Submit',
-    'actions'=>'Actions',
+    'name' => 'Dashboard',
 ];
+?>
