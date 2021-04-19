@@ -1,6 +1,9 @@
 @extends('layouts.portal.portal')
 
 @section('content')
+@section('title-page')
+{{ __('Register')}}
+@endsection
 <!-- Page Content -->
 <div class="hero-static d-flex align-items-center">
     <div class="w-100">
@@ -114,9 +117,3 @@
 </div>
 <!-- END Page Content -->
 @endsection
-
-
-
-
-
-

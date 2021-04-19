@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group">
                             {{Form::label('company', __('users.company'))}}
-                            {{Form::text('company',old('company'), ['class'=>'form-control', "id"=>"company"])}}
+                            {{Form::select('company', $companys, old('company'), ['class'=>'form-control', "id"=>"company", 'placeholder' => 'Select Company'])}}
                         </div>
                         <div class="form-group">
                             {{Form::label('start_date', __('users.start_date'))}}
