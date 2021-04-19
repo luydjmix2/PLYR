@@ -24,7 +24,7 @@ return [
 //    data of form company
     'company_name' => 'Company name',
     'company_bio' => 'Company biography',
-    'company_address' => 'Company name',
+    'company_address' => 'Company address',
     'company_phone' => 'Company phone',
     'company_web' => 'Company web',
     'company_url_logo' => 'Company logo',

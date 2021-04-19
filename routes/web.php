@@ -31,7 +31,7 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Grupos
-Route::get("/__('proyects.name')", [App\Http\Controllers\ProyectController::class, 'index'])->name('groups');
+Route::get("/group", [App\Http\Controllers\ProyectController::class, 'index'])->name('groups');
 Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('groups.create');
 Route::post('/groups/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('groups.store');
 Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('group.view');
@@ -45,6 +45,7 @@ Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserContr
 
 
 Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
+Route::post('/company/{id}',[App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');

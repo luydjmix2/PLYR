@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\company;
 use App\Models\User;
+use Auth;
 
-class CompanyControllers extends Controller
-{
+class CompanyControllers extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($name)
-    {
-        $company =company::where('company_name', $name)->get()->toArray();
+    public function index($name) {
+        $idUser = Auth::id();
+        $company = company::where('company_name', $name)->where('user_id',$idUser)->get()->toArray();
         return view('admin.company.index', compact("company"));
     }
 
@@ -24,8 +25,7 @@ class CompanyControllers extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -35,8 +35,7 @@ class CompanyControllers extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -46,8 +45,7 @@ class CompanyControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -57,8 +55,7 @@ class CompanyControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -69,9 +66,8 @@ class CompanyControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        return $request;
     }
 
     /**
@@ -80,8 +76,8 @@ class CompanyControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }

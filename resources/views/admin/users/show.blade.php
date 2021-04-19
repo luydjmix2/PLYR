@@ -1,6 +1,9 @@
 @extends('layouts.admin.admin')
 
 @section('content')
+@section('title-page')
+{{ __('')}}
+@endsection
 <!-- Crear usuario -->
 
 <!-- Hero -->

@@ -26,7 +26,8 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $proyects = Proyect::all();
+        $idUser = Auth::id();
+        $proyects = Proyect::where('user_id',$idUser)->get();
 
         return view('admin.proyects.index', compact('proyects'));
     }
@@ -48,7 +49,7 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(ProyectCreateRequest $request) {
-        $rulproyect = preg_replace('([^A-Za-z0-9 ])', '', str_replace(' ', '_', $request->proyect_name));
+        $rulproyect = preg_replace('([^A-Za-z0-9])', '', str_replace(' ', '_', $request->proyect_name));
 //        dd(Auth::id());
         Proyect::create([
             'proyect_name' => $request->proyect_name,
@@ -146,7 +147,9 @@ class ProyectController extends Controller {
         $pathOld = '/groupsFiles/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
         $content = Storage::disk('public_uploads')->get($pathOld);
         Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
-        Storage::disk('public_uploads')->delete($pathOld);
+        Storage::disk('public_uploads
+
+        ')->delete($pathOld);
         $user = Document::find($id);
         $user->delete();
         return back();
