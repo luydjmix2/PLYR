@@ -29,7 +29,7 @@ return [
     'company_web' => 'Company web',
     'company_url_logo' => 'Company logo',
     'company_code' => 'Company code ',
-    'company_nit' => 'Company identification number',
+    'company_nid' => 'Company identification number',
     'company_politics' => 'accept terms and conditions of use',
 ];
 ?>

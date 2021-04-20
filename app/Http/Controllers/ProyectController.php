@@ -147,9 +147,7 @@ class ProyectController extends Controller {
         $pathOld = '/groupsFiles/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
         $content = Storage::disk('public_uploads')->get($pathOld);
         Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
-        Storage::disk('public_uploads
-
-        ')->delete($pathOld);
+        Storage::disk('public_uploads')->delete($pathOld);
         $user = Document::find($id);
         $user->delete();
         return back();

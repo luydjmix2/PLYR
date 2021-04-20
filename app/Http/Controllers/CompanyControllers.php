@@ -16,8 +16,15 @@ class CompanyControllers extends Controller {
      */
     public function index($name) {
         $idUser = Auth::id();
+//        dd($idUser);
         $company = company::where('company_name', $name)->where('user_id',$idUser)->get()->toArray();
-        return view('admin.company.index', compact("company"));
+//        dd($name);
+        if(!empty($company[0]['id'])){
+            return view('admin.company.index', compact("company"));
+        }else{
+            return redirect()->route('dashboard');
+        }
+        
     }
 
     /**

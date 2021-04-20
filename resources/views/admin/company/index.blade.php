@@ -66,7 +66,9 @@
                     <div class="form-group">
                         {{ Form::label('company_url_logo', __('company.company_url_logo'), ['class' => 'control-label']) }}
                         <div class="push">
+                            @empty(!$company[0]['company_url_logo'])
                             <img class="img-avatar" src="{{ asset($company[0]['company_url_logo']) }}" alt="">
+                            @endempty
                         </div>
                         <div class="custom-file">
                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
