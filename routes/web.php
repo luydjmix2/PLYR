@@ -45,7 +45,7 @@ Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserContr
 
 
 Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
-Route::post('/company/{id}',[App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
+Route::post('/company/update/{id}',[App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');

@@ -34,8 +34,19 @@
             <h3 class="block-title">{{__('company.form_title')}}</h3>
         </div>
         <div class="block-content">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             {!! Form::open(['route' => ['company.update', $company[0]['id']], 'method' => 'POST', 'files' => true]) !!}
             <!--<form action="be_pages_projects_edit.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">-->
+            {{ Form::hidden('id', $company[0]['id'],array_merge(['class' => 'form-control'])) }}
+            {{ Form::hidden('user_id', Auth::id(),array_merge(['class' => 'form-control'])) }}
             <div class="row push">
                 <div class="col-lg-4">
                     <p class="font-size-sm text-muted">
@@ -49,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('company_bio', __('company.company_bio'), ['class' => 'control-label']) }}
-                        {{ Form::text('company_bio', $company[0]['company_bio'], array_merge(['class' => 'form-control'])) }}
+                        {{ Form::textarea('company_bio', $company[0]['company_bio'], array_merge(['class' => 'form-control'])) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('company_address', __('company.company_address'), ['class' => 'control-label']) }}
@@ -73,11 +84,10 @@
                         <div class="custom-file">
                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                             {{ Form::file('company_logo', array_merge(['class' => 'custom-file-input', 'id'=>'one-profile-edit-avatar', 'data-toggle'=>'custom-file-input', 'value'=>asset($company[0]['company_url_logo'])])) }}
-                            {{ Form::label('one-profile-edit-avatar', __('company.company_web'), ['class' => 'custom-file-label']) }}
+                            {{ Form::label('one-profile-edit-avatar', __('company.company_url_logo'), ['class' => 'custom-file-label']) }}
                             {{ Form::hidden('company_url_logo', $company[0]['company_url_logo'],array_merge(['class' => 'form-control'])) }}
                         </div>
                     </div>
-
                     <div class="form-group">
                         {{ Form::label('company_code', __('company.company_code'), ['class' => 'control-label']) }}
                         {{ Form::text('company_code', $company[0]['company_code'], array_merge(['class' => 'form-control'])) }}
