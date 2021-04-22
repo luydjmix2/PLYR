@@ -86,6 +86,7 @@
             <main id="main-container">
                 @include('layouts.admin.menuTop')
                 <div class="content">
+                    
                     @yield('breadcrumbs')
                     @yield('content')
                 </div>

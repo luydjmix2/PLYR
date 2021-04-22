@@ -13,7 +13,7 @@ class company extends Model {
         'id',
         'company_name',
         'company_bio',
-        'company_addres',
+        'company_address',
         'company_phone',
         'company_web',
         'company_url_logo',

@@ -26,7 +26,8 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $proyects = Proyect::all();
+        $idUser = Auth::id();
+        $proyects = Proyect::where('user_id',$idUser)->get();
 
         return view('admin.proyects.index', compact('proyects'));
     }
@@ -48,7 +49,7 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(ProyectCreateRequest $request) {
-        $rulproyect = preg_replace('([^A-Za-z0-9 ])', '', str_replace(' ', '_', $request->proyect_name));
+        $rulproyect = preg_replace('([^A-Za-z0-9])', '', str_replace(' ', '_', $request->proyect_name));
 //        dd(Auth::id());
         Proyect::create([
             'proyect_name' => $request->proyect_name,

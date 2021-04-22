@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\User;
 use App\Models\team;
+use App\Models\company;
 
 class Helper {
 
@@ -53,10 +54,27 @@ class Helper {
 //        dd($team);
         return $team;
     }
-    
-    public function getUrlEditUserGroup($id_group, $id) {
-       //url('/group/user/edit/'.$id_group.'/$team_user[id]');
-        return $id;
+
+    public static function upStorageFile($file, $id, $path) {
+        $fileName = $file->getClientOriginalName();
+//        $file->move('/home/mefurthe/public_html' .$path . $id . '/', $fileName);
+        $file->move(public_path() . $path . $id . '/', $fileName);
+        $arrayFile = explode(".", $fileName);
+        $url_file = $path . $id . '/' . $fileName;
+
+        $respon = array('name_full' => $fileName, 'name' => $arrayFile[0], 'format' => $arrayFile[1], 'url_file' => $url_file);
+        return $respon;
+    }
+
+    public static function validaUserEditCompany($id) {
+        $userData = User::find($id);
+        $userDataCompany = company::where('user_id', $id)->where('company_name', $userData->company)->get()->count();
+        if ($userDataCompany == 0) {
+            $r = 0;
+        } else {
+            $r = 1;
+        }
+        return $r;
     }
 
 }

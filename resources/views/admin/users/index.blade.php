@@ -1,6 +1,9 @@
 @extends('layouts.admin.admin')
 
 @section('content')
+@section('title-page')
+{{ __('')}}
+@endsection
     <!-- Hero -->
     <div class="bg-body-light">
         <div class="content content-full">

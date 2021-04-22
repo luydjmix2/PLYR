@@ -9,7 +9,7 @@
 use DaveJamesMiller\Breadcrumbs\Facades\Breadcrumbs;
 // Inicio
 
-Breadcrumbs::for('dashboard', function ($trail) {
+Breadcrumbs::for('dashboard', function($trail) {
 $trail->push('Dashboard', route('dashboard'));
 });
 

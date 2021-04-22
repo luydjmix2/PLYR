@@ -34,8 +34,19 @@
             <h3 class="block-title">{{__('company.form_title')}}</h3>
         </div>
         <div class="block-content">
-            {!! Form::open(['url' => 'foo/bar', 'method' => 'POST', 'files' => true]) !!}
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            {!! Form::open(['route' => ['company.update', $company[0]['id']], 'method' => 'POST', 'files' => true]) !!}
             <!--<form action="be_pages_projects_edit.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">-->
+            {{ Form::hidden('id', $company[0]['id'],array_merge(['class' => 'form-control'])) }}
+            {{ Form::hidden('user_id', Auth::id(),array_merge(['class' => 'form-control'])) }}
             <div class="row push">
                 <div class="col-lg-4">
                     <p class="font-size-sm text-muted">
@@ -49,21 +60,48 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('company_bio', __('company.company_bio'), ['class' => 'control-label']) }}
-                        {{ Form::text('company_bio', $company[0]['company_bio'], array_merge(['class' => 'form-control'])) }}
+                        {{ Form::textarea('company_bio', $company[0]['company_bio'], array_merge(['class' => 'form-control'])) }}
                     </div>
                     <div class="form-group">
-                        <label for="one-profile-edit-email">{{__('company.form_title')}}</label>
-                        <input type="email" class="form-control" id="one-profile-edit-email" name="one-profile-edit-email" placeholder="Enter your email.." value="john.parker@example.com">
+                        {{ Form::label('company_address', __('company.company_address'), ['class' => 'control-label']) }}
+                        {{ Form::text('company_address', $company[0]['company_address'], array_merge(['class' => 'form-control'])) }}
                     </div>
                     <div class="form-group">
-                        <label>{{__('company.form_title')}}</label>
+                        {{ Form::label('company_phone', __('company.company_phone'), ['class' => 'control-label']) }}
+                        {{ Form::text('company_phone', $company[0]['company_phone'], array_merge(['class' => 'form-control'])) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('company_web', __('company.company_web'), ['class' => 'control-label']) }}
+                        {{ Form::text('company_web', $company[0]['company_web'], array_merge(['class' => 'form-control'])) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('company_url_logo', __('company.company_url_logo'), ['class' => 'control-label']) }}
                         <div class="push">
-                            <img class="img-avatar" src="{{ asset('media/avatars/avatar13.jpg') }}" alt="">
+                            @empty(!$company[0]['company_url_logo'])
+                            <img class="img-avatar" src="{{ asset($company[0]['company_url_logo']) }}" alt="">
+                            @endempty
                         </div>
                         <div class="custom-file">
                             <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                            <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="one-profile-edit-avatar" name="one-profile-edit-avatar">
-                            <label class="custom-file-label" for="one-profile-edit-avatar">Choose a new logo</label>
+                            {{ Form::file('company_logo', array_merge(['class' => 'custom-file-input', 'id'=>'one-profile-edit-avatar', 'data-toggle'=>'custom-file-input', 'value'=>asset($company[0]['company_url_logo'])])) }}
+                            {{ Form::label('one-profile-edit-avatar', __('company.company_url_logo'), ['class' => 'custom-file-label']) }}
+                            {{ Form::hidden('company_url_logo', $company[0]['company_url_logo'],array_merge(['class' => 'form-control'])) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('company_code', __('company.company_code'), ['class' => 'control-label']) }}
+                        {{ Form::text('company_code', $company[0]['company_code'], array_merge(['class' => 'form-control'])) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('company_nid', __('company.company_nid'), ['class' => 'control-label']) }}
+                        {{ Form::text('company_nid', $company[0]['company_nid'], array_merge(['class' => 'form-control'])) }}
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            {{ Form::label('company_politics', __('company.company_politics'), ['class' => 'control-label']) }}
+                        </div>
+                        <div class="col-3">
+                            {{ Form::select('company_politics',['yes'=>'Yes', 'no'=>'No'], $company[0]['company_politics'], array_merge(['class' => 'form-control'])) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,171 +115,6 @@
         </div>
     </div>
     <!-- END User Profile -->
-
-    <!-- Change Password -->
-    <div class="block block-rounded">
-        <div class="block-header">
-            <h3 class="block-title">Change Password</h3>
-        </div>
-        <div class="block-content">
-            <form action="be_pages_projects_edit.html" method="POST" onsubmit="return false;">
-                <div class="row push">
-                    <div class="col-lg-4">
-                        <p class="font-size-sm text-muted">
-                            Changing your sign in password is an easy way to keep your account secure.
-                        </p>
-                    </div>
-                    <div class="col-lg-8 col-xl-5">
-                        <div class="form-group">
-                            <label for="one-profile-edit-password">Current Password</label>
-                            <input type="password" class="form-control" id="one-profile-edit-password" name="one-profile-edit-password">
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <label for="one-profile-edit-password-new">New Password</label>
-                                <input type="password" class="form-control" id="one-profile-edit-password-new" name="one-profile-edit-password-new">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <label for="one-profile-edit-password-new-confirm">Confirm New Password</label>
-                                <input type="password" class="form-control" id="one-profile-edit-password-new-confirm" name="one-profile-edit-password-new-confirm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-alt-primary">
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- END Change Password -->
-
-    <!-- Billing Information -->
-    <div class="block block-rounded">
-        <div class="block-header">
-            <h3 class="block-title">Billing Information</h3>
-        </div>
-        <div class="block-content">
-            <form action="be_pages_projects_edit.html" method="POST" onsubmit="return false;">
-                <div class="row push">
-                    <div class="col-lg-4">
-                        <p class="font-size-sm text-muted">
-                            Your billing information is never shown to other users and only used for creating your invoices.
-                        </p>
-                    </div>
-                    <div class="col-lg-8 col-xl-5">
-                        <div class="form-group">
-                            <label for="one-profile-edit-company-name">Company Name (Optional)</label>
-                            <input type="text" class="form-control" id="one-profile-edit-company-name" name="one-profile-edit-company-name">
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-6">
-                                <label for="one-profile-edit-firstname">Firstname</label>
-                                <input type="text" class="form-control" id="one-profile-edit-firstname" name="one-profile-edit-firstname">
-                            </div>
-                            <div class="col-6">
-                                <label for="one-profile-edit-lastname">Lastname</label>
-                                <input type="text" class="form-control" id="one-profile-edit-lastname" name="one-profile-edit-lastname">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="one-profile-edit-street-1">Street Address 1</label>
-                            <input type="text" class="form-control" id="one-profile-edit-street-1" name="one-profile-edit-street-1">
-                        </div>
-                        <div class="form-group">
-                            <label for="one-profile-edit-street-2">Street Address 2</label>
-                            <input type="text" class="form-control" id="one-profile-edit-street-2" name="one-profile-edit-street-2">
-                        </div>
-                        <div class="form-group">
-                            <label for="one-profile-edit-city">City</label>
-                            <input type="text" class="form-control" id="one-profile-edit-city" name="one-profile-edit-city">
-                        </div>
-                        <div class="form-group">
-                            <label for="one-profile-edit-postal">Postal code</label>
-                            <input type="text" class="form-control" id="one-profile-edit-postal" name="one-profile-edit-postal">
-                        </div>
-                        <div class="form-group">
-                            <label for="one-profile-edit-vat">VAT Number</label>
-                            <input type="text" class="form-control" id="one-profile-edit-vat" name="one-profile-edit-vat" value="IT00000000" disabled>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-alt-primary">
-                                Update
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- END Billing Information -->
-
-    <!-- Connections -->
-    <div class="block block-rounded">
-        <div class="block-header">
-            <h3 class="block-title">Connections</h3>
-        </div>
-        <div class="block-content">
-            <div class="row push">
-                <div class="col-lg-4">
-                    <p class="font-size-sm text-muted">
-                        You can connect your account to third party networks to get extra features.
-                    </p>
-                </div>
-                <div class="col-lg-8 col-xl-7">
-                    <div class="form-group row">
-                        <div class="col-sm-10 col-md-8 col-xl-6">
-                            <a class="btn btn-block btn-alt-danger text-left" href="javascript:void(0)">
-                                <i class="fab fa-fw fa-google opacity-50 mr-1"></i> Connect to Google
-                            </a>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 col-md-8 col-xl-6">
-                            <a class="btn btn-block btn-alt-info text-left" href="javascript:void(0)">
-                                <i class="fab fa-fw fa-twitter opacity-50 mr-1"></i> Connect to Twitter
-                            </a>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 col-md-8 col-xl-6">
-                            <a class="btn btn-block btn-alt-primary bg-transparent d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                <span>
-                                    <i class="fab fa-fw fa-facebook mr-1"></i> John Doe
-                                </span>
-                                <i class="fa fa-fw fa-check mr-1"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-xl-6 mt-1 d-md-flex align-items-md-center font-size-sm">
-                            <a class="btn btn-sm btn-light btn-rounded" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil-alt mr-1"></i> Edit Facebook Connection
-                            </a>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-10 col-md-8 col-xl-6">
-                            <a class="btn btn-block btn-alt-warning bg-transparent d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                <span>
-                                    <i class="fab fa-fw fa-instagram mr-1"></i> @john_doe
-                                </span>
-                                <i class="fa fa-fw fa-check mr-1"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-4 col-xl-6 mt-1 d-md-flex align-items-md-center font-size-sm">
-                            <a class="btn btn-sm btn-light btn-rounded" href="javascript:void(0)">
-                                <i class="fa fa-fw fa-pencil-alt mr-1"></i> Edit Instagram Connection
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END Connections -->
 </div>
 <!-- END Page Content -->
 
