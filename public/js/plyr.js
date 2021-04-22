@@ -37,12 +37,22 @@ jQuery(document).ready(function ($) {
             $('.tooltip-bts').attr('data-toggel', '0');
             $(this).attr('data-toggel', '1');
             $('.tooltip-bts-alerts').addClass('tooltip-bts-alerts-hidden');
-            $('#'+zoneAlert).removeClass('tooltip-bts-alerts-hidden');
-            
+            $('#' + zoneAlert).removeClass('tooltip-bts-alerts-hidden');
+
         } else {
             $(this).attr('data-toggel', '0');
-            $('#'+zoneAlert).addClass('tooltip-bts-alerts-hidden');
+            $('#' + zoneAlert).addClass('tooltip-bts-alerts-hidden');
         }
 
+    });
+
+    $(document).on("click", function (e) {
+
+        var container = $(".tooltip-bts");
+
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $('.tooltip-bts-alerts').addClass('tooltip-bts-alerts-hidden');
+            $('.tooltip-bts').attr('data-toggel', '0');
+        }
     });
 });

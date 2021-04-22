@@ -17,6 +17,12 @@ and open the template in the editor.
     margin: 3px 0px 0px 0px;
     width: 90px;
 }
+
 .tooltip-bts-alerts-hidden {
     display: none;
+}
+
+@keyframes hiddenBt {
+  from {background-color: red;}
+  to {background-color: yellow;}
 }

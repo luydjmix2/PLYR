@@ -135,9 +135,11 @@
                         <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
                     </div>
                     <div class="p-2">
+                        @if(Helper::validaUserEditCompany(Auth::id()))
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">
                             <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>
                         </a>
+                        @endif
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
                             <span class="font-size-sm font-w500">Profile</span>
                             <span class="badge badge-pill badge-primary ml-2">1</span>
