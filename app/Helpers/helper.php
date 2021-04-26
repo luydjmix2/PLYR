@@ -5,6 +5,7 @@ namespace App\Helpers;
 use App\Models\User;
 use App\Models\team;
 use App\Models\company;
+use App\Models\Proyect;
 
 class Helper {
 
@@ -21,13 +22,13 @@ class Helper {
     }
 
     public static function dataUser($id) {
-        $user = User::where('id', $id)->get()->toArray();
-        return $user;
+        $userData = User::find($id);
+        return $userData;
     }
 
     public static function dataUserName($id) {
-        $user = User::where('id', $id)->get()->toArray();
-        return $user[0]['name'];
+        $userData = User::find($id);
+        return $userData->name;
     }
 
     public static function dataTeamGroup($id_group) {
@@ -66,15 +67,30 @@ class Helper {
         return $respon;
     }
 
-    public static function validaUserEditCompany($id) {
-        $userData = User::find($id);
-        $userDataCompany = company::where('user_id', $id)->where('company_name', $userData->company)->get()->count();
-        if ($userDataCompany == 0) {
+    public static function validQuerryIcualZero($param) {
+        if ($param == 0) {
             $r = 0;
         } else {
             $r = 1;
         }
         return $r;
+    }
+
+    public static function validUserEditCompany($id) {
+        $userData = User::find($id);
+        $userDataCompany = company::where('user_id', $id)->where('company_name', $userData->company)->get()->count();
+        $r = Helper::validQuerryIcualZero($userDataCompany);
+        return $r;
+    }
+
+    public static function validUserPropertyGroup($id, $nameGroup) {
+        $userGroup = Proyect::where('user_id', $id)->where('proyect_name', $nameGroup)->get()->count();
+        $r = Helper::validQuerryIcualZero($userGroup);
+        if ($r == 0) {
+            echo '<script type="text/javascript">
+                    window.location="/group";
+                    </script>';
+        }
     }
 
 }

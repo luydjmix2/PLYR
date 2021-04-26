@@ -15,7 +15,7 @@
 @section('breadcrumbs')
 {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
-
+{{ Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']) }}
 <!-- Hero Content -->
 <div class="bg-image" style="background-image: url('{{asset("/media/photos/photo23@2x.jpg")}}');">
      <div class="bg-primary-op">
@@ -150,7 +150,7 @@
                                 <tr>
                                     <th class="text-center" scope="row">{{$keyFile+1}}</th>
                                     <td class="font-w600 font-size-sm">
-                                        <a href="{{url($file['document_url'])}}">{{$file['document_name']}}</a>
+                                        <a href="{{url($file['document_url'])}}" target="_blanck">{{$file['document_name']}}</a>
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <span class="badge badge-warning">Trial</span>

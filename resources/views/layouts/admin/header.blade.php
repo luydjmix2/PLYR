@@ -135,7 +135,7 @@
                         <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
                     </div>
                     <div class="p-2">
-                        @if(Helper::validaUserEditCompany(Auth::id()))
+                        @if(Helper::validUserEditCompany(Auth::id()))
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">
                             <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>
                         </a>
