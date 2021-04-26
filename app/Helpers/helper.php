@@ -86,11 +86,7 @@ class Helper {
     public static function validUserPropertyGroup($id, $nameGroup) {
         $userGroup = Proyect::where('user_id', $id)->where('proyect_name', $nameGroup)->get()->count();
         $r = Helper::validQuerryIcualZero($userGroup);
-        if ($r == 0) {
-            echo '<script type="text/javascript">
-                    window.location="/group";
-                    </script>';
-        }
+        return $r;
     }
 
 }

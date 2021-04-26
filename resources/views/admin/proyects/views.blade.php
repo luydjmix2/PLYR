@@ -15,7 +15,6 @@
 @section('breadcrumbs')
 {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
-{{ Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']) }}
 <!-- Hero Content -->
 <div class="bg-image" style="background-image: url('{{asset("/media/photos/photo23@2x.jpg")}}');">
      <div class="bg-primary-op">
@@ -44,11 +43,13 @@
                 <div class="block block-rounded">
                     <div class="block-header">
                         <h3 class="block-title">Group Team</h3>
+                        @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                         <div class="float-right col-md-1">
                             <a href="{{route('group.user.create', $proyect_data[0]['id'])}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
                                     <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
                                 </button></a>
                         </div>
+                        @endif
                         <div class="block-options">
                             <div class="block-options-item">
                             </div>
@@ -63,7 +64,9 @@
                                     <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.email')}}</th>
                                     <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.movil')}}</th>
                                     <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.phone')}}</th>
+                                    @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <th class="text-center" style="width: 100px;">{{__('proyects.acctions')}}</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,6 +87,7 @@
                                     <td class="d-none d-sm-table-cell">
                                         {{$team_user['phone']}}
                                     </td>
+                                    @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
@@ -97,6 +101,7 @@
                                             </button>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
 
@@ -106,6 +111,7 @@
                 </div>
             </div>
         </div>
+        @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
         <div class="row">
             <div class="col-12">
                 {!! Form::open(['route'=> 'group.file', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
@@ -124,6 +130,7 @@
 
             </div>
         </div>
+        @endif
         <br><br>
         <div class="row">
             <div class="col-12">
@@ -142,7 +149,9 @@
                                     <th class="text-center" style="width: 50px;">#</th>
                                     <th>Name</th>
                                     <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
+                                    @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <th class="text-center" style="width: 100px;">Actions</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,6 +164,7 @@
                                     <td class="d-none d-sm-table-cell">
                                         <span class="badge badge-warning">Trial</span>
                                     </td>
+                                    @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <td class="text-center">
                                         <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-{{$file['id']}}">{{__('bts.actions')}}</button>
                                         <br>
@@ -171,6 +181,7 @@
                                             </button>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>
