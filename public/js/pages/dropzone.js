@@ -13,6 +13,7 @@ jQuery(document).ready(function ($) {
         url: urlform,
         uploadMultiple: true,
         addRemoveLinks: true,
+        acceptedFiles: '.doc, .docx, .pdf, .xls, .xlsx, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf',
         parallelUploads: 1,
         maxFiles: 25,
 
