@@ -10,6 +10,7 @@ use App\Models\Document;
 use App\Models\Proyect;
 use App\Models\User;
 use App\Models\team;
+use App\Models\company;
 use Validator;
 use Auth;
 use App\Helpers\Helper;
@@ -80,7 +81,9 @@ class ProyectController extends Controller {
 //        dd($proyect_data[0]['id']);
         $team = Helper::dataTeamGroup($proyect_data[0]['id']);
         $files = Document::where('group_id', $proyect_data[0]['id'])->get()->toArray();
-        return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team'));
+        $compamy = company::where('id', $teamLoop[0]['id_company'])->get()->toArray();
+//        dd($compamy);
+        return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team', 'compamy'));
     }
 
     /**

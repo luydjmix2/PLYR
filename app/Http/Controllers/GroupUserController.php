@@ -152,4 +152,14 @@ class GroupUserController extends Controller {
         return redirect()->back();
     }
 
+    /**
+     * Shared the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sharedUser($id_user) {
+        return $id_user;
+    }
+
 }

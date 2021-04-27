@@ -20,6 +20,9 @@
      <div class="bg-primary-op">
         <div class="content content-full overflow-hidden">
             <div class="my-8 text-center">
+                <div class="my-3">
+                    <img class="img-avatar img-avatar-thumb" src="{{ asset($compamy[0]['company_url_logo']) }}" alt="">
+                </div>
                 <h1 class="text-white mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$user[0]['company']}}</h1>
                 <h2 class="h4 font-w400 text-white-75 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$proyect_data[0]['proyect_description']}}</h2>
             </div>
@@ -89,16 +92,23 @@
                                     </td>
                                     @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <td class="text-center">
-                                        <div class="btn-group">
+                                        <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-user-{{$proyect_data[0]['id']}}">{{__('bts.actions')}}</button>
+                                        <br>
+                                        <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts" id="toltips-alert-acctions-user-{{$proyect_data[0]['id']}}">
                                             <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
+                                            <br>
                                             <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </a>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <br>
+                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled push" data-toggle="modal" data-target="#modal-block-popin">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>
+                                            <!--                                            <a href="{{route('group.user.shared', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled push" data-toggle="modal" title="" data-target="#modal-block-popin" data-original-title="shared Client">
+                                                                                            <i class="fa fa-fw fa-share-square"></i>
+                                                                                        </a>-->
                                         </div>
                                     </td>
                                     @endif
@@ -194,6 +204,15 @@
 </div>
 <!-- END Page Content -->
 
+@component('components.modal.modal')    
+
+
+@slot('title')
+Share user in another group
+@endslot
+
+My components with primary
+@endcomponent
 @endsection
 
 @push('js_after')
