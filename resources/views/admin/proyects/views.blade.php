@@ -30,12 +30,15 @@
     </div>
 </div>
 <!-- END Hero Content -->
-<br><br>
-<div class="row justify-content-md-center">
-    <div class="col-10">
-        <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
-            <i class="fa fa-fw fa-share-square"></i>
-        </button>
+<div class="bg-white">
+    <div class="content content-boxed">
+        <div class="row justify-content-md-center">
+            <div class="col-10">
+                <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                    <i class="fa fa-fw fa-share-square"></i>
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Page Content -->
