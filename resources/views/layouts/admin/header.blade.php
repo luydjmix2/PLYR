@@ -5,11 +5,34 @@
         <!-- Left Section -->
         <div class="d-flex align-items-center">
             <!-- Logo -->
-            <a class="font-w600 font-size-h5 tracking-wider text-dual mr-3" href="index.html">
-                One<span class="font-w400">UI</span>
+            <a class="font-w600 font-size-h5 tracking-wider text-dual mr-3" href="/dashboard">
+                <img src="/img/logoPLR.png" width="275px" />
             </a>
             <!-- END Logo -->
+        </div>
+        <!-- END Left Section -->
 
+        <!-- Right Section -->
+        <div class="d-flex align-items-center">
+            <!-- Open Search Section (visible on smaller screens) -->
+            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+            <button type="button" class="btn btn-sm btn-dual d-md-none" data-toggle="layout" data-action="header_search_on">
+                <i class="fa fa-fw fa-search"></i>
+            </button>
+            <!-- END Open Search Section -->
+
+            <!-- Search Form (visible on larger screens) -->
+            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-body border-0">
+                            <i class="fa fa-fw fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </form>
+            <!-- END Search Form -->
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block mr-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,31 +119,6 @@
                 </div>
             </div>
             <!-- END Notifications Dropdown -->
-        </div>
-        <!-- END Left Section -->
-
-        <!-- Right Section -->
-        <div class="d-flex align-items-center">
-            <!-- Open Search Section (visible on smaller screens) -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-dual d-md-none" data-toggle="layout" data-action="header_search_on">
-                <i class="fa fa-fw fa-search"></i>
-            </button>
-            <!-- END Open Search Section -->
-
-            <!-- Search Form (visible on larger screens) -->
-            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-body border-0">
-                            <i class="fa fa-fw fa-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </form>
-            <!-- END Search Form -->
-
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -135,7 +133,7 @@
                         <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
                     </div>
                     <div class="p-2">
-                        @if(Helper::validUserEditCompany(Auth::id()))
+                         @if(Helper::validUserEditCompany(Auth::id()))
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">
                             <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>
                         </a>
