@@ -42,7 +42,7 @@ Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::cla
 Route::get('/group/user/edit/{id_group}/{id}', [App\Http\Controllers\GroupUserController::class, 'edit'])->name('group.user.edit');
 Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController::class, 'update'])->name('group.user.update');
 Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
-Route::get('/group/user/shared/{id_user}', [App\Http\Controllers\GroupUserController::class, 'sharedUser'])->name('group.user.shared');
+Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::class, 'shareUser'])->name('group.user.share');
 
 
 Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');

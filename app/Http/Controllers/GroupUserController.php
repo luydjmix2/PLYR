@@ -158,8 +158,18 @@ class GroupUserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function sharedUser($id_user) {
-        return $id_user;
+    public function shareUser(Request $request) {
+//        dd($request);
+        $team = team::where('user_id', $request->user_id_share)->where('id_group', $request->group)->where('id_group', $request->company_id_share)->first();
+        if ($team === null) {
+//            dd('asd');
+            team::create([
+                'user_id' =>$request->user_id_share,
+                'id_group'=>$request->group,
+                'id_company'=>$request->company_id_share,
+            ]);
+        }
+        return back();
     }
 
 }

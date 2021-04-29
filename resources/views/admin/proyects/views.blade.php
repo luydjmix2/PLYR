@@ -9,6 +9,7 @@
 <script src="{{ asset('js/dropzone.js') }}"></script>
 <script src="{{ asset('js/pages/dropzone.js') }}"></script>
 <script src="{{ asset('js/plyr.js') }}"></script>
+<script src="{{ asset('js/pages/viewGroup.js') }}"></script>
 @section('title-page')
 {{ __($proyect_data[0]['proyect_name'])}}
 @endsection
@@ -105,11 +106,13 @@
                                             <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </a>
+                                            @if($listGroups)
                                             <br>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled push" data-toggle="modal" data-target="#modal-block-popin">
+                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled push bt-modal-share" data-toggle="modal" data-target="#modal-block-popin" data-user="{{$team_user['id']}}">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>
-                                            <!--                                            <a href="{{route('group.user.shared', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled push" data-toggle="modal" title="" data-target="#modal-block-popin" data-original-title="shared Client">
+                                            @endif
+                                            <!--                                            <a href="{{route('group.user.share', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled push" data-toggle="modal" title="" data-target="#modal-block-popin" data-original-title="shared Client">
                                                                                             <i class="fa fa-fw fa-share-square"></i>
                                                                                         </a>-->
                                         </div>
@@ -207,17 +210,21 @@
 </div>
 <!-- END Page Content -->
 
-@component('components.modal.modal')    
-
+@component('components.modal.formSharedUserGroup')    
 
 @slot('title')
 Share user in another group
 @endslot
-
-My components with primary
+<div class="block-content">
+    {{Form::hidden('user_id_share', $proyect_data[0]['id'],['id'=>'user_id_share'])}}
+    {{Form::hidden('company_id_share', $compamy[0]['id'],['id'=>'company_id_share'])}}
+    <div class="form-group">
+        {{ Form::label('group', 'Select group to share', ['class' => 'control-label']) }}
+        {{ Form::select('group', $listGroups, null, ['class' => 'form-control']) }}
+    </div>
+</div>
 @endcomponent
 @endsection
-
 @push('js_after')
 
 @endpush
