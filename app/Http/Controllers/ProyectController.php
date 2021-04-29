@@ -10,6 +10,7 @@ use App\Models\Document;
 use App\Models\Proyect;
 use App\Models\User;
 use App\Models\team;
+use App\Models\company;
 use Validator;
 use Auth;
 use App\Helpers\Helper;
@@ -27,7 +28,7 @@ class ProyectController extends Controller {
      */
     public function index() {
         $idUser = Auth::id();
-        $proyects = Proyect::where('user_id',$idUser)->get();
+        $proyects = Proyect::where('user_id', $idUser)->get();
 
         return view('admin.proyects.index', compact('proyects'));
     }
@@ -61,6 +62,7 @@ class ProyectController extends Controller {
             'user_id' => Auth::id(),
 //            'user_id' => $request->user_id,
         ]);
+
         return redirect()->route('group.view', ['namegroup' => $rulproyect]);
     }
 
@@ -80,7 +82,19 @@ class ProyectController extends Controller {
 //        dd($proyect_data[0]['id']);
         $team = Helper::dataTeamGroup($proyect_data[0]['id']);
         $files = Document::where('group_id', $proyect_data[0]['id'])->get()->toArray();
-        return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team'));
+        $compamy = company::where('company_name', $user[0]['company'])->get()->toArray();
+//        dd($compamy);
+
+        $listGroupsDb = Proyect::where('user_id', $proyect_data[0]['user_id'])->get();
+//        dd($listGroupsDb);
+        $listGroups = [];
+        foreach ($listGroupsDb as $keyLG => $valueLG) {
+            if ($slug != $valueLG->proyect_name) {
+                $listGroups[$valueLG->id] = $valueLG->proyect_name;
+            }
+        }
+//            dd($listGroups);
+        return view('admin.proyects.views', compact('proyect_data', 'user', 'files', 'team', 'compamy', 'listGroups'));
     }
 
     /**

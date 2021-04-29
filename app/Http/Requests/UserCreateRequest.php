@@ -50,7 +50,7 @@ class UserCreateRequest extends FormRequest
             'bloomberg_email.max' => "The Bloomberg Email: It's too long.",
             'phone.required' => 'The Phone: attribute is required.',
             'phone.digits' => 'The Phone: the value is not a number and does not have 10 exact characters.',
-            'movil.digits'=> "The Email: the value is not a number and does not have 10 exact characters.",
+            'movil.digits'=> "The Movil: the value is not a number and does not have 10 exact characters.",
             'company.required' => 'The Company: attribute is required.',
         ];
     }

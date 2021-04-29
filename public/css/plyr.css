@@ -16,6 +16,7 @@ and open the template in the editor.
     padding: 4px 2px;
     margin: 3px 0px 0px 0px;
     width: 90px;
+    z-index: 9999;
 }
 
 .tooltip-bts-alerts-hidden {
