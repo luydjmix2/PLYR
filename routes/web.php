@@ -34,6 +34,8 @@ Auth::routes();
 Route::get("/group", [App\Http\Controllers\ProyectController::class, 'index'])->name('groups');
 Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('groups.create');
 Route::post('/groups/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('groups.store');
+Route::get('/groups/edit/{id}', [App\Http\Controllers\ProyectController::class, 'edit'])->name('groups.edit');
+Route::post('/groups/update', [App\Http\Controllers\ProyectController::class, 'update'])->name('groups.update');
 Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('group.view');
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 Route::get('/group/file/remove/{id}', [App\Http\Controllers\ProyectController::class, 'destroyFile'])->name('group.file.delite');
@@ -41,7 +43,7 @@ Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserContr
 Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
 Route::get('/group/user/edit/{id_group}/{id}', [App\Http\Controllers\GroupUserController::class, 'edit'])->name('group.user.edit');
 Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController::class, 'update'])->name('group.user.update');
-Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
+Route::get('/group/user/remove/{id_user}/{id_group?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::class, 'shareUser'])->name('group.user.share');
 Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
 

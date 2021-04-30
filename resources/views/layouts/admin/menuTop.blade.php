@@ -1,11 +1,9 @@
 <?php
-
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 ?>
 
 <!-- Navigation -->
@@ -37,69 +35,63 @@
                     </a>
                     <ul class="nav-main-submenu">
                         <li class="nav-main-item">
-                             <a class="nav-main-link" href="{{ route('groups') }}">
+                            <a class="nav-main-link" href="{{ route('groups') }}">
                                 <span class="nav-main-link-name">{{ __('proyects.name')}}</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="bd_search.html">
-                        <i class="nav-main-link-icon si si-magnifier"></i>
-                        <span class="nav-main-link-name">Search</span>
-                    </a>
-                </li>
-                <li class="nav-main-item">
-                    <a class="nav-main-link" href="be_pages_dashboard.html">
+                    <a class="nav-main-link" href="{{url()->previous()}}">
                         <i class="nav-main-link-icon si si-action-undo"></i>
                         <span class="nav-main-link-name">Go Back</span>
                     </a>
                 </li>
                 <li class="nav-main-heading">Extra</li>
-<!--                <li class="nav-main-item ml-lg-auto">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                        <i class="nav-main-link-icon si si-drop"></i>
-                        <span class="nav-main-link-name d-lg-none">Themes</span>
-                    </a>
-                    <ul class="nav-main-submenu nav-main-submenu-right">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="default" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-default"></i>
-                                <span class="nav-main-link-name">Default</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/amethyst.min.css" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-amethyst"></i>
-                                <span class="nav-main-link-name">Amethyst</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/city.min.css" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-city"></i>
-                                <span class="nav-main-link-name">City</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/flat.min.css" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-flat"></i>
-                                <span class="nav-main-link-name">Flat</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/modern.min.css" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-modern"></i>
-                                <span class="nav-main-link-name">Modern</span>
-                            </a>
-                        </li>
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/smooth.min.css" href="#">
-                                <i class="nav-main-link-icon fa fa-square text-smooth"></i>
-                                <span class="nav-main-link-name">Smooth</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>-->
+                <!--                <li class="nav-main-item ml-lg-auto">
+                                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                                        <i class="nav-main-link-icon si si-drop"></i>
+                                        <span class="nav-main-link-name d-lg-none">Themes</span>
+                                    </a>
+                                    <ul class="nav-main-submenu nav-main-submenu-right">
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="default" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-default"></i>
+                                                <span class="nav-main-link-name">Default</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/amethyst.min.css" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-amethyst"></i>
+                                                <span class="nav-main-link-name">Amethyst</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/city.min.css" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-city"></i>
+                                                <span class="nav-main-link-name">City</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/flat.min.css" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-flat"></i>
+                                                <span class="nav-main-link-name">Flat</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/modern.min.css" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-modern"></i>
+                                                <span class="nav-main-link-name">Modern</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-main-item">
+                                            <a class="nav-main-link" data-toggle="theme" data-theme="assets/css/themes/smooth.min.css" href="#">
+                                                <i class="nav-main-link-icon fa fa-square text-smooth"></i>
+                                                <span class="nav-main-link-name">Smooth</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>-->
             </ul>
         </div>
         <!-- END Main Navigation -->

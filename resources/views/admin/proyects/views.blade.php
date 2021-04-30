@@ -103,7 +103,7 @@
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
                                             <br>
-                                            <a href="{{route('group.user.remove', $team_user['id'])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <a href="{{route('group.user.remove', ['id_group'=>$proyect_data[0]['id'], 'id_user'=>$team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled users-delete" data-toggle="tooltip" title="" data-original-title="Remove Client">
                                                 <i class="fa fa-fw fa-times"></i>
                                             </a>
                                             @if($listGroups)

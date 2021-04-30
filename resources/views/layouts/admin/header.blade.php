@@ -133,22 +133,13 @@
                         <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
                     </div>
                     <div class="p-2">
-                         @if(Helper::validUserEditCompany(Auth::id()))
+                        @if(Helper::validUserEditCompany(Auth::id()))
                         <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">
                             <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>
                         </a>
-                        @endif
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
-                            <span class="font-size-sm font-w500">Profile</span>
-                            <span class="badge badge-pill badge-primary ml-2">1</span>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span class="font-size-sm font-w500">Settings</span>
-                        </a>
                         <div role="separator" class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
-                            <span class="font-size-sm font-w500">Lock Account</span>
-                        </a>
+                        @endif
+
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item d-flex align-items-center justify-content-between">Log Out</button>

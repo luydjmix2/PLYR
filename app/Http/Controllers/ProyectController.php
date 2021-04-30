@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProyectCreateRequest;
+use App\Http\Requests\GroupEditRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Models\Document;
@@ -104,7 +105,9 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $group = Proyect::find($id);
+//        dd($group);
+        return view('admin.proyects.edit', compact('group'));
     }
 
     /**
@@ -114,8 +117,16 @@ class ProyectController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
-        // return $request;
+    public function update(GroupEditRequest $request) {
+        $rulproyect = preg_replace('([^A-Za-z0-9])', '', str_replace(' ', '_', $request->proyect_name));
+        Proyect::where('id', $request->group_id)->update([
+            'proyect_name' => $request->proyect_name,
+            'proyect_description' => $request->proyect_description,
+            'proyect_start' => $request->proyect_start,
+            'proyect_end' => $request->proyect_end,
+            'proyect_url' => $rulproyect,
+        ]);
+        return back();
     }
 
     /**

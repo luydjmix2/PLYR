@@ -146,9 +146,24 @@ class GroupUserController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_user) {
-        $user = User::find($id_user);
-        $user->delete();
+    public function destroy($id_user, $id_group = '') {
+//        dd($id_group);
+        $validaUserGroups = team::where('user_id', $id_user)->get()->count();
+//        dd($validaUserGroups);
+        if ($validaUserGroups > 1) {
+
+            $UserGroups = team::where('user_id', $id_user)->where('id_group', $id_group)->get()->toArray();
+//            dd($UserGroups[0]['id']);
+            team::destroy($UserGroups[0]['id']);
+//            $user= team::find();
+//            $user->delete();
+        } else {
+            if (team::where('user_id', $id_user)->where('id_group', $id_group)->get()->count() == 1) {
+                dd($validaUserGroups . ' menor o igual que 1');
+                $user = User::find($id_user);
+//                $user->delete();
+            }
+        }
 
         return redirect()->back();
     }
@@ -160,10 +175,8 @@ class GroupUserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function shareUser(Request $request) {
-//        dd($request);
-        $team = team::where('user_id', $request->user_id_share)->where('id_group', $request->group)->where('id_group', $request->company_id_share)->first();
-        if ($team === null) {
-//            dd('asd');
+        $team = team::where('user_id', $request->user_id_share)->where('id_group', $request->group)->where('id_company', $request->company_id_share)->get()->count();
+        if ($team < 1) {
             team::create([
                 'user_id' => $request->user_id_share,
                 'id_group' => $request->group,
@@ -181,9 +194,8 @@ class GroupUserController extends Controller {
      */
     public function shareFile(Request $request) {
         $file = Document::find($request->file_id_share);
-//        dd($file->document_name_full);
-        $validFile = Document::where('document_name_full', $file->document_name_full)->where('document_url', $file->document_url)->where('group_id', $request->group)->first();
-        if ($validFile === null) {
+        $validFile = Document::where('document_name_full', $file->document_name_full)->where('document_url', $file->document_url)->where('group_id', $request->group)->get()->count();
+        if ($validFile < 1) {
             Document::create([
                 'document_name_full' => $file->document_name_full,
                 'document_name' => $file->document_name,

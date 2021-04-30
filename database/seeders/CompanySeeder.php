@@ -24,7 +24,7 @@ class CompanySeeder extends Seeder {
             'company_code' => '00010',
             'company_nid' => '789420',
             'company_politics' => 'yes',
-            'user_id' => '2',
+            'user_id' => '1',
         ]);
     }
 
