@@ -43,6 +43,7 @@ Route::get('/group/user/edit/{id_group}/{id}', [App\Http\Controllers\GroupUserCo
 Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController::class, 'update'])->name('group.user.update');
 Route::get('/group/user/remove/{id_user?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::class, 'shareUser'])->name('group.user.share');
+Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
 
 
 Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');

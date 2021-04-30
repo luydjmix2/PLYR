@@ -191,10 +191,12 @@
                                             <br>
                                             <a href="{{url($file['document_url'])}}" target="_black" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="download file" download>                                                <i class="fa fa-fw fa-download"></i>
                                             </a>
+                                            @if($listGroups)
                                             <br>
-                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                                            <button type="button" class="btn btn-sm btn-light js-tooltip-enabled push bt-modal-file-share" data-toggle="modal" data-target="#modal-block-file-group" data-file="{{$file['id']}}">
                                                 <i class="fa fa-fw fa-share-square"></i>
                                             </button>
+                                            @endif
                                         </div>
                                     </td>
                                     @endif
@@ -224,6 +226,23 @@ Share user in another group
     </div>
 </div>
 @endcomponent
+
+@component('components.modal.formSharedFileGroup')    
+
+@slot('title')
+Share user in another group
+@endslot
+<div class="block-content">
+    {{Form::hidden('file_id_share', $proyect_data[0]['id'],['id'=>'file_id_share'])}}
+    {{Form::hidden('company_id_share', $compamy[0]['id'],['id'=>'company_id_share'])}}
+    <div class="form-group">
+        {{ Form::label('group', 'Select group to share', ['class' => 'control-label']) }}
+        {{ Form::select('group', $listGroups, null, ['class' => 'form-control']) }}
+    </div>
+</div>
+@endcomponent
+
+
 @endsection
 @push('js_after')
 

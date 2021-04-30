@@ -8,6 +8,7 @@ use App\Http\Requests\UserEditRequest;
 use Illuminate\Support\Facades\DB;
 use App\Models\Proyect;
 use App\Models\company;
+use App\Models\Document;
 use App\Models\User;
 use App\Models\team;
 use Illuminate\Support\Facades\Hash;
@@ -164,9 +165,31 @@ class GroupUserController extends Controller {
         if ($team === null) {
 //            dd('asd');
             team::create([
-                'user_id' =>$request->user_id_share,
-                'id_group'=>$request->group,
-                'id_company'=>$request->company_id_share,
+                'user_id' => $request->user_id_share,
+                'id_group' => $request->group,
+                'id_company' => $request->company_id_share,
+            ]);
+        }
+        return back();
+    }
+
+    /**
+     * Shared the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function shareFile(Request $request) {
+        $file = Document::find($request->file_id_share);
+//        dd($file->document_name_full);
+        $validFile = Document::where('document_name_full', $file->document_name_full)->where('document_url', $file->document_url)->where('group_id', $request->group)->first();
+        if ($validFile === null) {
+            Document::create([
+                'document_name_full' => $file->document_name_full,
+                'document_name' => $file->document_name,
+                'document_format' => $file->document_format,
+                'document_url' => $file->document_url,
+                'group_id' => $request->group,
             ]);
         }
         return back();
