@@ -58,7 +58,7 @@
                         <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
                             <i class="fa fa-fw fa-eye"></i>
                         </a> &nbsp;
-                        <a href="" class="mb-3 mr-1 btn btn-info">
+                        <a href="{{route('groups.edit',$proyect->id)}}" class="mb-3 mr-1 btn btn-info">
                             <i class="fa fa-fw fa-pencil-alt"></i>
                         </a> &nbsp;
                         <form method="POST" action=""
