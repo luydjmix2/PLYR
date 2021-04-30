@@ -202,6 +202,7 @@ class GroupUserController extends Controller {
                 'document_format' => $file->document_format,
                 'document_url' => $file->document_url,
                 'group_id' => $request->group,
+                'origin' => '2',
             ]);
         }
         return back();

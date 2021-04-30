@@ -16,6 +16,7 @@ class Document extends Model {
         'document_format',
         'document_url',
         'group_id',
+        'origin',
     ];
 
 }

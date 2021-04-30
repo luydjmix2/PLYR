@@ -19,6 +19,7 @@ class DocumentSeeder extends Seeder {
             'document_format' => 'jpg',
             'document_url' => '/media/photos/photo1.jpg',
             'group_id' => '1',
+            'origin' => '1',
         ]);
     }
 
