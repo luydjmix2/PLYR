@@ -177,7 +177,7 @@ class ProyectController extends Controller {
             Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
             Storage::disk('public_uploads')->delete($pathOld);
             Document::where('document_name_full', $file[0]['document_name_full'])->where('document_url', $file[0]['document_url'])->delete();
-        } else {
+        } else { 
             $user = Document::find($id);
             $user->delete();
         }
