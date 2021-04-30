@@ -22,7 +22,7 @@
             <!-- END Open Search Section -->
 
             <!-- Search Form (visible on larger screens) -->
-            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
+<!--            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
                     <div class="input-group-append">
@@ -31,7 +31,7 @@
                         </span>
                     </div>
                 </div>
-            </form>
+            </form>-->
             <!-- END Search Form -->
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block mr-2">

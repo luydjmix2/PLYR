@@ -155,6 +155,7 @@ class ProyectController extends Controller {
             'document_format' => $arrayFile[1],
             'document_url' => $url_file,
             'group_id' => $request->id_group,
+            'origin' => '1',
         ]);
         $group_data = Proyect::where('id', $request->id_group)->get()->toArray();
         return redirect()->route('group.view', $group_data[0]['proyect_url']);
@@ -168,13 +169,18 @@ class ProyectController extends Controller {
      */
     public function destroyFile($id) {
         $file = Document::where('id', $id)->get()->toArray();
-        $pathNew = '/groupsFilesDestroy/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
-        $pathOld = '/groupsFiles/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
-        $content = Storage::disk('public_uploads')->get($pathOld);
-        Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
-        Storage::disk('public_uploads')->delete($pathOld);
-        $user = Document::find($id);
-        $user->delete();
+
+        if ($file[0]['origin'] == 1) {
+            $pathNew = '/groupsFilesDestroy/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
+            $pathOld = '/groupsFiles/' . $file[0]['group_id'] . '/' . $file[0]['document_name_full'];
+            $content = Storage::disk('public_uploads')->get($pathOld);
+            Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
+            Storage::disk('public_uploads')->delete($pathOld);
+            Document::where('document_name_full', $file[0]['document_name_full'])->where('document_url', $file[0]['document_url'])->delete();
+        } else {
+            $user = Document::find($id);
+            $user->delete();
+        }
         return back();
     }
 

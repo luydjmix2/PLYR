@@ -36,17 +36,18 @@ Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'cr
 Route::post('/groups/store', [App\Http\Controllers\ProyectController::class, 'store'])->name('groups.store');
 Route::get('/groups/edit/{id}', [App\Http\Controllers\ProyectController::class, 'edit'])->name('groups.edit');
 Route::post('/groups/update', [App\Http\Controllers\ProyectController::class, 'update'])->name('groups.update');
+
 Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class, 'show'])->name('group.view');
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 Route::get('/group/file/remove/{id}', [App\Http\Controllers\ProyectController::class, 'destroyFile'])->name('group.file.delite');
+Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
+
 Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
 Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
 Route::get('/group/user/edit/{id_group}/{id}', [App\Http\Controllers\GroupUserController::class, 'edit'])->name('group.user.edit');
 Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController::class, 'update'])->name('group.user.update');
 Route::get('/group/user/remove/{id_user}/{id_group?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::class, 'shareUser'])->name('group.user.share');
-Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
-
 
 Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
 Route::post('/company/update/{id}',[App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
