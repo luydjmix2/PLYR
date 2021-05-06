@@ -159,9 +159,9 @@ class GroupUserController extends Controller {
 //            $user->delete();
         } else {
             if (team::where('user_id', $id_user)->where('id_group', $id_group)->get()->count() == 1) {
-                dd($validaUserGroups . ' menor o igual que 1');
+//                dd($validaUserGroups . ' menor o igual que 1');
                 $user = User::find($id_user);
-//                $user->delete();
+                $user->delete();
             }
         }
 
