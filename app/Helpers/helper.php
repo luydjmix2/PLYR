@@ -58,8 +58,11 @@ class Helper {
 
     public static function upStorageFile($file, $id, $path) {
         $fileName = $file->getClientOriginalName();
-//        $file->move('/home/mefurthe/public_html' .$path . $id . '/', $fileName);
-        $file->move(public_path() . $path . $id . '/', $fileName);
+        if ($_SERVER['HTTP_HOST'] == 'mefurther.com') {
+            $file->move('/home/mefurthe/public_html' . $path . $id . '/', $fileName);
+        } else {
+            $file->move(public_path() . $path . $id . '/', $fileName);
+        }
         $arrayFile = explode(".", $fileName);
         $url_file = $path . $id . '/' . $fileName;
 

@@ -194,8 +194,10 @@ class GroupUserController extends Controller {
      */
     public function shareFile(Request $request) {
         $file = Document::find($request->file_id_share);
+//        dd($file);
         $validFile = Document::where('document_name_full', $file->document_name_full)->where('document_url', $file->document_url)->where('group_id', $request->group)->get()->count();
         if ($validFile < 1) {
+//            dd($file);
             Document::create([
                 'document_name_full' => $file->document_name_full,
                 'document_name' => $file->document_name,

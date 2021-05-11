@@ -44,6 +44,7 @@
         },
         "files": [
             "app/Helpers/helper.php"
+            "app/Helpers/alerts.php"
         ]
     },
     "autoload-dev": {

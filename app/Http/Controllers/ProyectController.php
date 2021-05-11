@@ -82,6 +82,7 @@ class ProyectController extends Controller {
         $teamLoop = team::where('id_group', $proyect_data[0]['id'])->get()->toArray();
 //        dd($proyect_data[0]['id']);
         $team = Helper::dataTeamGroup($proyect_data[0]['id']);
+//        dd($team);
         $files = Document::where('group_id', $proyect_data[0]['id'])->get()->toArray();
         $compamy = company::where('company_name', $user[0]['company'])->get()->toArray();
 //        dd($compamy);
@@ -137,8 +138,11 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function updateFile(Request $request) {
-//        $path = '/home/mefurthe/public_html/groupsFiles/'.$request->id_group.'/';
-        $path = public_path() . '/groupsFiles/' . $request->id_group . '/';
+        if ($_SERVER['HTTP_HOST'] == 'mefurther.com') {
+            $path = '/home/mefurthe/public_html/groupsFiles/' . $request->id_group . '/';
+        } else {
+            $path = public_path() . '/groupsFiles/' . $request->id_group . '/';
+        }
 //        dd($request);
         $files = $request->file('file');
 //        dd($files);
@@ -177,7 +181,7 @@ class ProyectController extends Controller {
             Storage::disk('public_destroy')->put($file[0]['group_id'] . '/' . $file[0]['document_name_full'], $content);
             Storage::disk('public_uploads')->delete($pathOld);
             Document::where('document_name_full', $file[0]['document_name_full'])->where('document_url', $file[0]['document_url'])->delete();
-        } else { 
+        } else {
             $user = Document::find($id);
             $user->delete();
         }
