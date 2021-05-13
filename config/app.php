@@ -201,6 +201,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 //        add class
         'Helper' => App\Helpers\Helper::class,
-        'Alert' => App\Helpers\Alerts::class,
+        'AlertMsj' => App\Helpers\Alerts::class,
     ],
 ];

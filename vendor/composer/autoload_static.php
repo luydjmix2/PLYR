@@ -39,6 +39,7 @@ class ComposerStaticInit450666fb51ce301655e8acc224bd6741
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '229f88ef45cd176e7c17c2fe35042836' => __DIR__ . '/..' . '/styde/html/src/helpers.php',
         'ef157334f1067da991ff8953983afdb3' => __DIR__ . '/../..' . '/app/Helpers/helper.php',
+        'ff293418b7ee014d9fe79c1d8574d9dd' => __DIR__ . '/../..' . '/app/Helpers/alerts.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -539,6 +540,7 @@ class ComposerStaticInit450666fb51ce301655e8acc224bd6741
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CompanyControllers' => __DIR__ . '/../..' . '/app/Http/Controllers/CompanyControllers.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\GroupUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/GroupUserController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -552,8 +554,11 @@ class ComposerStaticInit450666fb51ce301655e8acc224bd6741
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\CompanyUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanyUpdateRequest.php',
+        'App\\Http\\Requests\\GroupEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GroupEditRequest.php',
         'App\\Http\\Requests\\ProyectCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProyectCreateRequest.php',
         'App\\Http\\Requests\\UserCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserCreateRequest.php',
+        'App\\Http\\Requests\\UserEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserEditRequest.php',
         'App\\Models\\Document' => __DIR__ . '/../..' . '/app/Models/Document.php',
         'App\\Models\\Proyect' => __DIR__ . '/../..' . '/app/Models/Proyect.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -564,6 +569,7 @@ class ComposerStaticInit450666fb51ce301655e8acc224bd6741
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\View\\Components\\Modal\\Modal' => __DIR__ . '/../..' . '/app/View/Components/Modal/Modal.php',
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -674,6 +680,7 @@ class ComposerStaticInit450666fb51ce301655e8acc224bd6741
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\CompanySeeder' => __DIR__ . '/../..' . '/database/seeders/CompanySeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\DocumentSeeder' => __DIR__ . '/../..' . '/database/seeders/DocumentSeeder.php',
         'Database\\Seeders\\ProyectSeeder' => __DIR__ . '/../..' . '/database/seeders/ProyectSeeder.php',
