@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Helpers/helper.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/routes/breadcrumbs.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/edit.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/ProyectController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/public/css/plyr.css</file>
+            <file>file:/D:/xampp/htdocs/PLYR/database/seeders/AlertSeeder.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Models/Alert.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Helpers/alerts.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/menuTop.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/admin.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/public/js/pages/viewGroup.js</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Models/Document.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/database/seeders/DocumentSeeder.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/GroupUserController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/proyects/views.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/config/app.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/header.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/web.php</file>
         </group>
     </open-files>

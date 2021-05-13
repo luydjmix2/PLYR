@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration {
             $table->string('company_address')->unique()->nullable(); //direccion empresa
             $table->string('company_phone')->unique()->nullable(); //telefon empresa
             $table->string('company_web')->unique()->nullable(); //pagina web empresa
-            $table->string('company_url_logo')->nullable()->nullable(); //nombre empresa
+            $table->string('company_url_logo')->nullable(); //nombre empresa
             $table->string('company_code')->unique()->nullable(); //codigo postal empresa
             $table->string('company_nid')->unique()->nullable(); //Rut o numero unico de identificacion empresa
             $table->string('company_politics')->nullable()->nullable(); //aceptacion politicas empresa

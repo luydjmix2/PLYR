@@ -11,14 +11,17 @@
 <script src="{{ asset('js/plyr.js') }}"></script>
 <script src="{{ asset('js/pages/viewGroup.js') }}"></script>
 @section('title-page')
-{{ __($proyect_data[0]['proyect_name'])}}
+{{ trans($proyect_data[0]['proyect_name'])}}
 @endsection
 @section('breadcrumbs')
 {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}
 @endsection 
+@php
+$url_background =asset("/media/photos/photo23@2x.jpg");
+@endphp
 <!-- Hero Content -->
-<div class="bg-image" style="background-image: url('{{asset("/media/photos/photo23@2x.jpg")}}');">
-     <div class="bg-primary-op">
+<div class="bg-image" style="background-image: url('{{$url_background}}');">
+    <div class="bg-primary-op">
         <div class="content content-full overflow-hidden">
             <div class="my-8 text-center">
                 <div class="my-3">
@@ -49,11 +52,11 @@
             <div class="col-12">
                 <div class="block block-rounded">
                     <div class="block-header">
-                        <h3 class="block-title">Group Team</h3>
+                        <h3 class="block-title">Group Team {{ trans($proyect_data[0]['proyect_name'])}}</h3>
                         @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                         <div class="float-right col-md-1">
                             <a href="{{route('group.user.create', $proyect_data[0]['id'])}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
-                                    <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
+                                    <i class="fa fa-fw fa-@lang('bts.add-icon')"></i> {{ trans('bts.add')}}
                                 </button></a>
                         </div>
                         @endif
@@ -66,13 +69,13 @@
                         <table class="table table-sm table-vcenter">
                             <thead>
                                 <tr>
-                                    <th>{{__('users.name_full')}}</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.position')}}</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.email')}}</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.movil')}}</th>
-                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{__('users.phone')}}</th>
+                                    <th>{{trans('users.name_full')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{trans('users.position')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{trans('users.email')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{trans('users.movil')}}</th>
+                                    <th class="d-none d-sm-table-cell" style="width: 15%;">{{trans('users.phone')}}</th>
                                     @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
-                                    <th class="text-center" style="width: 100px;">{{__('proyects.acctions')}}</th>
+                                    <th class="text-center" style="width: 100px;">{{trans('proyects.acctions')}}</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -96,9 +99,9 @@
                                     </td>
                                     @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-user-{{$proyect_data[0]['id']}}">{{__('bts.actions')}}</button>
+                                        <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-user-{{$team_user['id']}}">{{__('bts.actions')}}</button>
                                         <br>
-                                        <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts" id="toltips-alert-acctions-user-{{$proyect_data[0]['id']}}">
+                                        <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts" id="toltips-alert-acctions-user-{{$team_user['id']}}">
                                             <a href="{{route('group.user.edit', ['id_group' => $proyect_data[0]['id'], 'id' => $team_user['id']])}}" class="btn btn-sm btn-light js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="Edit Client">
                                                 <i class="fa fa-fw fa-pencil-alt"></i>
                                             </a>
@@ -152,7 +155,7 @@
             <div class="col-12">
                 <div class="block block-rounded">
                     <div class="block-header">
-                        <h3 class="block-title">Files</h3>
+                        <h3 class="block-title">Files {{ trans($proyect_data[0]['proyect_name'])}}</h3>
                         <div class="block-options">
                             <div class="block-options-item">
                             </div>
