@@ -14,11 +14,13 @@ use App\Models\company;
 use App\Models\Proyect;
 use App\Models\Alert;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
 
 class Alerts {
 
     public static function categoryAlert($param) {
-        $array = array('', 'view', 'sms', 'mail');
+        $array = array('', 'Group', 'Company', 'User');
         return $array[$param];
     }
 
@@ -28,7 +30,7 @@ class Alerts {
     }
 
     public static function createAlert($param) {
-        if(Alerts::validaAlert($param)) {
+        if (Alerts::validaAlert($param)) {
             Alert::create([
                 'alert_user_id' => $param['alert_user_id'],
                 'alert_name' => $param['alert_name'],
@@ -39,6 +41,8 @@ class Alerts {
                 'alert_see_report' => ($param['alert_see_report'] ?? ''),
             ]);
         }
+        
+        AlertMsj::sentMail('luydjmix@gmail.com', 'asd', 'hello word');
         return $param['alert_name'];
     }
 
@@ -49,6 +53,16 @@ class Alerts {
             $resp = false;
         }
         return $resp;
+    }
+
+    public static function sentMail($mailto, $company, $msj) {
+
+        $objAlert = new \stdClass();
+        $objAlert->msj = $msj;
+        $objAlert->sender = 'PL&R';
+        $objAlert->company = $company;
+ 
+        Mail::to($mailto)->send(new OrderShipped($objAlert));
     }
 
 }
