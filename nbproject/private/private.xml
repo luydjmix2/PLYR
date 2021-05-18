@@ -7,10 +7,13 @@
             <file>file:/D:/xampp/htdocs/PLYR/app/Models/Alert.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/app/Helpers/alerts.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/menuTop.blade.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/.env</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/admin.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/config/app.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/resources/views/layouts/admin/header.blade.php</file>
             <file>file:/D:/xampp/htdocs/PLYR/routes/web.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/app/Mail/OrderShipped.php</file>
+            <file>file:/D:/xampp/htdocs/PLYR/resources/views/mail/alert.blade.php</file>
         </group>
     </open-files>
 </project-private>
