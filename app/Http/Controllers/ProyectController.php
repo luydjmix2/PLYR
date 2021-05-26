@@ -12,6 +12,7 @@ use App\Models\Proyect;
 use App\Models\User;
 use App\Models\team;
 use App\Models\company;
+use App\Models\User_alert;
 use Validator;
 use Auth;
 use App\Helpers\Helper;
@@ -196,6 +197,16 @@ class ProyectController extends Controller {
      */
     public function destroy($id) {
         //
+    }
+
+    public function followGroup($mail, $company_id, $group_id) {
+        User_alert::create([
+            'u_alerts_id_group' => '1',
+            'u_alerts_id_company' => '1',
+            'u_alerts_mail' => 'luydjmix@gmail.com',
+            'u_alerts_movil' => '3158111878',
+        ]);
+        return $mail;
     }
 
 }

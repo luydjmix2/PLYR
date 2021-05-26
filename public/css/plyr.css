@@ -24,6 +24,11 @@ and open the template in the editor.
 }
 
 @keyframes hiddenBt {
-  from {background-color: red;}
-  to {background-color: yellow;}
+    from {background-color: red;}
+    to {background-color: yellow;}
+}
+
+button.aling-line {
+    display: flex;
+    align-items: baseline;
 }

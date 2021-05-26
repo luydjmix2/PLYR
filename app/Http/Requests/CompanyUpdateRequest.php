@@ -38,7 +38,7 @@ class CompanyUpdateRequest extends FormRequest {
     public function messages() {
         return [
             'company_name.required' => 'The Company name: attribute is required.',
-            'company_name.unique' => 'The Company name already exists.',
+            'company_name.unique' => 'The Company name has already been taken.',
             'company_address.required' => 'The Company address: attribute is required.',
             'company_phone.required' => 'The Company phone: attribute is required.',
             'company_phone.digits' => 'The Company phone: the value is not a number and does not have 10 exact characters.',

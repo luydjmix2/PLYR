@@ -28,4 +28,6 @@ return [
     'next' => 'Next',
     'submit' => 'Submit',
     'actions'=>'Actions',
+    'follow'=>'Follow',
+    'following'=>'Following',
 ];

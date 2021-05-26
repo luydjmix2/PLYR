@@ -10,8 +10,13 @@ use App\Http\Requests\CompanyUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Helpers\Helper;
+use Illuminate\Validation\Rule;
 
 class CompanyControllers extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -78,6 +83,7 @@ class CompanyControllers extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(CompanyUpdateRequest $request, $id) {
+
         if ($request->hasFile('company_logo')) {
             $path = '/avatar/';
             $files = $request->file('company_logo');
@@ -101,6 +107,12 @@ class CompanyControllers extends Controller {
                 );
             }
         }
+
+        $request->validate([
+            'company_code' => [
+                Rule::unique('companies')->ignore($request->id),
+            ]
+        ]);
 
         company::where('id', $request->id)->update([
             'company_name' => $request->company_name,

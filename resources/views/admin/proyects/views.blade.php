@@ -23,7 +23,7 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
 <div class="bg-image" style="background-image: url('{{$url_background}}');">
     <div class="bg-primary-op">
         <div class="content content-full overflow-hidden">
-            <div class="my-8 text-center">
+            <div class="text-center">
                 <div class="my-3">
                     <img class="img-avatar img-avatar-thumb" src="{{ asset($compamy[0]['company_url_logo']) }}" alt="">
                 </div>
@@ -37,7 +37,18 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
 <div class="bg-white">
     <div class="content content-boxed">
         <div class="row justify-content-md-center">
-            <div class="col-10">
+            <div class="col-4">
+                <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                    <i class="fa fa-fw fa-share-square"></i>
+                </button>
+            </div>
+            <div class="col-4">
+                <a href="{{route(AlertMsj::validUserFollow(Auth::user()->email, 'url-fom'), [Auth::user()->email, 'asd', 'asd'])}}" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
+                    <i class="fa fa-fw fa-{{AlertMsj::validUserFollow(Auth::user()->email, 'icon')}}"></i> {{trans(AlertMsj::validUserFollow(Auth::user()->email, 'textLang'))}} 
+                </a>
+
+            </div>
+            <div class="col-4">
                 <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
                     <i class="fa fa-fw fa-share-square"></i>
                 </button>
@@ -55,9 +66,8 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
                         <h3 class="block-title">Group Team {{ trans($proyect_data[0]['proyect_name'])}}</h3>
                         @if(Helper::validUserPropertyGroup(Auth::id(), $proyect_data[0]['proyect_name']))
                         <div class="float-right col-md-1">
-                            <a href="{{route('group.user.create', $proyect_data[0]['id'])}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
-                                    <i class="fa fa-fw fa-@lang('bts.add-icon')"></i> {{ trans('bts.add')}}
-                                </button></a>
+                            <a href="{{route('group.user.create', $proyect_data[0]['id'])}}"> <button type="button" class="mb-3 mr-1 btn btn-info aling-line">
+                                    <i class="fa fa-fw fa-@lang('bts.add-icon')"></i>{{trans('bts.add')}}</button></a>
                         </div>
                         @endif
                         <div class="block-options">
@@ -214,7 +224,7 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
     </div>
 </div>
 <!-- END Page Content -->
-
+<br>
 @component('components.modal.formSharedUserGroup')    
 
 @slot('title')

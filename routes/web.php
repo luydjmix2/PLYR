@@ -29,7 +29,6 @@ Route::view('/pages/blank', 'pages.blank');
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //Grupos
 Route::get("/group", [App\Http\Controllers\ProyectController::class, 'index'])->name('groups');
 Route::get('/groups/create', [App\Http\Controllers\ProyectController::class, 'create'])->name('groups.create');
@@ -41,6 +40,7 @@ Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 Route::get('/group/file/remove/{id}', [App\Http\Controllers\ProyectController::class, 'destroyFile'])->name('group.file.delite');
 Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
+Route::get('/group/follow/{mail}/{company_id}/{group_id}', [App\Http\Controllers\ProyectController::class, 'followGroup'])->name('group.follow');
 
 Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
 Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
@@ -49,8 +49,9 @@ Route::post('/group/user/edit/update', [App\Http\Controllers\GroupUserController
 Route::get('/group/user/remove/{id_user}/{id_group?}', [App\Http\Controllers\GroupUserController::class, 'destroy'])->name('group.user.remove');
 Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::class, 'shareUser'])->name('group.user.share');
 
-Route::get('/company/{name}',[App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
-Route::post('/company/update/{id}',[App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
+Route::get('/company/{name}', [App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
+Route::post('/company/update/{id}', [App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
+
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate:fresh');
@@ -60,10 +61,11 @@ Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('db:seed --class=DocumentSeeder');
     $exitCode = Artisan::call('db:seed --class=TeamSeeder');
     $exitCode = Artisan::call('db:seed --class=AlertSeeder');
+    $exitCode = Artisan::call('db:seed --class=UseralertSeeder');
     return 'refresh db Ok';
 });
 
-    Route::get('/config-clean-cache-dev-2021-03-29', function() {
+Route::get('/config-clean-cache-dev-2021-03-29', function() {
     $exitCode = Artisan::call('config:cache');
     $exitCode = Artisan::call('cache:clear');
     $exitCode = Artisan::call('view:clear');
