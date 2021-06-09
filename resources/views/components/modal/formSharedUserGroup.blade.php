@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
                 {!! Form::open(['route' => 'group.user.share']) !!}
-                <div class="block-header bg-primary-dark">
+                <div class="block-header bg-primary-plyr">
                     <h3 class="block-title">{{ $title }}</h3>
                     <div class="block-options">
                         <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">

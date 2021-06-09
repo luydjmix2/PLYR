@@ -35,3 +35,13 @@ $trail->push('Edit', route('group.user.edit', ['id_group' => $id_group, 'id' => 
 Breadcrumbs::for('company.index', function ($trail, $name) {
 $trail->push(__('company.name'), route('company.index',['name' => $name]));
 });
+
+Breadcrumbs::for(trans('users.namePage'), function ($trail) {
+$trail->parent('dashboard', 'Service');
+$trail->push(trans('users.namePage'), route('users.index'));
+});
+
+Breadcrumbs::for(trans('users.namePageCreate'), function ($trail) {
+$trail->parent(trans('users.namePage'), 'Service');
+$trail->push(trans('users.namePageCreate'), route('users.store'));
+});

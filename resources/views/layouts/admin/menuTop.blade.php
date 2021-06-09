@@ -39,6 +39,13 @@
                                 <span class="nav-main-link-name">{{ __('proyects.name')}}</span>
                             </a>
                         </li>
+                        @profileSAdmin(Auth::user()->profile)
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('users.index') }}">
+                                <span class="nav-main-link-name">{{ __('users.namePage')}}</span>
+                            </a>
+                        </li>
+                        @endprofileSAdmin
                     </ul>
                 </li>
                 <li class="nav-main-item">

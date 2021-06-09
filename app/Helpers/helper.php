@@ -9,6 +9,10 @@ use App\Models\Proyect;
 
 class Helper {
 
+    public static function profile($user_id) {
+        return $user_id;
+    }
+
     public static function setActiveRoute($name) {
         return request()->routeIs($name) ? 'active' : '';
     }
@@ -90,6 +94,39 @@ class Helper {
         $userGroup = Proyect::where('user_id', $id)->where('proyect_name', $nameGroup)->get()->count();
         $r = Helper::validQuerryIcualZero($userGroup);
         return $r;
+    }
+
+    public static function dataTeam($param, $action, $text = '') {
+        switch ($action) {
+            case 'comp':
+                $team = team::where("id_company", $param)->first();
+                if ($text != '') {
+                    $team = $team->{$text};
+                }
+                break;
+            case 'group':
+                $team = team::where("id_group", $param)->first();
+                if ($text != '') {
+                    $team = $team->{$text};
+                }
+                break;
+            case 'user':
+                $team = team::where("user_id", $param)->first();
+                if ($text != '') {
+                    $team = $team->{$text};
+                }
+                break;
+        }
+        return $team;
+    }
+
+    public static function listProfile() {
+        $listProfile = ['1' => 'SAdmin', '2' => 'Admin-A', '3' => 'Admin-B', '4' => 'Editor', '5' => 'User', '6' => 'Invited'];
+        return $listProfile;
+    }
+
+    public static function validaProfileName($param) {
+        return Helper::listProfile()[$param];
     }
 
 }

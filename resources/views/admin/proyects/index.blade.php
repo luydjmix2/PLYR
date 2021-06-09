@@ -7,15 +7,16 @@
 @section('breadcrumbs')
 {{ Breadcrumbs::render('Groups') }}
 @endsection
+
 <!-- Dynamic Table with Export Buttons -->
 <div class="block block-rounded">
 
     <div class="block-content block-content-full">
         <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
-        <div class="float-right col-md-1">
-            <a href="{{route('groups.create')}}"> <button type="button" class="mb-3 mr-1 btn btn-info">
-                    <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
-                </button></a>
+        <div class="float-right col-2 float-right-btn-force">
+            <a href="{{route('groups.create')}}" class="mb-3 mr-1 btn btn-info"> 
+                <i class="fa fa-fw fa-{{ __('bts.add-icon')}}"></i> {{ __('bts.add')}}
+            </a>
         </div>
         <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
             <thead>
@@ -26,8 +27,7 @@
                     <th>{{ __('proyects.start_date')}}</th>
                     <th>{{ __('proyects.end_date')}}</th>
                     <th>{{ __('proyects.user')}}</th>
-                    <th>{{ __('proyects.upload_file')}}</th>
-                    <th style="width: 11,25%;">{{ __('proyects.acctions')}}</th>
+                    <th style="width: 100px !important;">{{ __('proyects.acctions')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,25 +49,26 @@
                     <td class="font-w600 font-size-sm">
                         {{Helper::dataUserName($proyect->user_id) }}
                     </td>
-                    <td class="font-w600 font-size-sm">
-                        <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
-                            <i class="fa fa-file-upload"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="/group/{{ $proyect->proyect_url }}" class="mb-3 mr-1 btn btn-warning">
-                            <i class="fa fa-fw fa-eye"></i>
-                        </a> &nbsp;
-                        <a href="{{route('groups.edit',$proyect->id)}}" class="mb-3 mr-1 btn btn-info">
-                            <i class="fa fa-fw fa-pencil-alt"></i>
-                        </a> &nbsp;
-                        <form method="POST" action=""
-                              style="display:inline;">
-                            {{ csrf_field() }} {{ method_field('groups.delete') }}
-                            <button class="mb-3 mr-1 btn btn-danger"
-                                    onclick="return confirm('{{ __('proyects.alert_delete')}}')"><i
-                                    class="fa fa-fw fa-times"></i></button>
-                        </form>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-group-{{$proyect->id}}">{{__('bts.actions')}}</button>
+                        <br>
+                        <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts list-btns-actions" id="toltips-alert-acctions-group-{{$proyect->id}}">
+                            <div class="list-flex-conten-btns">
+                                <a href="/group/{{ $proyect->proyect_url }}" class="btn btn-sm btn-warning js-tooltip-enabled">
+                                    <i class="fa fa-fw fa-eye"></i>
+                                </a> 
+                                <a href="{{route('groups.edit',$proyect->id)}}" class="btn btn-sm btn-info js-tooltip-enabled">
+                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                </a> 
+                                <form method="POST" action=""
+                                      style="display:inline;">
+                                    {{ csrf_field() }} {{ method_field('groups.delete') }}
+                                    <button class="btn btn-sm btn-danger js-tooltip-enabled"
+                                            onclick="return confirm('{{ __('proyects.alert_delete')}}')"><i
+                                            class="fa fa-fw fa-times"></i></button>
+                                </form>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -78,6 +79,12 @@
 <!-- END Dynamic Table with Export Buttons -->
 
 @endsection
+
+@section('js_before')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link rel="stylesheet" href="{{ asset('/css/plyr.css') }}">
+<script src="{{ asset('js/plyr.js') }}"></script>
+@stop
 
 @push('js_after')
 <!-- Page JS Plugins -->
@@ -92,3 +99,4 @@
 <!-- Page JS Code -->
 <script src="{{ asset('js/pages/be_tables_datatables.min.js') }}"></script>
 @endpush
+

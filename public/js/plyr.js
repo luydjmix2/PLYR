@@ -9,10 +9,10 @@ jQuery(document).ready(function ($) {
     $('.document-destroy').click(function (eventDest) {
         eventDest.preventDefault();
         if (confirm('do you want to delete the file?')) {
-            console.log($(this).prop("href"));
+//            console.log($(this).prop("href"));
             window.location = $(this).prop("href");
         } else {
-            console.log('decline destroy');
+//            console.log('decline destroy');
             return false;
         }
     });
@@ -20,10 +20,10 @@ jQuery(document).ready(function ($) {
     $('.users-delete').click(function (eventDelUser) {
         eventDelUser.preventDefault();
         if (confirm('do you want to delete the user?')) {
-            console.log($(this).prop("href"));
+//            console.log($(this).prop("href"));
             window.location = $(this).prop("href");
         } else {
-            console.log('decline destroy');
+//            console.log('decline destroy');
             return false;
         }
     });

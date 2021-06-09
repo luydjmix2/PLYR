@@ -45,7 +45,7 @@ class Alerts {
         $user = User::where('id', $param['alert_user_id'])->get()->toArray();
 //        dd($user[0]['email']);
 //        Alerts::sentMail('luydjmix@gmail.com', 'asd', 'hello word');
-        return $param['alert_name'];
+//        return $param['alert_name'];
     }
 
     public static function validaAlert($param) {
@@ -72,7 +72,7 @@ class Alerts {
         $action = array('icon' => 'check-square', 'textLang' => 'bts.follow', 'url-fom' => 'group.follow');
         if ($resp != '0') {
 //            dd($resp);
-            $action = array('icon' => 'check-double', 'textLang' => 'bts.following', 'url-fom' => 'group.follow');
+            $action = array('icon' => 'check-double', 'textLang' => 'bts.unfollow', 'url-fom' => 'group.unfollow');
         }
         return $action[$event];
     }

@@ -29,5 +29,6 @@ return [
     'submit' => 'Submit',
     'actions'=>'Actions',
     'follow'=>'Follow',
-    'following'=>'Following',
+    'unfollow'=>'Unfollow',
+    'share'=>'Share',
 ];

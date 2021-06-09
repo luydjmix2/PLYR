@@ -31,6 +31,7 @@ class User extends Authenticatable {
         'start_date',
         'company',
         'id_group',
+        'profile',
     ];
 
     /**

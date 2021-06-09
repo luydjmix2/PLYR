@@ -36,6 +36,7 @@
                                 <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
+                                    <input type="hidden" name="profile" id="profile" value="1">
                                     <div class="form-group regfg">
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                             @error('name')

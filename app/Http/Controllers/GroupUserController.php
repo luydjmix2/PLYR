@@ -11,6 +11,7 @@ use App\Models\company;
 use App\Models\Document;
 use App\Models\User;
 use App\Models\team;
+use App\Models\User_alert;
 use Illuminate\Support\Facades\Hash;
 
 class GroupUserController extends Controller {
@@ -41,7 +42,7 @@ class GroupUserController extends Controller {
             $companys[$value['id']] = $value['company_name'];
         }
 //        dd($companys);
-        return view('admin.users.create', compact('id_group', 'companys'));
+        return view('admin.usersGroups.create', compact('id_group', 'companys'));
     }
 
     /**
@@ -66,6 +67,7 @@ class GroupUserController extends Controller {
             'firm' => $request->firm,
             'start_date' => $request->start_date,
             'company' => $company[0]['company_name'],
+            'profile' => '5',
         ]);
         $user = User::where('email', $request->email)->get()->toArray();
 
@@ -107,7 +109,7 @@ class GroupUserController extends Controller {
         foreach ($company as $key => $value) {
             $companys[$value['id']] = $value['company_name'];
         }
-        return view('admin.users.edit', compact('user', 'group', 'companys', 'comanyId'));
+        return view('admin.usersGroups.edit', compact('user', 'group', 'companys', 'comanyId'));
     }
 
     /**
@@ -210,6 +212,36 @@ class GroupUserController extends Controller {
                 'group_id' => $request->group,
                 'origin' => '2',
             ]);
+        }
+        return back();
+    }
+
+    public function shareGroupExternal(Request $request) {
+
+        $validatedData = $request->validate([
+            'mail' => ['required', 'email', 'max:255', 'unique:user_alerts,u_alerts_mail'],
+            'movil' => ['required', 'numeric'],
+        ]);
+
+        $valida = User_alert::where('u_alerts_mail', $request->u_alerts_mail)->count();
+        switch ($valida) {
+            case "0":
+                User_alert::firstOrCreate([
+                    'u_alerts_id_group' => $request->u_alerts_id_group,
+                    'u_alerts_id_company' => $request->u_alerts_id_company,
+                    'u_alerts_mail' => $request->mail,
+                    'u_alerts_movil' => $request->movil,
+                ]);
+                break;
+            case "1":
+                $dataUAlert = User_alert::where('u_alerts_mail', $request->u_alerts_mail)->first();
+                User_alert::where('id', $dataUAlert->id)->update([
+                    'u_alerts_id_group' => $request->u_alerts_id_group,
+                    'u_alerts_id_company' => $request->u_alerts_id_company,
+                    'u_alerts_mail' => $request->mail,
+                    'u_alerts_movil' => $request->movil,
+                ]);
+                break;
         }
         return back();
     }

@@ -1,8 +1,8 @@
-<div class="modal fade" id="modal-block-file-group" tabindex="-1" aria-labelledby="modal-block-file-group" style="display: none;" aria-hidden="true">
+<div class="modal fade" id="modal-share-group" tabindex="-1" aria-labelledby="modal-share-group" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-dialog-popin" role="document">
         <div class="modal-content">
             <div class="block block-rounded block-themed block-transparent mb-0">
-                {!! Form::open(['route' => 'group.file.share']) !!}
+                {!! Form::open(['route' => 'group.share.external']) !!}
                 <div class="block-header bg-primary-plyr">
                     <h3 class="block-title">{{ $title }}</h3>
                     <div class="block-options">

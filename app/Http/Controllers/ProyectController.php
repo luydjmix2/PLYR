@@ -199,14 +199,38 @@ class ProyectController extends Controller {
         //
     }
 
-    public function followGroup($mail, $company_id, $group_id) {
-        User_alert::create([
-            'u_alerts_id_group' => '1',
-            'u_alerts_id_company' => '1',
-            'u_alerts_mail' => 'luydjmix@gmail.com',
-            'u_alerts_movil' => '3158111878',
-        ]);
-        return $mail;
+    public function followGroup(Request $request) {
+        $valida = User_alert::where('u_alerts_mail', $request->u_alerts_mail)->count();
+
+        switch ($valida) {
+            case "0":
+                User_alert::firstOrCreate([
+                    'u_alerts_id_group' => $request->u_alerts_id_group,
+                    'u_alerts_id_company' => $request->u_alerts_id_company,
+                    'u_alerts_mail' => $request->u_alerts_mail,
+                    'u_alerts_movil' => $request->u_alerts_movil,
+                ]);
+                break;
+            case "1":
+                $dataUAlert = User_alert::where('u_alerts_mail', $request->u_alerts_mail)->first();
+                User_alert::where('id', $dataUAlert->id)->update([
+                    'u_alerts_id_group' => $request->u_alerts_id_group,
+                    'u_alerts_id_company' => $request->u_alerts_id_company,
+                    'u_alerts_mail' => $request->u_alerts_mail,
+                    'u_alerts_movil' => $request->u_alerts_movil,
+                ]);
+                break;
+        }
+        return back();
+    }
+
+    public function unfollowGroup(Request $request) {
+        $valida = User_alert::where('u_alerts_mail', $request->u_alerts_mail)->count();
+        if ($valida == '1') {
+//            dd($valida);
+            User_alert::where('u_alerts_mail', $request->u_alerts_mail)->delete();
+        }
+        return back();
     }
 
 }

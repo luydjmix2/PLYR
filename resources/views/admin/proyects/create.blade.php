@@ -13,8 +13,9 @@
 <!-- For more examples you can check out https://github.com/VinceG/twitter-bootstrap-wizard -->
 
 <!-- Progress Wizards -->
-<div class="row">
-    <div class="col-md-12">
+<div class="block block-rounded">
+    <div class="row">
+        <div class="col-md-12">
             <div class="block-content">
                 @if ($errors->any())
                 <div class="alert alert-danger">
@@ -43,7 +44,7 @@
                     {{Form::label('wizard-progress-name', __('proyects.end_date'))}}
                     {{Form::date('proyect_end', \Carbon\Carbon::tomorrow(), ['class'=>'form-control'])}}
                 </div>
-                {{Form::hidden('user_id', '1')}}
+                {{Form::hidden('user_id', Auth::id())}}
                 <div class="mb-2 text-right col-12">
 
                     {{Form::button('<i class="fa fa-archive"></i> Create', ['type' => 'submit', 'id' => 'submit', 'class' => 'btn btn-primary'])}}

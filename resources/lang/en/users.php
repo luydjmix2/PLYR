@@ -23,8 +23,8 @@ return [
     'first_name' => 'First Name',
     'last_name' => 'Last Name',
     'email' => 'Email',
-    'password'=>'Password',
-    'password_confirmation'=>'Confirm Password',
+    'password' => 'Password',
+    'password_confirmation' => 'Confirm Password',
     'position' => 'Position',
     'Bio' => 'Bio',
     'bloomberg_email' => 'Bloomberg Email',
@@ -33,5 +33,9 @@ return [
     'firm' => 'Firm',
     'start_date' => 'Start Date',
     'company' => 'Company',
+    'companyN' => 'Company Name',
+    'profile' => 'Profile',
+    'namePage' => 'Users',
+    'namePageCreate' => 'Users Create',
 ];
 ?>

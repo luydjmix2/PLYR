@@ -37,21 +37,21 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
 <div class="bg-white">
     <div class="content content-boxed">
         <div class="row justify-content-md-center">
-            <div class="col-4">
-                <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
-                    <i class="fa fa-fw fa-share-square"></i>
+            <div class="col-6">
+                <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control"  data-toggle="modal" data-target="#modal-share-group">
+                    <i class="fa fa-fw fa-share-square"></i> {{trans('bts.share')}}
                 </button>
             </div>
-            <div class="col-4">
-                <a href="{{route(AlertMsj::validUserFollow(Auth::user()->email, 'url-fom'), [Auth::user()->email, 'asd', 'asd'])}}" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
+            <div class="col-6">
+                {!! Form::open(['route' => AlertMsj::validUserFollow(Auth::user()->email, 'url-fom')]) !!}
+                {{ Form::hidden('u_alerts_id_group', $proyect_data[0]['id'], array_merge(['class' => 'form-control'])) }}
+                {{ Form::hidden('u_alerts_id_company', Helper::dataTeam($proyect_data[0]['id'], 'group', 'id_company'), array_merge(['class' => 'form-control'])) }}
+                {{ Form::hidden('u_alerts_mail', Auth::user()->email, array_merge(['class' => 'form-control'])) }}
+                {{ Form::hidden('u_alerts_movil', Auth::user()->movil, array_merge(['class' => 'form-control'])) }}
+                <button type="submit" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
                     <i class="fa fa-fw fa-{{AlertMsj::validUserFollow(Auth::user()->email, 'icon')}}"></i> {{trans(AlertMsj::validUserFollow(Auth::user()->email, 'textLang'))}} 
-                </a>
-
-            </div>
-            <div class="col-4">
-                <button type="button" class="btn btn-lg btn-primary js-tooltip-enabled form-control" data-toggle="tooltip" title="" data-original-title="Remove Client">
-                    <i class="fa fa-fw fa-share-square"></i>
                 </button>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
@@ -223,6 +223,13 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
         </div>
     </div>
 </div>
+@if(!empty($errors->any()))
+<script>
+    $(function () {
+        $('#modal-share-group').modal('show');
+    });
+</script>
+@endif
 <!-- END Page Content -->
 <br>
 @component('components.modal.formSharedUserGroup')    
@@ -260,3 +267,33 @@ Share user in another group
 @push('js_after')
 
 @endpush
+
+
+@component('components.modal.formSharedGroupExternal')    
+
+@slot('title')
+share group to person off the platform
+@endslot
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+
+@endif
+<div class="block-content">
+    {{Form::hidden('u_alerts_id_group', $proyect_data[0]['id'],['id'=>'group_id'])}}
+    {{Form::hidden('u_alerts_id_company', $compamy[0]['id'],['id'=>'company_id'])}}
+    <div class="form-group">
+        {{ Form::label('mail', 'Enter an email', ['class' => 'control-label']) }}
+        {{Form::text('mail',old('mail'), ['class'=>'form-control', "id"=>"mail"])}}
+    </div>
+    <div class="form-group">
+        {{ Form::label('movil', 'enter a mobile', ['class' => 'control-label']) }}
+        {{Form::text('movil',old('movil'), ['class'=>'form-control', "id"=>"movil"])}}
+    </div>
+</div>
+@endcomponent

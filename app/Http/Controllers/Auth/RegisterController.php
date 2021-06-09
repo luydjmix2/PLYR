@@ -65,6 +65,7 @@ use RegistersUsers;
         $querryUser = User::create([
             'name' => $data['name'],
             'company' => $data['company'],
+            'profile' => $data['profile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

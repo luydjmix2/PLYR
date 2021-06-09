@@ -8,6 +8,14 @@ and open the template in the editor.
     Author     : Sammy Guergachi <sguergachi at gmail.com>
 */
 
+.tooltip-bts-alerts.list-btns-actions {
+    background: transparent;
+    border: 0px;
+    width: 86px;
+    padding: 0px;
+    margin: 3px 0px 0px 0px;
+}
+
 .tooltip-bts-alerts {
     position: absolute;
     background: white;
@@ -31,4 +39,30 @@ and open the template in the editor.
 button.aling-line {
     display: flex;
     align-items: baseline;
+}
+
+.bg-primary-plyr {
+    background-color: #0054BC !important;
+}
+
+.bg-primary-plyr h1, .bg-primary-plyr h2, .bg-primary-plyr h3, .bg-primary-plyr h4, .bg-primary-plyr h5, .bg-primary-plyr h6{
+    color: #ffffff !important;
+}
+
+.list-btns-actions .btn, .list-btns-actions form .btn {
+    width: 87%;
+    margin: 2px 0px;
+}
+
+.list-flex-conten-btns {
+    position: relative;
+    margin: 0px auto;
+    width: 86px;
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    border-radius: 6px;
+}
+
+.float-right-btn-force {
+    display: grid;
 }

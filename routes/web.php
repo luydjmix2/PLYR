@@ -40,7 +40,9 @@ Route::get('/group/{namegroup?}', [App\Http\Controllers\ProyectController::class
 Route::post('/group/file', [App\Http\Controllers\ProyectController::class, 'updateFile'])->name('group.file');
 Route::get('/group/file/remove/{id}', [App\Http\Controllers\ProyectController::class, 'destroyFile'])->name('group.file.delite');
 Route::post('/group/file/share/', [App\Http\Controllers\GroupUserController::class, 'shareFile'])->name('group.file.share');
-Route::get('/group/follow/{mail}/{company_id}/{group_id}', [App\Http\Controllers\ProyectController::class, 'followGroup'])->name('group.follow');
+Route::post('/group/share/external/', [App\Http\Controllers\GroupUserController::class, 'shareGroupExternal'])->name('group.share.external');
+Route::post('/group/follow/', [App\Http\Controllers\ProyectController::class, 'followGroup'])->name('group.follow');
+Route::post('/group/unfollow/', [App\Http\Controllers\ProyectController::class, 'unfollowGroup'])->name('group.unfollow');
 
 Route::get('/group/user/create/{id_group}', [App\Http\Controllers\GroupUserController::class, 'create'])->name('group.user.create');
 Route::post('/group/user/update', [App\Http\Controllers\GroupUserController::class, 'store'])->name('group.user.store');
@@ -51,6 +53,11 @@ Route::post('/group/user/share/', [App\Http\Controllers\GroupUserController::cla
 
 Route::get('/company/{name}', [App\Http\Controllers\CompanyControllers::class, 'index'])->name('company.index');
 Route::post('/company/update/{id}', [App\Http\Controllers\CompanyControllers::class, 'update'])->name('company.update');
+
+Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
+Route::get('/users/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
+Route::post('/users/create/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
+
 
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {

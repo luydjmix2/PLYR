@@ -16,8 +16,8 @@ class CreateUserAlertsTable extends Migration {
             $table->id();
             $table->unsignedBigInteger('u_alerts_id_group');
             $table->unsignedBigInteger('u_alerts_id_company');
-            $table->string('u_alerts_mail'); //mail
-            $table->string('u_alerts_movil'); //movil
+            $table->string('u_alerts_mail')->unique(); //mail
+            $table->string('u_alerts_movil')->nullable(); //movil
             $table->timestamps();
         });
     }
