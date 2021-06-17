@@ -27,7 +27,7 @@ $url_background =asset("/media/photos/photo23@2x.jpg");
                 <div class="my-3">
                     <img class="img-avatar img-avatar-thumb" src="{{ asset($compamy[0]['company_url_logo']) }}" alt="">
                 </div>
-                <h1 class="text-white mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$user[0]['company']}}</h1>
+                <h1 class="text-white mb-2 invisible" data-toggle="appear" data-class="animated fadeInDown">{{Helper::valideNameCompany($user[0]['company'])}}</h1>
                 <h2 class="h4 font-w400 text-white-75 invisible" data-toggle="appear" data-class="animated fadeInDown">{{$proyect_data[0]['proyect_description']}}</h2>
             </div>
         </div>

@@ -37,5 +37,6 @@ return [
     'profile' => 'Profile',
     'namePage' => 'Users',
     'namePageCreate' => 'Users Create',
+    'namePageEdit' => 'Users Edit',
 ];
 ?>

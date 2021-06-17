@@ -52,7 +52,7 @@ class Helper {
             $team[$key]['first_name'] = $team_user[0]['first_name'];
             $team[$key]['last_name'] = $team_user[0]['first_name'];
             $team[$key]['bloomberg_email'] = $team_user[0]['bloomberg_email'];
-            $team[$key]['company'] = $team_user[0]['company'];
+            $team[$key]['company'] = Helper::valideNameCompany($team_user[0]['company']);
             $team[$key]['firm'] = $team_user[0]['firm'];
             $team[$key]['start_date'] = $team_user[0]['start_date'];
         }
@@ -62,7 +62,7 @@ class Helper {
 
     public static function upStorageFile($file, $id, $path) {
         $fileName = $file->getClientOriginalName();
-        if ($_SERVER['HTTP_HOST'] == 'mefurther.com') {
+        if ($_SERVER['HTTP_HOST'] == 'plrupdating.com') {
             $file->move('/home/mefurthe/public_html' . $path . $id . '/', $fileName);
         } else {
             $file->move(public_path() . $path . $id . '/', $fileName);
@@ -85,8 +85,12 @@ class Helper {
 
     public static function validUserEditCompany($id) {
         $userData = User::find($id);
-        $userDataCompany = company::where('user_id', $id)->where('company_name', $userData->company)->get()->count();
-        $r = Helper::validQuerryIcualZero($userDataCompany);
+        if ($userData->profile == '1') {
+            $userDataCompany = company::where('user_id', $id)->where('id', $userData->company)->get()->count();
+            $r = Helper::validQuerryIcualZero($userDataCompany);
+        } else {
+            $r = 0;
+        }
         return $r;
     }
 
@@ -94,6 +98,14 @@ class Helper {
         $userGroup = Proyect::where('user_id', $id)->where('proyect_name', $nameGroup)->get()->count();
         $r = Helper::validQuerryIcualZero($userGroup);
         return $r;
+    }
+
+    public static function valideNameCompany($user_id) {
+        $user = User::where('id', $user_id)->first();
+//        dd($user->company);
+        $company = company::where('id', $user->company)->first();
+//        dd($company->company_name);
+        return $company->company_name;
     }
 
     public static function dataTeam($param, $action, $text = '') {
@@ -127,6 +139,19 @@ class Helper {
 
     public static function validaProfileName($param) {
         return Helper::listProfile()[$param];
+    }
+
+    public static function statusViewUser($user_id, $action) {
+        $user = User::where('id', $user_id)->first();
+        switch ($user->status) {
+            case '0':
+                $res = array('bts'=>'btn btn-outline-success waves-effect waves-light', 'icon'=>'fa-user-check', 'text' => 'Inactive');
+                break;
+            case '1':
+                $res = array('bts'=>'btn btn-outline-danger waves-effect waves-light', 'icon'=>'fa-user-times', 'text' => 'Active');
+                break;
+        }
+        return $res[$action];
     }
 
 }

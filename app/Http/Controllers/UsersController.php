@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UsersCreateRequest;
+use App\Http\Requests\UsersUpdateRequest;
 use App\Models\company;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,18 +16,10 @@ class UsersController extends Controller {
         return view('admin.users.index', compact('users'));
     }
 
-    public function edit($id) {
-        $group = Proyect::where('id', $id_group)->get()->toArray();
-//        dd($group);
-        $user = User::where('id', $id)->get()->toArray();
-        $comanyGetName = company::where('company_name', $user[0]['company'])->get()->toArray();
-        $comanyId = $comanyGetName[0]['id'];
-        $company = company::get()->toArray();
-//        dd($company);
-        foreach ($company as $key => $value) {
-            $companys[$value['id']] = $value['company_name'];
-        }
-        return view('admin.users.edit', compact('user', 'group', 'companys', 'comanyId'));
+    public function edit($user_id) {
+        $user = User::where('id', $user_id)->first();
+//        dd($user->id);
+        return view('admin.users.edit', compact('user'));
     }
 
     public function create() {
@@ -35,25 +28,70 @@ class UsersController extends Controller {
     }
 
     public function store(UsersCreateRequest $request) {
-        $user = User::where('email', $request['email'])->get()->count();
+        $requesUser = User::create([
+                    'name' => $request['first_name'] . ' ' . $request['last_name'],
+                    'first_name' => $request['first_name'],
+                    'last_name' => $request['last_name'],
+                    'profile' => $request['profile'],
+                    'email' => $request['email'],
+                    'password' => Hash::make($request['password']),
+                    'estado' => '1',
+        ]);
+//        dd($requesUser);
+        $requesCompany = company::updateOrCreate(['user_id' => $requesUser->id, 'company_name' => $request['company']], [
+                    'company_name' => $request['company'],
+        ]);
+//        dd($requesCompany);
+        $requesUpUser = User::updateOrCreate(['id' => $requesUser->id], [
+                    'company' => $requesCompany->id,
+        ]);
+//        dd($requesUpUser);
+        return redirect()->route('users.index');
+    }
 
-        if ($user < '1') {
-            $querryUser = User::create([
-                        'name' => $request['first_name'] . ' ' . $request['last_name'],
-                        'first_name' => $request['first_name'],
-                        'last_name' => $request['last_name'],
-                        'company' => $request['company'],
-                        'profile' => $request['profile'],
-                        'email' => $request['email'],
-                        'password' => Hash::make($request['password']),
-            ]);
-            $user = User::where('email', $request['email'])->first();
-            company::create([
-                'user_id' => $user->id,
-                'company_name' => $request['company'],
+    public function update(UsersUpdateRequest $request) {
+        $requesUser = User::updateOrCreate(['id' => $request->user_id], [
+                    'name' => $request['first_name'] . ' ' . $request['last_name'],
+                    'first_name' => $request['first_name'],
+                    'last_name' => $request['last_name'],
+                    'profile' => $request['profile'],
+                    'email' => $request['email'],
+                    'estado' => $request['estado'],
+        ]);
+        if ($request['password']) {
+            User::updateOrCreate(['id' => $request->user_id], [
+                'password' => Hash::make($request['password']),
             ]);
         }
+//        dd($requesUser);
+        $requesCompany = company::updateOrCreate(['id' => $requesUser->company], [
+                    'company_name' => $request['company'],
+        ]);
+//        dd($requesCompany);
         return redirect()->route('users.index');
+    }
+
+    public function destroy($id) {
+        
+    }
+
+    public function status($user_id) {
+        $user = User::where('id', $user_id)->first();
+
+        switch ($user->status) {
+            case '1':
+                User::where('id', $user_id)->update([
+                    'status' => '0',
+                ]);
+                break;
+            case '0':
+                User::where('id', $user_id)->update([
+                    'status' => '1',
+                ]);
+                break;
+        }
+
+        return back();
     }
 
 }

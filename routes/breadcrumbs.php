@@ -28,12 +28,12 @@ $trail->push($nameProyect, route('group.view', ['namegroup' => $nameProyect]));
 });
 
 Breadcrumbs::for('group.user.edit', function ($trail, $id_group, $id, $slug) {
-$trail->parent('group.view',$slug);
+$trail->parent('group.view', $slug);
 $trail->push('Edit', route('group.user.edit', ['id_group' => $id_group, 'id' => $id]));
 });
 
 Breadcrumbs::for('company.index', function ($trail, $name) {
-$trail->push(__('company.name'), route('company.index',['name' => $name]));
+$trail->push(__('company.name'), route('company.index', ['name' => $name]));
 });
 
 Breadcrumbs::for(trans('users.namePage'), function ($trail) {
@@ -44,4 +44,10 @@ $trail->push(trans('users.namePage'), route('users.index'));
 Breadcrumbs::for(trans('users.namePageCreate'), function ($trail) {
 $trail->parent(trans('users.namePage'), 'Service');
 $trail->push(trans('users.namePageCreate'), route('users.store'));
+});
+
+
+Breadcrumbs::for(trans('users.namePageEdit'), function ($trail, $id) {
+$trail->parent(trans('users.namePage'), 'Service');
+$trail->push(trans('users.namePageEdit'), route('users.edit', ['user_id' => $id]));
 });

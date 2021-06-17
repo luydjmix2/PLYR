@@ -66,7 +66,7 @@ class GroupUserController extends Controller {
             'movil' => $request->movil,
             'firm' => $request->firm,
             'start_date' => $request->start_date,
-            'company' => $company[0]['company_name'],
+            'company' => $company[0]['id'],
             'profile' => '5',
         ]);
         $user = User::where('email', $request->email)->get()->toArray();
@@ -102,7 +102,7 @@ class GroupUserController extends Controller {
         $group = Proyect::where('id', $id_group)->get()->toArray();
 //        dd($group);
         $user = User::where('id', $id)->get()->toArray();
-        $comanyGetName = company::where('company_name', $user[0]['company'])->get()->toArray();
+        $comanyGetName = company::where('id', $user[0]['company'])->get()->toArray();
         $comanyId = $comanyGetName[0]['id'];
         $company = company::get()->toArray();
 //        dd($company);

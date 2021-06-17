@@ -25,12 +25,7 @@
                     <th class="text-center" style="width: 80px;">ID</th>
                     <th>Nombre</th>
                     <th class="d-none d-sm-table-cell" style="width: 11,25%;">Email</th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Cargo</th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Teléfono</th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Movil</th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Correo Bloomberg </th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Firma</th>
-                    <th class="d-none d-sm-table-cell" style="width: 11,25%;">Registro</th>
+                    <th class="d-none d-sm-table-cell" style="width: 6%;">Status</th>
                     <th style="width: 100px !important;">Acciones</th>
                 </tr>
             </thead>
@@ -44,40 +39,27 @@
                     <td class="d-none d-sm-table-cell font-size-sm">
                         <em class="text-muted">{{ $user->email }}</em>
                     </td>
-                    <td class="d-none d-sm-table-cell">
-                        {{ $user->appointment }}
-                    </td>
-                    <td class="d-none d-sm-table-cell">
-                        <em class="text-muted font-size-sm">{{ $user->phone }}</em>
-                    </td>
-                    <td class="d-none d-sm-table-cell">
-                        <em class="text-muted font-size-sm">{{ $user->movil }}</em>
-                    </td>
-                    <td class="d-none d-sm-table-cell">
-                        <em class="text-muted font-size-sm">{{ $user->bloomber_email }}</em>
-                    </td>
-                    <td class="d-none d-sm-table-cell">
-                        <em class="text-muted font-size-sm">{{ $user->signing }}</em>
-                    </td>
-                    <td class="d-none d-sm-table-cell">
-                        <em class="text-muted font-size-sm">{{ $user->created_at }}</em>
+                    <td class="d-none d-sm-table-cell font-size-sm">
+                        <em class="text-muted">{{Helper::statusViewUser($user->id, 'text')}}</em>
                     </td>
                     <td class="text-center">
                         <button type="button" class="btn btn-primary tooltip-bts" data-toggel="0" data-action="toltips-alert-acctions-users-{{$user->id}}">{{__('bts.actions')}}</button>
                         <br>
                         <div class="tooltip-bts-alerts-hidden tooltip-bts-alerts list-btns-actions" id="toltips-alert-acctions-users-{{$user->id}}">
                             <div class="list-flex-conten-btns">
-                                <a href="{{ route('users.index', $user) }}" class="btn btn-sm btn-warning js-tooltip-enabled">
-                                    <i class="fa fa-fw fa-eye"></i>
-                                </a>
-                                <a href="{{ route('users.index', $user) }}" class="btn btn-sm btn-info js-tooltip-enabled">
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info js-tooltip-enabled">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </a>
+                                
+                                <a href="{{ route('users.status', $user->id) }}" class="{{Helper::statusViewUser($user->id, 'bts')}} js-tooltip-enabled">
+                                    <i class="fa fa-fw {{Helper::statusViewUser($user->id, 'icon')}}"></i>
+                                </a>
                                 <form method="POST" action="{{ route('users.index', $user) }}" style="display:inline;">
-                                    @csrf {{ method_field('DELETE') }}
-                                    <button class="btn btn-sm btn-danger js-tooltip-enabled"
-                                            onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')"><i
-                                            class="fa fa-fw fa-times"></i></button>
+                                    @csrf
+                                    {{ method_field('DELETE') }}
+                                    <button class="btn btn-sm btn-danger js-tooltip-enabled" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">
+                                        <i class="fa fa-fw fa-trash-alt"></i>
+                                    </button>
                                 </form>
                             </div>
                         </div>

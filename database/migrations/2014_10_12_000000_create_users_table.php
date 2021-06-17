@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration {
             $table->string('firm')->nullable(); //Firma
             $table->string('start_date')->nullable(); //Firma
             $table->string('profile'); //Perfil
+            $table->string('status'); //Perfil
             $table->rememberToken();
             $table->timestamps();
         });

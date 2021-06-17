@@ -22,16 +22,16 @@
             <!-- END Open Search Section -->
 
             <!-- Search Form (visible on larger screens) -->
-<!--            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
-                <div class="input-group input-group-sm">
-                    <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-body border-0">
-                            <i class="fa fa-fw fa-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </form>-->
+            <!--            <form class="d-none d-md-inline-block" action="bd_search.html" method="POST">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control form-control-alt" placeholder="Search.." id="page-header-search-input2" name="page-header-search-input2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-body border-0">
+                                        <i class="fa fa-fw fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>-->
             <!-- END Search Form -->
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block mr-2">
@@ -130,7 +130,7 @@
                     <div class="p-3 text-center bg-primary-dark rounded-top">
                         <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
                         <p class="mt-2 mb-0 text-white font-w500">{{Auth::user()->name}}</p>
-                        <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
+                        <p class="mb-0 text-white-50 font-size-sm">{{Helper::valideNameCompany(Auth::user()->company)}}</p>
                     </div>
                     <div class="p-2">
                         @if(Helper::validUserEditCompany(Auth::id()))

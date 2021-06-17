@@ -63,18 +63,23 @@ use RegistersUsers;
      */
     protected function create(array $data) {
         $querryUser = User::create([
-            'name' => $data['name'],
-            'company' => $data['company'],
-            'profile' => $data['profile'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+                    'name' => $request['first_name'] . ' ' . $request['last_name'],
+                    'first_name' => $request['first_name'],
+                    'last_name' => $request['last_name'],
+                    'profile' => $request['profile'],
+                    'email' => $request['email'],
+                    'password' => Hash::make($request['password']),
+                    'estado' => '1',
         ]);
-        $user = User::where('email', $data['email'])->get()->toArray();
-//        dd($user[0]['id']);
-        company::create([
-            'user_id' => $user[0]['id'],
-            'company_name' => $data['company'],
+//        dd($requesUser);
+        $requesCompany = company::updateOrCreate(['user_id' => $querryUser->id], [
+                    'company_name' => $request['company'],
         ]);
+//        dd($requesCompany);
+        $requesUpUser = User::updateOrCreate(['id' => $querryUser->id], [
+                    'company' => $requesCompany->id,
+        ]);
+//        dd($requesUpUser);
         return $querryUser;
     }
 

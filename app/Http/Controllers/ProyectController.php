@@ -85,7 +85,7 @@ class ProyectController extends Controller {
         $team = Helper::dataTeamGroup($proyect_data[0]['id']);
 //        dd($team);
         $files = Document::where('group_id', $proyect_data[0]['id'])->get()->toArray();
-        $compamy = company::where('company_name', $user[0]['company'])->get()->toArray();
+        $compamy = company::where('id', $user[0]['company'])->get()->toArray();
 //        dd($compamy);
 
         $listGroupsDb = Proyect::where('user_id', $proyect_data[0]['user_id'])->get();
@@ -139,7 +139,7 @@ class ProyectController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function updateFile(Request $request) {
-        if ($_SERVER['HTTP_HOST'] == 'mefurther.com') {
+        if ($_SERVER['HTTP_HOST'] == 'plrupdating.com') {
             $path = '/home/mefurthe/public_html/groupsFiles/' . $request->id_group . '/';
         } else {
             $path = public_path() . '/groupsFiles/' . $request->id_group . '/';

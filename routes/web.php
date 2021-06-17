@@ -57,7 +57,9 @@ Route::post('/company/update/{id}', [App\Http\Controllers\CompanyControllers::cl
 Route::get('/users', [App\Http\Controllers\UsersController::class, 'index'])->name('users.index');
 Route::get('/users/create', [App\Http\Controllers\UsersController::class, 'create'])->name('users.create');
 Route::post('/users/create/store', [App\Http\Controllers\UsersController::class, 'store'])->name('users.store');
-
+Route::get('/users/edit/{user_id}', [App\Http\Controllers\UsersController::class, 'edit'])->name('users.edit');
+Route::post('/users/create/update', [App\Http\Controllers\UsersController::class, 'update'])->name('users.update');
+Route::get('/users/status/{user_id}', [App\Http\Controllers\UsersController::class, 'status'])->name('users.status');
 
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {

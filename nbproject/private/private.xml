@@ -2,20 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/xampp/htdocs/PLYR/routes/breadcrumbs.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/usersGroups/create.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/users/edit.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/GroupUserController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/routes/web.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/lang/en/users.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/lang/en/bts.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Helpers/helper.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Http/Controllers/UsersController.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/app/Helpers/alerts.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/components/modal/formSharedGroupExternal.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/admin/users/index.blade.php</file>
-            <file>file:/D:/xampp/htdocs/PLYR/resources/views/mail/alert.blade.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
