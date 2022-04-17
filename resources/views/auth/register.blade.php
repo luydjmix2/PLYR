@@ -15,7 +15,8 @@
                         <h3 class="block-title">Sign In</h3>
                         <div class="block-options">
                             <a class="btn-block-option font-size-sm" href="op_auth_reminder.html">Forgot Password?</a>
-                            <a class="btn-block-option" href="op_auth_signup.html" data-toggle="tooltip" data-placement="left" title="New Account">
+                            <a class="btn-block-option" href="op_auth_signup.html" data-toggle="tooltip"
+                               data-placement="left" title="New Account">
                                 <i class="fa fa-user-plus"></i>
                             </a>
                         </div>
@@ -37,7 +38,10 @@
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="form-group regfg">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <input id="name" type="text"
+                                               class="form-control @error('name') is-invalid @enderror"
+                                               placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}"
+                                               required autocomplete="name" autofocus>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -45,7 +49,10 @@
                                         @enderror
                                     </div>
                                     <div class="form-group regfg">
-                                        <input id="company" type="text" placeholder="{{ __('Company Name') }}" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}" required autocomplete="company" autofocus>
+                                        <input id="company" type="text" placeholder="{{ __('Company Name') }}"
+                                               class="form-control @error('company') is-invalid @enderror"
+                                               name="company" value="{{ old('company') }}" required
+                                               autocomplete="company" autofocus>
                                         @error('company')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -53,7 +60,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group regfg">
-                                        <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}"
+                                               class="form-control @error('email') is-invalid @enderror" name="email"
+                                               value="{{ old('email') }}" required autocomplete="email">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -61,7 +70,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group regfg">
-                                        <input id="password" type="password" placeholder="{{ __('Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                        <input id="password" type="password" placeholder="{{ __('Password') }}"
+                                               class="form-control @error('password') is-invalid @enderror"
+                                               name="password" required autocomplete="new-password">
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -69,11 +80,50 @@
                                         @enderror
                                     </div>
                                     <div class="form-group regfg">
-                                        <input id="password-confirm" placeholder="{{ __('Confirm Password') }}" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <input id="password-confirm" placeholder="{{ __('Confirm Password') }}"
+                                               type="password" class="form-control" name="password_confirmation"
+                                               required autocomplete="new-password">
+                                    </div>
+                                    <div class="form-group regfg">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <div class="radio-toolbar">
+                                                    <input type="radio" id="radio1" name="rol" value="3" checked>
+                                                    <label class="btn btn-secondary text-nowrap" for="radio1">Sell Side</label>
+
+                                                    <input type="radio" id="radio2" name="rol" value="4">
+                                                    <label class="btn btn-secondary text-nowrap" for="radio2">Buy Side</label>
+
+                                                    <input type="radio" id="radio3" name="rol" value="5">
+                                                    <label class="btn btn-secondary text-nowrap" for="radio3">Retail</label>
+                                                </div>
+{{--                                                <div class="btn-group btn-group-lg" role="group"--}}
+{{--                                                     aria-label="Large Horizontal Dark" style="width: 100%;">--}}
+{{--                                                    <label class="btn btn-dark text-nowrap btn-check-list-plyr"--}}
+{{--                                                           for="option1" style="width: calc(100%/3);">Sell Side</label>--}}
+{{--                                                    <label class="btn btn-dark text-nowrap btn-check-list-plyr"--}}
+{{--                                                           for="option2" style="width: calc(100%/3);">Buy Side</label>--}}
+{{--                                                    <label class="btn btn-dark text-nowrap btn-check-list-plyr"--}}
+{{--                                                           for="option3" style="width: calc(100%/3);">Retail</label>--}}
+{{--                                                </div>--}}
+{{--                                                <input type="radio" class="btn-check invisible input-check-list-plyr"--}}
+{{--                                                       name="options"--}}
+{{--                                                       value="3"--}}
+{{--                                                       id="option1" autocomplete="off" checked>--}}
+{{--                                                <input type="radio" class="btn-check invisible" name="options"--}}
+{{--                                                       value="4"--}}
+{{--                                                       id="option2" autocomplete="off">--}}
+{{--                                                <input type="radio" class="btn-check invisible" name="options"--}}
+{{--                                                       id="option3"--}}
+{{--                                                       autocomplete="off" disabled>--}}
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group row justify-content-center mb-0">
-                                        <div class="col-md-6 col-xl-5">
-                                            <button type="submit" class="btn btn-block btn-primary registerbtn"><i class="fa fa-fw fa-plus mr-1"></i> {{ __('Register') }}</button>
+                                        <div class="col-md-12 col-xl-12 justify-content-center">
+                                            <button type="submit" class="btn btn-block btn-primary registerbtn"
+                                                    style="width: 12vw; margin: 0 auto;"><i
+                                                    class="fa fa-fw fa-plus mr-1"></i> {{ __('Register') }}</button>
                                         </div>
                                     </div>
                                 </form>
