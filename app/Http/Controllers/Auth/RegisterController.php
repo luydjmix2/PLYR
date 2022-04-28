@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use TCG\Voyager\Models\Role;
+use App\Models\Company;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'rol' => ['required'],
+            'company' => ['required'],
 //            add inputs
 
         ]);
@@ -76,6 +78,8 @@ class RegisterController extends Controller
             'role_id' => $role->id,
         ]);
         $user->roles()->attach("6");
+        $company = Company::firstOrNew(['company_name'=>$data['company']]);
+
 //        dd($data, $role->id);
         return $user;
     }

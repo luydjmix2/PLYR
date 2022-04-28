@@ -46,6 +46,6 @@ class User extends \TCG\Voyager\Models\User
     ];
 
     public function company(){
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'id', 'user_id');
     }
 }

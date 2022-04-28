@@ -23,7 +23,10 @@
     <div class="col-12">
         <div class="block block-rounded">
             <div class="block-content">
-                <h3>{{Auth::user()->name}}</h3>
+                @php
+                //dd($Company);
+                @endphp
+                <h3>{{$Company->company_name}}</h3>
                 <p class="text-center py-6">
 
                 </p>
