@@ -123,22 +123,22 @@
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
-                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>
+{{--                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>--}}
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 border-0" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary-dark rounded-top">
                         <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-                        <p class="mt-2 mb-0 text-white font-w500">{{Auth::user()->name}}</p>
-                        <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>
+{{--                        <p class="mt-2 mb-0 text-white font-w500">{{Auth::user()->name}}</p>--}}
+{{--                        <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>--}}
                     </div>
                     <div class="p-2">
-                        @if(Helper::validUserEditCompany(Auth::id()))
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">
-                                <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>
-                            </a>
-                            <div role="separator" class="dropdown-divider"></div>
-                        @endif
+{{--                        @if(Helper::validUserEditCompany(Auth::id()))--}}
+{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">--}}
+{{--                                <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>--}}
+{{--                            </a>--}}
+{{--                            <div role="separator" class="dropdown-divider"></div>--}}
+{{--                        @endif--}}
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -184,4 +184,3 @@
     <!-- END Header Loader -->
 </header>
 <!-- END Header -->
-© 2022 GitHub, Inc.

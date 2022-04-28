@@ -22,25 +22,25 @@
         <!-- Main Navigation -->
         <div id="main-navigation" class="d-none d-lg-block mt-2 mt-lg-0">
             <ul class="nav-main nav-main-horizontal nav-main-hover">
-                <li class="nav-main-item {{ Helper::setActiveRoute('dashboard') }}">
-                    <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="{{ route('dashboard') }}">
-                        <i class="nav-main-link-icon si si-compass"></i>
-                        <span class="nav-main-link-name">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-main-item {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}">
-                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                        <i class="nav-main-link-icon si si-puzzle"></i>
-                        <span class="nav-main-link-name">My Service</span>
-                    </a>
-                    <ul class="nav-main-submenu">
-                        <li class="nav-main-item">
-                            <a class="nav-main-link" href="{{ route('groups') }}">
-                                <span class="nav-main-link-name">{{ __('proyects.name')}}</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+{{--                <li class="nav-main-item {{ Helper::setActiveRoute('dashboard') }}">--}}
+{{--                    <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="{{ route('dashboard') }}">--}}
+{{--                        <i class="nav-main-link-icon si si-compass"></i>--}}
+{{--                        <span class="nav-main-link-name">Dashboard</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-main-item {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}">--}}
+{{--                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">--}}
+{{--                        <i class="nav-main-link-icon si si-puzzle"></i>--}}
+{{--                        <span class="nav-main-link-name">My Service</span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="nav-main-submenu">--}}
+{{--                        <li class="nav-main-item">--}}
+{{--                            <a class="nav-main-link" href="{{ route('groups') }}">--}}
+{{--                                <span class="nav-main-link-name">{{ __('proyects.name')}}</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="{{url()->previous()}}">
                         <i class="nav-main-link-icon si si-action-undo"></i>

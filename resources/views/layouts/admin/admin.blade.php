@@ -74,7 +74,7 @@ MAIN CONTENT LAYOUT
     <main id="main-container">
         @include('layouts.admin.menuTop')
         <div class="content">
-            {{ AlertMsj::createAlert(array('alert_user_id'=>Auth::id(),'alert_name'=>'prueba', 'alert_description'=>'prueba hola', 'alert_type'=>'1')) }}
+{{--            {{ AlertMsj::createAlert(array('alert_user_id'=>Auth::id(),'alert_name'=>'prueba', 'alert_description'=>'prueba hola', 'alert_type'=>'1')) }}--}}
             @yield('breadcrumbs')
             @yield('content')
         </div>
