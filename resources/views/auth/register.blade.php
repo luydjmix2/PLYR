@@ -40,7 +40,7 @@
                                     <div class="form-group regfg">
                                         <input id="name" type="text"
                                                class="form-control @error('name') is-invalid @enderror"
-                                               placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}"
+                                               placeholder="{{ __('Name') }}" name="name" value="{{ old('name') ? old('name') : "prueba" }}"
                                                required autocomplete="name" autofocus>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -51,7 +51,7 @@
                                     <div class="form-group regfg">
                                         <input id="company" type="text" placeholder="{{ __('Company Name') }}"
                                                class="form-control @error('company') is-invalid @enderror"
-                                               name="company" value="{{ old('company') }}" required
+                                               name="company" value="{{ old('company') ? old('company') : "prueba" }}" required
                                                autocomplete="company" autofocus>
                                         @error('company')
                                         <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                     <div class="form-group regfg">
                                         <input id="email" type="email" placeholder="{{ __('E-Mail Address') }}"
                                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                               value="{{ old('email') }}" required autocomplete="email">
+                                               value="{{ old('email') ? old('email') : "prueba@pr.pr" }}" required autocomplete="email">
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
