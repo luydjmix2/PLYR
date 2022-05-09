@@ -315,8 +315,8 @@
         "order": 9
     },
     {
-        "id": 22,
-        "data_type_id": 4,
+        "id": 35,
+        "data_type_id": 7,
         "field": "id",
         "type": "text",
         "display_name": "Id",
@@ -330,8 +330,8 @@
         "order": 1
     },
     {
-        "id": 23,
-        "data_type_id": 4,
+        "id": 36,
+        "data_type_id": 7,
         "field": "company_name",
         "type": "text",
         "display_name": "Company Name",
@@ -342,13 +342,13 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 3
+        "order": 2
     },
     {
-        "id": 24,
-        "data_type_id": 4,
+        "id": 37,
+        "data_type_id": 7,
         "field": "company_bio",
-        "type": "text",
+        "type": "text_area",
         "display_name": "Company Bio",
         "required": 0,
         "browse": 1,
@@ -357,11 +357,11 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 4
+        "order": 3
     },
     {
-        "id": 25,
-        "data_type_id": 4,
+        "id": 38,
+        "data_type_id": 7,
         "field": "company_address",
         "type": "text",
         "display_name": "Company Address",
@@ -372,13 +372,13 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 5
+        "order": 4
     },
     {
-        "id": 26,
-        "data_type_id": 4,
+        "id": 39,
+        "data_type_id": 7,
         "field": "company_phone",
-        "type": "text",
+        "type": "number",
         "display_name": "Company Phone",
         "required": 0,
         "browse": 1,
@@ -387,11 +387,11 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 6
+        "order": 5
     },
     {
-        "id": 27,
-        "data_type_id": 4,
+        "id": 40,
+        "data_type_id": 7,
         "field": "company_web",
         "type": "text",
         "display_name": "Company Web",
@@ -402,13 +402,13 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 7
+        "order": 6
     },
     {
-        "id": 28,
-        "data_type_id": 4,
+        "id": 41,
+        "data_type_id": 7,
         "field": "company_url_logo",
-        "type": "text",
+        "type": "image",
         "display_name": "Company Url Logo",
         "required": 0,
         "browse": 1,
@@ -417,11 +417,11 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 8
+        "order": 7
     },
     {
-        "id": 29,
-        "data_type_id": 4,
+        "id": 42,
+        "data_type_id": 7,
         "field": "company_code",
         "type": "text",
         "display_name": "Company Code",
@@ -432,11 +432,11 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 9
+        "order": 8
     },
     {
-        "id": 30,
-        "data_type_id": 4,
+        "id": 43,
+        "data_type_id": 7,
         "field": "company_nid",
         "type": "text",
         "display_name": "Company Nid",
@@ -447,13 +447,13 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 10
+        "order": 9
     },
     {
-        "id": 31,
-        "data_type_id": 4,
+        "id": 44,
+        "data_type_id": 7,
         "field": "company_politics",
-        "type": "text",
+        "type": "checkbox",
         "display_name": "Company Politics",
         "required": 0,
         "browse": 1,
@@ -461,12 +461,57 @@
         "edit": 1,
         "add": 1,
         "delete": 1,
+        "details": "{\"No\":\"No\",\"Yes\":\"Yes\",\"checked\":true}",
+        "order": 10
+    },
+    {
+        "id": 45,
+        "data_type_id": 7,
+        "field": "created_at",
+        "type": "timestamp",
+        "display_name": "Created At",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
         "details": "{}",
         "order": 11
     },
     {
-        "id": 32,
-        "data_type_id": 4,
+        "id": 46,
+        "data_type_id": 7,
+        "field": "updated_at",
+        "type": "timestamp",
+        "display_name": "Updated At",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 12
+    },
+    {
+        "id": 47,
+        "data_type_id": 9,
+        "field": "id",
+        "type": "text",
+        "display_name": "Id",
+        "required": 1,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 1
+    },
+    {
+        "id": 48,
+        "data_type_id": 9,
         "field": "user_id",
         "type": "text",
         "display_name": "User Id",
@@ -480,8 +525,23 @@
         "order": 2
     },
     {
-        "id": 33,
-        "data_type_id": 4,
+        "id": 49,
+        "data_type_id": 9,
+        "field": "company_id",
+        "type": "text",
+        "display_name": "Company Id",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 3
+    },
+    {
+        "id": 50,
+        "data_type_id": 9,
         "field": "created_at",
         "type": "timestamp",
         "display_name": "Created At",
@@ -492,11 +552,11 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 12
+        "order": 4
     },
     {
-        "id": 34,
-        "data_type_id": 4,
+        "id": 51,
+        "data_type_id": 9,
         "field": "updated_at",
         "type": "timestamp",
         "display_name": "Updated At",
@@ -507,6 +567,6 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 13
+        "order": 5
     }
 ]

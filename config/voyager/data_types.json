@@ -13,8 +13,8 @@
         "generate_permissions": 1,
         "server_side": 0,
         "details": null,
-        "created_at": "2022-04-01 12:51:08",
-        "updated_at": "2022-04-01 12:51:08"
+        "created_at": "2022-05-01 22:11:56",
+        "updated_at": "2022-05-01 22:11:56"
     },
     {
         "id": 2,
@@ -30,8 +30,8 @@
         "generate_permissions": 1,
         "server_side": 0,
         "details": null,
-        "created_at": "2022-04-01 12:51:08",
-        "updated_at": "2022-04-01 12:51:08"
+        "created_at": "2022-05-01 22:11:56",
+        "updated_at": "2022-05-01 22:11:56"
     },
     {
         "id": 3,
@@ -47,11 +47,11 @@
         "generate_permissions": 1,
         "server_side": 0,
         "details": null,
-        "created_at": "2022-04-01 12:51:08",
-        "updated_at": "2022-04-01 12:51:08"
+        "created_at": "2022-05-01 22:11:56",
+        "updated_at": "2022-05-01 22:11:56"
     },
     {
-        "id": 4,
+        "id": 7,
         "name": "companies",
         "slug": "companies",
         "display_name_singular": "Company",
@@ -63,8 +63,25 @@
         "description": null,
         "generate_permissions": 1,
         "server_side": 0,
+        "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}",
+        "created_at": "2022-05-02 00:30:06",
+        "updated_at": "2022-05-02 00:31:47"
+    },
+    {
+        "id": 9,
+        "name": "usercompany",
+        "slug": "usercompany",
+        "display_name_singular": "Usercompany",
+        "display_name_plural": "Usercompanies",
+        "icon": null,
+        "model_name": "App\\Models\\UserCompamy",
+        "policy_name": null,
+        "controller": null,
+        "description": null,
+        "generate_permissions": 1,
+        "server_side": 0,
         "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}",
-        "created_at": "2022-04-01 12:52:25",
-        "updated_at": "2022-04-01 12:52:25"
+        "created_at": "2022-05-02 00:33:54",
+        "updated_at": "2022-05-02 00:33:54"
     }
 ]

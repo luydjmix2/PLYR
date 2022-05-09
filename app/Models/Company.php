@@ -21,13 +21,7 @@ class Company extends Model
         'company_code',
         'company_nid',
         'company_politics',
-        'user_id',
     ];
-
-    public function documents()
-    {
-        return $this->belongsTo(Document::class);
-    }
 
     public function user()
     {
