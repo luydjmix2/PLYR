@@ -33,3 +33,24 @@ Route::group(['prefix' => 'manager-panel'], function () {
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+//Route::get('/config-db-refactori-dev-2021-03-29', function() {
+//    $exitCode = Artisan::call('migrate:fresh');
+//    $exitCode = Artisan::call('db:seed --class=UserSeeder');
+//    $exitCode = Artisan::call('db:seed --class=ProyectSeeder');
+//    $exitCode = Artisan::call('db:seed --class=CompanySeeder');
+//    $exitCode = Artisan::call('db:seed --class=DocumentSeeder');
+//    $exitCode = Artisan::call('db:seed --class=TeamSeeder');
+//    $exitCode = Artisan::call('db:seed --class=AlertSeeder');
+//    $exitCode = Artisan::call('db:seed --class=UseralertSeeder');
+//    return 'refresh db Ok';
+//});
+
+Route::get('/config-clean-cache-dev-2021-03-29', function() {
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('route:cache');
+    return 'refresh cache Ok';
+});
