@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Document;
-use App\Models\User;
+use App\Models\Register;
 
 class Company extends Model
 {
@@ -23,8 +23,8 @@ class Company extends Model
         'company_politics',
     ];
 
-    public function user()
+    public function register()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Register::class);
     }
 }

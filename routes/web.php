@@ -21,9 +21,14 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::group(['prefix' => 'manager-panel'], function () {
+    Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, "index"])->name("dashboard");
+    Route::get("/dashboard/register/add", [App\Http\Controllers\Admin\DashboardController::class, "createRegister"])->name("dashboard.register.add");
+    Route::get("/dashboard/document/add", [App\Http\Controllers\Admin\DashboardController::class, "createDocuments"])->name("dashboard.document.add");
 
-Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, "index"])->name("dashboard");
+    Route::get("/mygroups", [App\Http\Controllers\Admin\MyGroupController::class, "index"])->name("mygroups");
 
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

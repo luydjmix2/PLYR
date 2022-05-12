@@ -17,7 +17,8 @@ return [
       | you want to customize your views to better match your application.
       |
      */
-
-    'menu' => 'Company',
+    'name' => 'My Groups',
+    'opt01' => ['title'=>'Dashboard', 'icon'=>'compass'],
+    'opt02' => ['title'=>'My Groups', 'icon'=>'object-group'],
 ];
 ?>

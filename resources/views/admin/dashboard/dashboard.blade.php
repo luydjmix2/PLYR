@@ -24,20 +24,20 @@
         <div class="block block-rounded">
             <div class="block-content">
                 @php
-                //dd($Company);
+                    //dd($Company);
                 @endphp
-                <h3>{{$Company->company_name}}</h3>
+                <h3>{{$dataUserCompany->company->company_name}}</h3>
                 <div class="row">
                     <div class="col-6 text-left">
                         <h4 class="py-1 px-2">{{__('dashboard.t1')}}</h4>
                     </div>
                     <div class="col-6 text-right">
-                        <button type="button" class="btn rounded-pill btn-primary py-1">Add</button>
+                        <a href="{{route("dashboard.register.add")}}" class="btn rounded-pill btn-primary py-1">Add</a>
                     </div>
                 </div>
                 <table class="table table-bordered table-striped table-vcenter ">
                     <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Name</th>
                         <th class="d-none d-md-table-cell">Last Name</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Position</th>
@@ -47,31 +47,37 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="fw-semibold fs-sm">
-                            <a href="#">Helen</a>
-                        </td>
-                        <td class="fw-semibold fs-sm">
-                            Jacobs
-                        </td>
-                        <td class="fw-semibold fs-sm">
-                            Broker
-                        </td>
-                        <td class="d-none d-md-table-cell fs-sm">client1<em class="text-muted">@example.com</em></td>
-                        <td class="d-none d-sm-table-cell">
-                            123456789
-                        </td>
-                        <td class="text-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach($registers as $register)
+                        <tr>
+                            <td class="fw-semibold fs-sm">
+                                <a href="#">{{$register->first_name}}</a>
+                            </td>
+                            <td class="fw-semibold fs-sm">
+                                {{$register->last_name}}
+                            </td>
+                            <td class="fw-semibold fs-sm">
+                                {{$register->position}}
+                            </td>
+                            <td class="d-none d-md-table-cell fs-sm">
+                                {{$register->email}}
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                {{$register->phone}}
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
+                                        <i class="fa fa-fw fa-pencil-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
+                                        <i class="fa fa-fw fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <br>
@@ -80,12 +86,12 @@
                         <h4 class="py-1 px-2">{{__('dashboard.t2')}}</h4>
                     </div>
                     <div class="col-6 text-right">
-                        <button type="button" class="btn rounded-pill btn-primary py-1">Add</button>
+                        <a href="{{route("dashboard.document.add")}}" class="btn rounded-pill btn-primary py-1">Add</a>
                     </div>
                 </div>
                 <table class="table table-bordered table-striped table-vcenter">
                     <thead>
-                    <tr>
+                    <tr class="table-primary">
                         <th>Document to shared</th>
                         <th class="d-none d-md-table-cell">Date</th>
                         <th class="d-none d-sm-table-cell">Description</th>
@@ -105,10 +111,12 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
+                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                        data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
                                     <i class="fa fa-fw fa-download"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
+                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                        data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>

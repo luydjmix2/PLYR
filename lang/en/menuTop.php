@@ -18,6 +18,7 @@ return [
       |
      */
 
-    'menu' => 'Company',
+    'opt01' => ['title'=>'Dashboard', 'icon'=>'compass'],
+    'opt02' => ['title'=>'My Groups', 'icon'=>'object-group'],
 ];
 ?>

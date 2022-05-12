@@ -22,20 +22,30 @@
         <!-- Main Navigation -->
         <div id="main-navigation" class="d-none d-lg-block mt-2 mt-lg-0">
             <ul class="nav-main nav-main-horizontal nav-main-hover">
-{{--                <li class="nav-main-item {{ Helper::setActiveRoute('dashboard') }}">--}}
-{{--                    <a class="nav-main-link {{ request()->is('dashboard') ? ' active' : '' }}" href="{{ route('dashboard') }}">--}}
-{{--                        <i class="nav-main-link-icon si si-compass"></i>--}}
-{{--                        <span class="nav-main-link-name">Dashboard</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
-{{--                <li class="nav-main-item {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}">--}}
+{{--                {{ Helper::setActiveRoute('dashboard') }}--}}
+                <li class="nav-main-item ">
+                    {{--                    {{ request()->is('dashboard') ? ' active' : '' }}--}}
+                    <a class="nav-main-link" href="{{ route('dashboard') }}">
+                        <i class="nav-main-link-icon far fa-{{__("menuTop.opt01.icon")}}"></i>
+                        <span class="nav-main-link-name">{{__("menuTop.opt01.title")}}</span>
+                    </a>
+                </li>
+                <li class="nav-main-item ">
+                    {{--                    {{ request()->is('dashboard') ? ' active' : '' }}--}}
+                    <a class="nav-main-link" href="{{ route('mygroups') }}">
+                        <i class="nav-main-link-icon far fa-{{__("menuTop.opt02.icon")}}"></i>
+                        <span class="nav-main-link-name">{{__("menuTop.opt02.title")}}</span>
+                    </a>
+                </li>
+{{--                {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}--}}
+{{--                <li class="nav-main-item ">--}}
 {{--                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">--}}
 {{--                        <i class="nav-main-link-icon si si-puzzle"></i>--}}
 {{--                        <span class="nav-main-link-name">My Service</span>--}}
 {{--                    </a>--}}
 {{--                    <ul class="nav-main-submenu">--}}
 {{--                        <li class="nav-main-item">--}}
-{{--                            <a class="nav-main-link" href="{{ route('groups') }}">--}}
+{{--                            <a class="nav-main-link" href="">--}}
 {{--                                <span class="nav-main-link-name">{{ __('proyects.name')}}</span>--}}
 {{--                            </a>--}}
 {{--                        </li>--}}

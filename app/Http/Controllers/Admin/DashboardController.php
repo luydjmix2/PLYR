@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\UserCompamy;
+use App\Models\Register;
+use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -16,8 +19,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $Company = Company::where('id', Auth::id())->first();
-        return view("admin.dashboard", compact('Company'));
+        $user = Auth::user();
+        $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
+//        dd($dataUserCompany);
+        $registers = Register::where('company_id',$dataUserCompany->company_id)->get();
+//        dd($registers);
+        return view("admin.dashboard.dashboard", compact('dataUserCompany', 'registers'));
     }
 
     /**
@@ -25,9 +32,24 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createRegister()
     {
-        //
+        $user = Auth::user();
+        $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
+//        dd($dataUserCompany);
+        $registers = Register::where('company_id',$dataUserCompany->company_id)->get();
+
+        return view("admin.dashboard.addRegister", compact('dataUserCompany', 'registers'));
+    }
+
+    public function createDocuments()
+    {
+        $user = Auth::user();
+        $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
+//        dd($dataUserCompany);
+        $documents = Document::where('company_id',$dataUserCompany->company_id)->get();
+
+        return view("admin.dashboard.addDocument", compact('dataUserCompany', 'documents'));
     }
 
     /**
@@ -36,7 +58,12 @@ class DashboardController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeRegister(Request $request)
+    {
+        //
+    }
+
+    public function storeDocuments(Request $request)
     {
         //
     }
@@ -58,7 +85,12 @@ class DashboardController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editRegister($id)
+    {
+        //
+    }
+
+    public function editDocuments($id)
     {
         //
     }
@@ -70,7 +102,12 @@ class DashboardController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateRegister(Request $request, $id)
+    {
+        //
+    }
+
+    public function updateDocuments(Request $request, $id)
     {
         //
     }
@@ -81,7 +118,12 @@ class DashboardController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyRegister($id)
+    {
+        //
+    }
+
+    public function destroyDocuments($id)
     {
         //
     }

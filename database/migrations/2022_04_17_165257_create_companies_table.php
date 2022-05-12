@@ -24,8 +24,6 @@ return new class extends Migration
             $table->string('company_code')->unique()->nullable(); //codigo postal empresa
             $table->string('company_nid')->unique()->nullable(); //Rut o numero unico de identificacion empresa
             $table->string('company_politics')->nullable()->nullable(); //aceptacion politicas empresa
-            $table->unsignedBigInteger('user_id'); // usuario que crea la empresa
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
