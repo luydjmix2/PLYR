@@ -36,7 +36,7 @@
                                 <h3 class="block-title">Manage Groups</h3>
                                 <div class="block-options">
                                     <div class="block-options-item">
-                                        <button type="button" class="btn btn-primary btn-sm">Add New</button>
+                                        <a href="{{route("mygroups.add")}}" class="btn btn-primary btn-sm">Add New</a>
                                     </div>
                                 </div>
                             </div>
