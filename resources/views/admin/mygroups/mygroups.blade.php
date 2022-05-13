@@ -57,10 +57,12 @@
                                         <td class="text-left">POWER OF ATTORNEY</td>
                                         <td class="text-center">
                                             <div class="block-options">
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Edit Client">
+                                                <a href="{{route("mygroups.edit", '1')}}" class="btn btn-primary"
+                                                   data-toggle="tooltip" title="Edit Client">
                                                     Edit
-                                                </button>
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Remove Client">
+                                                </a>
+                                                <button type="button" class="btn btn-primary" data-toggle="tooltip"
+                                                        title="Remove Client">
                                                     Delete
                                                 </button>
                                             </div>
@@ -72,10 +74,12 @@
                                         <td class="text-left">POWER OF ATTORNEY</td>
                                         <td class="text-center">
                                             <div class="block-options">
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Edit Client">
+                                                <a href="{{route("mygroups.edit", '1')}}" class="btn btn-primary"
+                                                   data-toggle="tooltip" title="Edit Client">
                                                     Edit
-                                                </button>
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Remove Client">
+                                                </a>
+                                                <button type="button" class="btn btn-primary" data-toggle="tooltip"
+                                                        title="Remove Client">
                                                     Delete
                                                 </button>
                                             </div>

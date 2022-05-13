@@ -31,9 +31,6 @@
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
                         <div class="block">
-                            <div class="block-header">
-                                <h3 class="block-title">New Record</h3>
-                            </div>
                             <div class="content col-xl-10">
                                 <form action="" method="POST" enctype="multipart/form-data"
                                       onsubmit="return false;"></form>

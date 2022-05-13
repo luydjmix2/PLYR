@@ -19,7 +19,7 @@ return [
      */
 
     'name' => 'Dashboard',
-    "t1" => "Register shared",
-    "t2" => "Documents Shared",
+    "t1" => "Shared Records",
+    "t2" => "Shared Documents",
 ];
 ?>

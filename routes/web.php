@@ -22,13 +22,15 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'manager-panel'], function () {
+Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
+
     Route::get("/dashboard", [App\Http\Controllers\Admin\DashboardController::class, "index"])->name("dashboard");
     Route::get("/dashboard/register/add", [App\Http\Controllers\Admin\DashboardController::class, "createRegister"])->name("dashboard.register.add");
     Route::get("/dashboard/document/add", [App\Http\Controllers\Admin\DashboardController::class, "createDocuments"])->name("dashboard.document.add");
 
     Route::get("/mygroups", [App\Http\Controllers\Admin\MyGroupController::class, "index"])->name("mygroups");
     Route::get("/mygroups/add", [App\Http\Controllers\Admin\MyGroupController::class, "create"])->name("mygroups.add");
+    Route::get("/mygroups/edit/{id}", [App\Http\Controllers\Admin\MyGroupController::class, "edit"])->name("mygroups.edit");
 
 });
 
