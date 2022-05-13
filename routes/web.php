@@ -32,6 +32,11 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::get("/mygroups/add", [App\Http\Controllers\Admin\MyGroupController::class, "create"])->name("mygroups.add");
     Route::get("/mygroups/edit/{id}", [App\Http\Controllers\Admin\MyGroupController::class, "edit"])->name("mygroups.edit");
 
+    Route::get("/counterparties", [App\Http\Controllers\Admin\CounterPartiesController::class, "index"])->name("counterparties");
+    Route::get("/counterparties/create", [App\Http\Controllers\Admin\CounterPartiesController::class, "create"])->name("counterparties.create");
+
+    Route::get("/company", [App\Http\Controllers\Admin\CompanyController::class, "index"])->name("company");
+
 });
 
 Route::group(['prefix' => 'admin'], function () {

@@ -20,5 +20,6 @@ return [
 
     'opt01' => ['title'=>'Dashboard', 'icon'=>'compass'],
     'opt02' => ['title'=>'My Groups', 'icon'=>'object-group'],
+    'opt03' => ['title'=>'My Counterparties', 'icon'=>'handshake'],
 ];
 ?>

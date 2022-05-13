@@ -31,7 +31,6 @@
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
                         <div class="block">
-                            <h1>My Groups</h1>
                             <div class="block-header">
                                 <h3 class="block-title">Manage Groups</h3>
                                 <div class="block-options">

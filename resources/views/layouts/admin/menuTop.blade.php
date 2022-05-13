@@ -37,6 +37,13 @@
                         <span class="nav-main-link-name">{{__("menuTop.opt02.title")}}</span>
                     </a>
                 </li>
+                <li class="nav-main-item ">
+                    {{--                    {{ request()->is('dashboard') ? ' active' : '' }}--}}
+                    <a class="nav-main-link" href="{{ route('counterparties') }}">
+                        <i class="nav-main-link-icon far fa-{{__("menuTop.opt03.icon")}}"></i>
+                        <span class="nav-main-link-name">{{__("menuTop.opt03.title")}}</span>
+                    </a>
+                </li>
 {{--                {{ Helper::setOpenRoute('documents', 'users', 'proyects', 'groups') }}--}}
 {{--                <li class="nav-main-item ">--}}
 {{--                    <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">--}}

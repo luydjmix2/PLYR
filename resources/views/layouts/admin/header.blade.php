@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center">
             <!-- Logo -->
             <a class="font-w600 font-size-h5 tracking-wider text-dual mr-3" href="/dashboard">
-                <img src="/img/logoPLR.png" width="275px" />
+                <img src="/img/logoPLR.png" width="275px"/>
             </a>
             <!-- END Logo -->
         </div>
@@ -16,7 +16,8 @@
         <div class="d-flex align-items-center">
             <!-- Open Search Section (visible on smaller screens) -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-sm btn-dual d-md-none" data-toggle="layout" data-action="header_search_on">
+            <button type="button" class="btn btn-sm btn-dual d-md-none" data-toggle="layout"
+                    data-action="header_search_on">
                 <i class="fa fa-fw fa-search"></i>
             </button>
             <!-- END Open Search Section -->
@@ -35,11 +36,13 @@
             <!-- END Search Form -->
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block mr-2">
-                <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-fw fa-bell"></i>
                     <span class="text-primary">•</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg p-0 border-0 font-size-sm" aria-labelledby="page-header-notifications-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg p-0 border-0 font-size-sm"
+                     aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-2 bg-primary-dark text-center rounded-top">
                         <h5 class="dropdown-header text-uppercase text-white">Notifications</h5>
                     </div>
@@ -121,28 +124,42 @@
             <!-- END Notifications Dropdown -->
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ml-2">
-                <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar" style="width: 21px;">
-{{--                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>--}}
+                <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="Header Avatar"
+                         style="width: 21px;">
+                    {{--                    <span class="d-none d-sm-inline-block ml-1">{{Auth::user()->name}}</span>--}}
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                 </button>
-                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 border-0" aria-labelledby="page-header-user-dropdown">
+                <div class="dropdown-menu dropdown-menu-md dropdown-menu-right p-0 border-0"
+                     aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary-dark rounded-top">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-{{--                        <p class="mt-2 mb-0 text-white font-w500">{{Auth::user()->name}}</p>--}}
-{{--                        <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>--}}
+                        <img class="img-avatar img-avatar48 img-avatar-thumb"
+                             src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
+                        {{--                        <p class="mt-2 mb-0 text-white font-w500">{{Auth::user()->name}}</p>--}}
+                        {{--                        <p class="mb-0 text-white-50 font-size-sm">{{Auth::user()->company}}</p>--}}
                     </div>
                     <div class="p-2">
-{{--                        @if(Helper::validUserEditCompany(Auth::id()))--}}
-{{--                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company.index', Auth::user()->company)}}">--}}
-{{--                                <span class="font-size-sm font-w500">{{__('menuUser.company')}}</span>--}}
-{{--                            </a>--}}
-{{--                            <div role="separator" class="dropdown-divider"></div>--}}
-{{--                        @endif--}}
+                        {{--                        @if(Helper::validUserEditCompany(Auth::id()))--}}
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                           href="{{route('company')}}">
+                            <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt01.title')}}</span>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                           href="{{route('company')}}">
+                            <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt02.title')}}</span>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company')}}">
+                            <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt03.title')}}</span>
+                        </a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        {{--                        @endif--}}
 
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="dropdown-item d-flex align-items-center justify-content-between">Log Out</button>
+                            <button type="submit"
+                                    class="dropdown-item d-flex align-items-center justify-content-between">Log Out
+                            </button>
                         </form>
 
                     </div>
@@ -161,11 +178,13 @@
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-alt-danger" data-toggle="layout" data-action="header_search_off">
+                        <button type="button" class="btn btn-alt-danger" data-toggle="layout"
+                                data-action="header_search_off">
                             <i class="fa fa-fw fa-times-circle"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
+                    <input type="text" class="form-control" placeholder="Search or hit ESC.."
+                           id="page-header-search-input" name="page-header-search-input">
                 </div>
             </form>
         </div>

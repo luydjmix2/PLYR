@@ -17,9 +17,9 @@ return [
       | you want to customize your views to better match your application.
       |
      */
-    'name' => 'My Groups',
-    'opt01' => "New Group",
-    'opt02' => "Edit Group",
-    'opt0' => ['title'=>'My Groups', 'icon'=>'object-group'],
+
+    'opt01' => ['title'=>'Company', 'icon'=>'compass'],
+    'opt02' => ['title'=>'Profile', 'icon'=>'object-group'],
+    'opt03' => ['title'=>'Authorized', 'icon'=>'handshake'],
 ];
 ?>

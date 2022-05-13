@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MyGroupController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MyGroupController extends Controller
      */
     public function index()
     {
-        return view("admin.mygroups.mygroups");
+        return view("admin.company.company");
     }
 
     /**
@@ -24,7 +24,7 @@ class MyGroupController extends Controller
      */
     public function create()
     {
-        return view("admin.mygroups.addMyGroup");
+        //
     }
 
     /**
@@ -57,7 +57,7 @@ class MyGroupController extends Controller
      */
     public function edit($id)
     {
-        return view("admin.mygroups.editMyGroup");
+        //
     }
 
     /**
