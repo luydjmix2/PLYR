@@ -6,10 +6,13 @@ use App\Helpers\ProfileUser;
 
 class Helpers
 {
-    public function UserData()
+    public static function UserData()
     {
         $UserData = "hola";
-//        $UserData = ProfileUser::UserProfile();
+        $profileUser = new ProfileUser();
+
+        $UserData = $profileUser->UserProfile();
+//        dd($UserData->user->name);
         return $UserData;
     }
 

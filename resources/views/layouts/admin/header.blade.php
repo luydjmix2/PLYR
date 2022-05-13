@@ -145,11 +145,10 @@
                            href="{{route('company')}}">
                             <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt01.title')}}</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between"
-                           href="{{route('company')}}">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('profile')}}">
                             <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt02.title')}}</span>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('company')}}">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('authorized')}}">
                             <span class="font-size-sm font-w500">{{__('drownDownMenuTop.opt03.title')}}</span>
                         </a>
                         <div role="separator" class="dropdown-divider"></div>

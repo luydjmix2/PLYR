@@ -5,7 +5,7 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\Auth;
 
 //db
-use App\Models\Company;
+use App\Models\UserCompamy;
 
 class ProfileUser
 {
@@ -17,8 +17,11 @@ class ProfileUser
 
 
     public function UserProfile(){
-        return $this->User;
+        $userCompany = UserCompamy::where('user_id', $this->User['id'])->first();
+        return $userCompany;
     }
+
+
 
 
 }

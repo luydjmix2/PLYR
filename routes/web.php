@@ -37,6 +37,11 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
 
     Route::get("/company", [App\Http\Controllers\Admin\CompanyController::class, "index"])->name("company");
 
+    Route::get("/profile", [App\Http\Controllers\Admin\ProfileController::class, "index"])->name("profile");
+
+    Route::get("/authorized", [App\Http\Controllers\Admin\AuthorizedController::class, "index"])->name("authorized");
+
+
 });
 
 Route::group(['prefix' => 'admin'], function () {
