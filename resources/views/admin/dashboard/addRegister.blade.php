@@ -27,50 +27,79 @@
                     //dd($Company);
                 @endphp
                 <h3>{{__('register.t1')}}</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        @if(is_array(session('success')))
+                        <ul>
+                            @foreach (session('success') as $succes)
+                                <li>{{ $succes }}</li>
+                            @endforeach
+                        </ul>
+                        @else
+                            {{ session('success') }}
+                        @endif
+                    </div>
+                @endif
                 <div id="page-container" class="page-header-dark content main-content-boxed col-xl-8">
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
                         <div class="block">
                             <div class="content col-xl-10">
-                                <form action="" method="POST" enctype="multipart/form-data"
-                                      onsubmit="return false;"></form>
-                                <div class="form-group form-row">
-                                    <div class="col-6">
-                                        <label for="example-text-input">First Name</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME1" name="CAMBIAR-NAME1"
-                                               placeholder="First Name">
+                                <form action="{{route("dashboard.register.store")}}" method="POST"
+                                      enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group form-row">
+                                        <div class="col-6">
+                                            <label for="example-text-input">First Name</label>
+                                            <input type="text" class="form-control" id="First_Name"
+                                                   name="First_Name"
+                                                   placeholder="First Name">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="example-email-input">Last Name</label>
+                                            <input type="text" class="form-control" id="Last_Name"
+                                                   name="Last_Name"
+                                                   placeholder="Last Name">
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="example-email-input">Last Name</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME2" name="CAMBIAR-NAME2"
-                                               placeholder="Last Name">
+                                    <div class="form-group form-row">
+                                        <div class="col-6">
+                                            <label for="example-text-input">Position</label>
+                                            <input type="text" class="form-control" id="Position"
+                                                   name="Position"
+                                                   placeholder="Position">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="example-email-input">Email</label>
+                                            <input type="email" class="form-control" id="Email"
+                                                   name="Email"
+                                                   placeholder="Email">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group form-row">
-                                    <div class="col-6">
-                                        <label for="example-text-input">Position</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME3"
-                                               placeholder="Position">
+                                    <div class="form-group form-row">
+                                        <div class="col-6">
+                                            <label for="example-text-input">Email Bloomberg</label>
+                                            <input type="email" class="form-control" id="Email_Bloomberg"
+                                                   name="Email_Bloomberg"
+                                                   placeholder="Email">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="example-email-input">Mobile</label>
+                                            <input type="number" class="form-control" id="Mobile"
+                                                   name="Mobile"
+                                                   placeholder="Mobile">
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="example-email-input">Email</label>
-                                        <input type="email" class="form-control" id="CAMBIAR-NAME4" name="CAMBIAR-NAME4"
-                                               placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group form-row">
-                                    <div class="col-6">
-                                        <label for="example-text-input">Email</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME5"
-                                               placeholder="Email">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="example-email-input">Mobile</label>
-                                        <input type="email" class="form-control" id="CAMBIAR-NAME4" name="CAMBIAR-NAME6"
-                                               placeholder="Mobile">
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-sm col-2">Add</button>
+                                    <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
                                 </form>
                             </div>
                             <div class="block-content col-xl-10">

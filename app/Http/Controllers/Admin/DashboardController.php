@@ -9,6 +9,7 @@ use App\Models\UserCompamy;
 use App\Models\Register;
 use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Helpers;
 
 class DashboardController extends Controller
 {
@@ -60,7 +61,36 @@ class DashboardController extends Controller
      */
     public function storeRegister(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'First_Name' => 'required',
+            'Last_Name' => 'required',
+            'Position' => 'required',
+            'Email' => 'required|unique:registers|email|max:255',
+            'Email_Bloomberg' => 'required|email',
+            'Mobile' => 'required'
+        ]);
+
+        $helper = new Helpers();
+        $user = $helper->UserData();
+
+        if(!Register::where('email',$validated['Email'])->exists()){
+            Register::Create([
+                'first_name'=> $validated['First_Name'],
+                'last_name'=> $validated['Last_Name'],
+                'position'=> $validated['Position'],
+                'email'=> $validated['Email'],
+                'phone'=> $validated['Mobile'],
+                'movil'=> $validated['Mobile'],
+                'bloomberg_email'=> $validated['Email_Bloomberg'],
+                'firm'=> $validated['Email_Bloomberg'],
+                'company_id'=> $user->company->id,
+            ]);
+        }else{
+            return back()->withErrors('The record already exists check if another user has this same email');
+        }
+//        dd($request);
+        return redirect()->back()->with('success', 'successful record');
     }
 
     public function storeDocuments(Request $request)
