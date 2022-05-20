@@ -33,10 +33,10 @@
                         <div class="block">
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <input type="text" value="Group 1" class="col-6 form-control" id="CAMBIARNOMBRE1" name="CAMBIARNOMBRE1" placeholder="Group Name">
+                                    <input type="text" value="Group 1" class="col-6 form-control" id="group_name" name="group_name" placeholder="Group Name">
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="CAMBIARNOMBRE2" name="CAMBIARNOMBRE2" rows="4" placeholder="Description">Empresa Tecnologica pionera en Buscadores</textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description">Empresa Tecnologica pionera en Buscadores</textarea>
                                 </div>
                             </div>
                             <div class="block-content">
