@@ -10,6 +10,7 @@ use App\Models\Register;
 use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helpers;
+use mysql_xdevapi\Exception;
 
 class DashboardController extends Controller
 {
@@ -117,12 +118,20 @@ class DashboardController extends Controller
      */
     public function editRegister($id)
     {
-        //
+        $helper = new Helpers();
+        $user = $helper->UserData();
+//        dd($user);
+        $registers = Register::where('company_id',$user->company_id)->get();
+
+        $register = Register::where('id', $id)->first();
+//        dd($register);
+        return view("admin.dashboard.editRegister", compact("registers","register"));
     }
 
     public function editDocuments($id)
     {
-        //
+
+        return $id;
     }
 
     /**
@@ -134,7 +143,35 @@ class DashboardController extends Controller
      */
     public function updateRegister(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'First_Name' => 'required',
+            'Last_Name' => 'required',
+            'Position' => 'required',
+            'Email' => 'required|unique:registers,email,'.$id.'|email|max:255',
+            'Email_Bloomberg' => 'required|email',
+            'Mobile' => 'required'
+        ]);
+
+        $helper = new Helpers();
+        $user = $helper->UserData();
+
+        try {
+            $result =Register::where(['id'=>$id])->Update([
+                'first_name'=> $validated['First_Name'],
+                'last_name'=> $validated['Last_Name'],
+                'position'=> $validated['Position'],
+                'email'=> $validated['Email'],
+                'phone'=> $validated['Mobile'],
+                'movil'=> $validated['Mobile'],
+                'bloomberg_email'=> $validated['Email_Bloomberg'],
+                'firm'=> $validated['Email_Bloomberg'],
+                'company_id'=> $user->company->id,
+            ]);
+        }catch (Exception $error){
+            return back()->withErrors('An error occurred while storing the information, check your internet connection and try again');
+        }
+
+        return redirect()->back()->with('success', 'successful update');
     }
 
     public function updateDocuments(Request $request, $id)
@@ -150,7 +187,7 @@ class DashboardController extends Controller
      */
     public function destroyRegister($id)
     {
-        //
+        
     }
 
     public function destroyDocuments($id)

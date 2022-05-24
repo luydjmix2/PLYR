@@ -11,7 +11,7 @@
     <script src="{{ asset('js/plyr.js') }}"></script>
     <script src="{{ asset('js/pages/viewGroup.js') }}"></script>
 @section('title-page')
-    {{--    {{ trans($proyect_data[0]['proyect_name'])}}--}}
+    {{__('dashboard.name')}}
 @endsection
 @section('breadcrumbs')
     {{--    {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}--}}
@@ -66,10 +66,11 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                                            data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
+                                    <a href="{{route('dashboard.register.edit',$register->id)}}" target="_blank"
+                                       class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                       data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
                                             data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
                                         <i class="fa fa-fw fa-times"></i>

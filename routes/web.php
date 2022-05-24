@@ -29,6 +29,9 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::get("/dashboard/document/add", [App\Http\Controllers\Admin\DashboardController::class, "createDocuments"])->name("dashboard.document.add");
     Route::post("/dashboard/register/store", [App\Http\Controllers\Admin\DashboardController::class, "storeRegister"])->name("dashboard.register.store");
     Route::post("/dashboard/document/store", [App\Http\Controllers\Admin\DashboardController::class, "storeDocuments"])->name("dashboard.document.store");
+    Route::get("/dashboard/register/edit/{id}", [App\Http\Controllers\Admin\DashboardController::class, "editRegister"])->name("dashboard.register.edit");
+    Route::get("/dashboard/document/edit", [App\Http\Controllers\Admin\DashboardController::class, "editDocuments"])->name("dashboard.document.edit");
+    Route::post("/dashboard/register/update/{id}", [App\Http\Controllers\Admin\DashboardController::class, "updateRegister"])->name("dashboard.register.update");
 
     Route::get("/mygroups", [App\Http\Controllers\Admin\MyGroupController::class, "index"])->name("mygroups");
     Route::get("/mygroups/add", [App\Http\Controllers\Admin\MyGroupController::class, "create"])->name("mygroups.add");
