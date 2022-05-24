@@ -24,7 +24,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
 //        dd($dataUserCompany);
-        $registers = Register::where('company_id',$dataUserCompany->company_id)->get();
+        $registers = Register::where('company_id', $dataUserCompany->company_id)->get();
 //        dd($registers);
         return view("admin.dashboard.dashboard", compact('dataUserCompany', 'registers'));
     }
@@ -39,7 +39,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
 //        dd($dataUserCompany);
-        $registers = Register::where('company_id',$dataUserCompany->company_id)->get();
+        $registers = Register::where('company_id', $dataUserCompany->company_id)->get();
 
         return view("admin.dashboard.addRegister", compact('dataUserCompany', 'registers'));
     }
@@ -49,7 +49,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         $dataUserCompany = UserCompamy::where('user_id', $user->id)->first();
 //        dd($dataUserCompany);
-        $documents = Document::where('company_id',$dataUserCompany->company_id)->get();
+        $documents = Document::where('company_id', $dataUserCompany->company_id)->get();
 
         return view("admin.dashboard.addDocument", compact('dataUserCompany', 'documents'));
     }
@@ -75,19 +75,19 @@ class DashboardController extends Controller
         $helper = new Helpers();
         $user = $helper->UserData();
 
-        if(!Register::where('email',$validated['Email'])->exists()){
+        if (!Register::where('email', $validated['Email'])->exists()) {
             Register::Create([
-                'first_name'=> $validated['First_Name'],
-                'last_name'=> $validated['Last_Name'],
-                'position'=> $validated['Position'],
-                'email'=> $validated['Email'],
-                'phone'=> $validated['Mobile'],
-                'movil'=> $validated['Mobile'],
-                'bloomberg_email'=> $validated['Email_Bloomberg'],
-                'firm'=> $validated['Email_Bloomberg'],
-                'company_id'=> $user->company->id,
+                'first_name' => $validated['First_Name'],
+                'last_name' => $validated['Last_Name'],
+                'position' => $validated['Position'],
+                'email' => $validated['Email'],
+                'phone' => $validated['Mobile'],
+                'movil' => $validated['Mobile'],
+                'bloomberg_email' => $validated['Email_Bloomberg'],
+                'firm' => $validated['Email_Bloomberg'],
+                'company_id' => $user->company->id,
             ]);
-        }else{
+        } else {
             return back()->withErrors('The record already exists check if another user has this same email');
         }
 //        dd($request);
@@ -121,11 +121,11 @@ class DashboardController extends Controller
         $helper = new Helpers();
         $user = $helper->UserData();
 //        dd($user);
-        $registers = Register::where('company_id',$user->company_id)->get();
+        $registers = Register::where('company_id', $user->company_id)->get();
 
         $register = Register::where('id', $id)->first();
 //        dd($register);
-        return view("admin.dashboard.editRegister", compact("registers","register"));
+        return view("admin.dashboard.editRegister", compact("registers", "register"));
     }
 
     public function editDocuments($id)
@@ -147,7 +147,7 @@ class DashboardController extends Controller
             'First_Name' => 'required',
             'Last_Name' => 'required',
             'Position' => 'required',
-            'Email' => 'required|unique:registers,email,'.$id.'|email|max:255',
+            'Email' => 'required|unique:registers,email,' . $id . '|email|max:255',
             'Email_Bloomberg' => 'required|email',
             'Mobile' => 'required'
         ]);
@@ -156,18 +156,18 @@ class DashboardController extends Controller
         $user = $helper->UserData();
 
         try {
-            $result =Register::where(['id'=>$id])->Update([
-                'first_name'=> $validated['First_Name'],
-                'last_name'=> $validated['Last_Name'],
-                'position'=> $validated['Position'],
-                'email'=> $validated['Email'],
-                'phone'=> $validated['Mobile'],
-                'movil'=> $validated['Mobile'],
-                'bloomberg_email'=> $validated['Email_Bloomberg'],
-                'firm'=> $validated['Email_Bloomberg'],
-                'company_id'=> $user->company->id,
+            $result = Register::where(['id' => $id])->Update([
+                'first_name' => $validated['First_Name'],
+                'last_name' => $validated['Last_Name'],
+                'position' => $validated['Position'],
+                'email' => $validated['Email'],
+                'phone' => $validated['Mobile'],
+                'movil' => $validated['Mobile'],
+                'bloomberg_email' => $validated['Email_Bloomberg'],
+                'firm' => $validated['Email_Bloomberg'],
+                'company_id' => $user->company->id,
             ]);
-        }catch (Exception $error){
+        } catch (Exception $error) {
             return back()->withErrors('An error occurred while storing the information, check your internet connection and try again');
         }
 
@@ -187,7 +187,11 @@ class DashboardController extends Controller
      */
     public function destroyRegister($id)
     {
-        
+        $register = Register::find($id);
+        if($register->delete()){
+            return back()->withErrors('An error occurred while processing the information, check your internet connection and try again');
+        }
+        return redirect()->back()->with('success', 'successfully removed');
     }
 
     public function destroyDocuments($id)

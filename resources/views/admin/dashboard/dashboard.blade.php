@@ -71,10 +71,10 @@
                                        data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
                                         <i class="fa fa-fw fa-pencil-alt"></i>
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                                            data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
+                                    <a href="{{route('dashboard.register.delete',$register->id)}}" type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                            data-bs-toggle="tooltip" title="" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')">
                                         <i class="fa fa-fw fa-times"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
