@@ -78,6 +78,7 @@ Route::get('/config-clean-cache-dev-2021-03-29', function() {
 });
 
 Route::get('/composer-install-dev-2021-03-29', function() {
-    shell_exec('composer install');
+    $salida =  shell_exec('composer install');
+    echo "<pre>$salida</pre>";
     return 'composer install Ok';
 });
