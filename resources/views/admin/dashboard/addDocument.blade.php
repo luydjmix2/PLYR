@@ -33,16 +33,28 @@
                         <div class="block">
                             <div class="content col-xl-10">
                                 <h4>Upload Document</h4>
-                                <form class="dropzone dz-clickable" action="Plastillas Nuevas_03- Home sell side.html">
-                                    <div class="dz-default dz-message" style="border: .125rem dashed #e1e1e1;">
-                                        <button type="button" class="dz-button">Drop files here to upload</button>
-                                    </div>
-                                    <p class="text-center">Maximun weight per file is 20mb <br>
-                                        10 files at a time per upload <br>
-                                        Allowed Files: Ms Word, Excel, Power Point, adobe PDF and Images <br>
-                                        (.docx, .xlsx, .pptx, .pdf, .jpg, .jpeg, .png)
-                                    </p>
-                                </form>
+{{--                                <form class="dropzone dz-clickable" action="Plastillas Nuevas_03- Home sell side.html">--}}
+{{--                                    <div class="dz-default dz-message" style="border: .125rem dashed #e1e1e1;">--}}
+{{--                                        <button type="button" class="dz-button">Drop files here to upload</button>--}}
+{{--                                    </div>--}}
+{{--                                    <p class="text-center">Maximun weight per file is 20mb <br>--}}
+{{--                                        10 files at a time per upload <br>--}}
+{{--                                        Allowed Files: Ms Word, Excel, Power Point, adobe PDF and Images <br>--}}
+{{--                                        (.docx, .xlsx, .pptx, .pdf, .jpg, .jpeg, .png)--}}
+{{--                                    </p>--}}
+{{--                                </form>--}}
+                                {!! Form::open(['route'=> 'dashboard.document.store', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
+                                <div class="dz-message" style="height:200px;">
+                                    Drop your files here
+                                    <br>
+                                    Maximum weight per file is 20 MG
+                                    <br>
+                                    10 files at a time per upload
+                                    <br>
+                                    Only allows documents (word, excel and pdf) and images
+                                </div>
+                                <div class="dropzone-previews"></div>
+                                {!! Form::close() !!}
                             </div>
                             <div class="block-content col-xl-10">
                                 <table class="table table-bordered table-hover table-vcenter">

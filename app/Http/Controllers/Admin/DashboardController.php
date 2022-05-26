@@ -11,6 +11,7 @@ use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Helpers;
 use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -96,7 +97,32 @@ class DashboardController extends Controller
 
     public function storeDocuments(Request $request)
     {
-        //
+
+//        dd($request);
+        $files = $request->file('file');
+//        dd($files);
+        $helper = new Helpers();
+        $user = $helper->UserData();
+        $path = 'company/' . $user->company_id . '/';
+        foreach ($files as $file) {
+            $fileName = $file->getClientOriginalName();
+
+        }
+        $fileName = $helper->eliminarEspacios($helper->eliminarAcentos($fileName));
+//        dd($fileName);
+        Storage::disk('local')->put($fileName, $files);
+
+        $arrayFile = explode(".", $fileName);
+        $url_file = $path . $fileName;
+        Document::create([
+            'document_name_full' => $fileName,
+            'document_name' => $arrayFile[0],
+            'document_format' => $arrayFile[1],
+            'document_url' => $url_file,
+            'origin' => 'file-documents',
+            'company_id' => $user->company_id,
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -188,7 +214,7 @@ class DashboardController extends Controller
     public function destroyRegister($id)
     {
         $register = Register::find($id);
-        if($register->delete()){
+        if ($register->delete()) {
             return back()->withErrors('An error occurred while processing the information, check your internet connection and try again');
         }
         return redirect()->back()->with('success', 'successfully removed');
