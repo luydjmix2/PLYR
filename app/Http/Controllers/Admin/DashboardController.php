@@ -114,7 +114,6 @@ class DashboardController extends Controller
         $newPath = Storage::disk('public')->putFileAs($path, $files[0], $fileName);
         $newPath = str_replace('//','/',$newPath);
 //        dd($newPath);
-//        dd(!Document::where(['document_name_full' => $fileName,'company_id' => 2])->exists());
         if(!Document::where(['document_name_full' => $fileName,'company_id' => $user->company_id])->exists()) {
             Document::create([
                 'document_name_full' => $fileName,
