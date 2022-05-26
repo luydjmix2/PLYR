@@ -32,7 +32,7 @@
                         <h4 class="py-1 px-2">{{__('dashboard.t1')}}</h4>
                     </div>
                     <div class="col-6 text-right">
-                        <a href="{{route("dashboard.register.add")}}" class="btn rounded-pill btn-primary py-1">Add</a>
+                        <a href="{{route("dashboard.register.add")}}" class="btn btn-primary py-1">Add</a>
                     </div>
                 </div>
                 <table class="table table-bordered table-striped table-vcenter ">
@@ -87,7 +87,7 @@
                         <h4 class="py-1 px-2">{{__('dashboard.t2')}}</h4>
                     </div>
                     <div class="col-6 text-right">
-                        <a href="{{route("dashboard.document.add")}}" class="btn rounded-pill btn-primary py-1">Add</a>
+                        <a href="{{route("dashboard.document.add")}}" class="btn btn-primary py-1">Add</a>
                     </div>
                 </div>
                 <table class="table table-bordered table-striped table-vcenter">

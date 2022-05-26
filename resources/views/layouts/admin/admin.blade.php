@@ -27,7 +27,8 @@
 
     <!-- Stylesheets -->
 @yield('css_before')
-<!-- Fonts and OneUI framework -->
+
+    <!-- Fonts and OneUI framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" id="css-main" href="{{ asset('css/oneui.css') }}">
     <link rel="stylesheet" id="css-main" href="/css/custom.css">
@@ -188,6 +189,5 @@ MAIN CONTENT LAYOUT
 <script src="{{ asset('js/pages/be_pages_dashboard_v1.min.js') }}"></script>
 
 @yield('js_after')
-
 </body>
 </html>

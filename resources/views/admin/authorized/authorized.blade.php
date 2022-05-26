@@ -37,39 +37,39 @@
                                         <div class="form-group form-row">
                                             <div class="col-6">
                                                 <label for="example-email-input">First Name</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME2" name="CAMBIAR-NAME2" placeholder="First Name">
+                                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
                                             </div>
                                             <div class="col-6">
                                                 <label for="example-text-input">Last Name</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME3" placeholder="Last Name">
+                                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-6">
                                                 <label for="example-email-input">Email</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME2" name="CAMBIAR-NAME2" placeholder="Email">
+                                                <input type="text" class="form-control" id="email name="email" placeholder="Email">
                                             </div>
                                             <div class="col-6">
                                                 <label for="example-text-input">Phone Number</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME3" placeholder="Phone Number">
+                                                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">Company Name</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME4" name="CAMBIAR-NAME4" placeholder="Company Name">
+                                                <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company Name">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">Address</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME5" name="CAMBIAR-NAME5" placeholder="Address">
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Address">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">Zip Code</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME6" name="CAMBIAR-NAME6" placeholder="Zip Code">
+                                                <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code">
                                             </div>
                                         </div>
                                     </div>
@@ -77,29 +77,29 @@
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">City</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME5" name="CAMBIAR-NAME5" placeholder="City">
+                                                <input type="text" class="form-control" id="city" name="city" placeholder="City">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">State</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME9" name="CAMBIAR-NAME9" placeholder="State">
+                                                <input type="text" class="form-control" id="state" name="state" placeholder="State">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
                                                 <label for="example-text-input">Country</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME9" name="CAMBIAR-NAME9" placeholder="Country">
+                                                <input type="text" class="form-control" id="country" name="country" placeholder="Country">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-6">
                                                 <label for="example-email-input">Password</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME2" name="CAMBIAR-NAME2" placeholder="Password">
+                                                <input type="text" class="form-control" id="password" name="password" placeholder="Password">
                                             </div>
                                             <div class="col-6">
                                                 <label for="example-text-input">Repeat Pasword</label>
-                                                <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME3" placeholder="Confirm Paswword">
+                                                <input type="text" class="form-control" id="confirm_passsword" name="confirm_passsword" placeholder="Confirm Paswword">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">

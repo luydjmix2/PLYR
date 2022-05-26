@@ -36,17 +36,17 @@
                                 <div class="form-group form-row">
                                     <div class="col-12">
                                         <label for="example-text-input">Name</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME1" name="CAMBIAR-NAME1" placeholder="Name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="form-group form-row">
                                     <div class="col-6">
                                         <label for="example-email-input">Company</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME2" name="CAMBIAR-NAME2" placeholder="Company">
+                                        <input type="text" class="form-control" id="company" name="company" placeholder="Company">
                                     </div>
                                     <div class="col-6">
                                         <label for="example-text-input">Email</label>
-                                        <input type="text" class="form-control" id="CAMBIAR-NAME3" name="CAMBIAR-NAME3" placeholder="Email">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
