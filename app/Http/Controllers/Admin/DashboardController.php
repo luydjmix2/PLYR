@@ -103,26 +103,32 @@ class DashboardController extends Controller
 //        dd($files);
         $helper = new Helpers();
         $user = $helper->UserData();
+//        $user->company_id = "2";
         $path = 'company/' . $user->company_id . '/';
-        foreach ($files as $file) {
-            $fileName = $file->getClientOriginalName();
 
-        }
+        $fileName = $files[0]->getClientOriginalName();
         $fileName = $helper->eliminarEspacios($helper->eliminarAcentos($fileName));
 //        dd($fileName);
-        Storage::disk('local')->put($fileName, $files);
-
         $arrayFile = explode(".", $fileName);
         $url_file = $path . $fileName;
-        Document::create([
-            'document_name_full' => $fileName,
-            'document_name' => $arrayFile[0],
-            'document_format' => $arrayFile[1],
-            'document_url' => $url_file,
-            'origin' => 'file-documents',
-            'company_id' => $user->company_id,
-        ]);
-        return redirect()->back();
+        $newPath = Storage::disk('public')->putFileAs($path, $files[0], $fileName);
+        $newPath = str_replace('//','/',$newPath);
+//        dd($newPath);
+//        dd(!Document::where(['document_name_full' => $fileName,'company_id' => 2])->exists());
+        if(!Document::where(['document_name_full' => $fileName,'company_id' => $user->company_id])->exists()) {
+            Document::create([
+                'document_name_full' => $fileName,
+                'document_name' => $arrayFile[0],
+                'document_format' => $arrayFile[1],
+                'document_url' => $newPath,
+                'origin' => 'file-documents',
+                'company_id' => $user->company_id,
+            ]);
+        }else{
+            return response()->json(['code'=>401, 'message'=>"The file exist."]);
+        }
+
+        return response()->json(['code'=>200, 'message'=>"Ok upload."]);
     }
 
     /**
