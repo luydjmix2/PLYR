@@ -76,3 +76,8 @@ Route::get('/config-clean-cache-dev-2021-03-29', function() {
     $exitCode = Artisan::call('route:cache');
     return 'refresh cache Ok';
 });
+
+Route::get('/composer-install-dev-2021-03-29', function() {
+    shell_exec('composer install');
+    return 'composer install Ok';
+});
