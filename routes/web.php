@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/config-db-refactori-dev-2021-03-29', function() {
     $exitCode = Artisan::call('migrate');
+    $exitCode = Artisan::call('storage:link');
 //    $exitCode = Artisan::call('migrate:fresh');
 //    $exitCode = Artisan::call('db:seed --class=UserSeeder');
 //    $exitCode = Artisan::call('db:seed --class=ProyectSeeder');
