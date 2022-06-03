@@ -33,16 +33,16 @@
                         <div class="block">
                             <div class="content col-xl-10">
                                 <h4>Upload Document</h4>
-{{--                                <form class="dropzone dz-clickable" action="Plastillas Nuevas_03- Home sell side.html">--}}
-{{--                                    <div class="dz-default dz-message" style="border: .125rem dashed #e1e1e1;">--}}
-{{--                                        <button type="button" class="dz-button">Drop files here to upload</button>--}}
-{{--                                    </div>--}}
-{{--                                    <p class="text-center">Maximun weight per file is 20mb <br>--}}
-{{--                                        10 files at a time per upload <br>--}}
-{{--                                        Allowed Files: Ms Word, Excel, Power Point, adobe PDF and Images <br>--}}
-{{--                                        (.docx, .xlsx, .pptx, .pdf, .jpg, .jpeg, .png)--}}
-{{--                                    </p>--}}
-{{--                                </form>--}}
+                                {{--                                <form class="dropzone dz-clickable" action="Plastillas Nuevas_03- Home sell side.html">--}}
+                                {{--                                    <div class="dz-default dz-message" style="border: .125rem dashed #e1e1e1;">--}}
+                                {{--                                        <button type="button" class="dz-button">Drop files here to upload</button>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <p class="text-center">Maximun weight per file is 20mb <br>--}}
+                                {{--                                        10 files at a time per upload <br>--}}
+                                {{--                                        Allowed Files: Ms Word, Excel, Power Point, adobe PDF and Images <br>--}}
+                                {{--                                        (.docx, .xlsx, .pptx, .pdf, .jpg, .jpeg, .png)--}}
+                                {{--                                    </p>--}}
+                                {{--                                </form>--}}
                                 {!! Form::open(['route'=> 'dashboard.document.store', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
                                 <div class="dz-message" style="height:200px;">
                                     Drop your files here
@@ -66,17 +66,19 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="fw-semibold fs-sm">
-                                            <a href="#">Docuemnt01</a>
-                                        </td>
-                                        <td class="fw-semibold fs-sm">
-                                            28-04-22
-                                        </td>
-                                        <td class="fw-semibold fs-sm">
-                                            Is the principal Document
-                                        </td>
-                                    </tr>
+                                    @foreach($documents as $document)
+                                        <tr>
+                                            <td class="fw-semibold fs-sm">
+                                                <a href="#">{{$document->document_name}}</a>
+                                            </td>
+                                            <td class="fw-semibold fs-sm">
+                                                {{$document->created_at}}
+                                            </td>
+                                            <td class="fw-semibold fs-sm">
+                                                {{$document->document_name}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

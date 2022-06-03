@@ -30,11 +30,12 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::post("/dashboard/register/store", [App\Http\Controllers\Admin\DashboardController::class, "storeRegister"])->name("dashboard.register.store");
     Route::post("/dashboard/document/store", [App\Http\Controllers\Admin\DashboardController::class, "storeDocuments"])->name("dashboard.document.store");
     Route::get("/dashboard/register/edit/{id}", [App\Http\Controllers\Admin\DashboardController::class, "editRegister"])->name("dashboard.register.edit");
-    Route::get("/dashboard/document/edit", [App\Http\Controllers\Admin\DashboardController::class, "editDocuments"])->name("dashboard.document.edit");
+    Route::get("/dashboard/document/edit/{id}", [App\Http\Controllers\Admin\DashboardController::class, "editDocuments"])->name("dashboard.document.edit");
     Route::post("/dashboard/register/update/{id}", [App\Http\Controllers\Admin\DashboardController::class, "updateRegister"])->name("dashboard.register.update");
     Route::post("/dashboard/document/update/{id}", [App\Http\Controllers\Admin\DashboardController::class, "updateDocuments"])->name("dashboard.document.update");
     Route::get("/dashboard/register/delete/{id}", [App\Http\Controllers\Admin\DashboardController::class, "destroyRegister"])->name("dashboard.register.delete");
     Route::get("/dashboard/document/delete/{id}", [App\Http\Controllers\Admin\DashboardController::class, "destroyDocuments"])->name("dashboard.document.delete");
+    Route::get("/dashboard/document/download/{id}", [App\Http\Controllers\Admin\DashboardController::class, "downloadDocuments"])->name("dashboard.document.download");
 
     Route::get("/mygroups", [App\Http\Controllers\Admin\MyGroupController::class, "index"])->name("mygroups");
     Route::get("/mygroups/add", [App\Http\Controllers\Admin\MyGroupController::class, "create"])->name("mygroups.add");

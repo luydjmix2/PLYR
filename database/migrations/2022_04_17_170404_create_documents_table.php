@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('document_name'); //nombre de documento
             $table->string('document_format'); //formato de documento
             $table->string('document_url'); //url de documento
-            $table->string('origin'); //origen de documento si es la rais o es compartido
+            $table->string('origin')->nullable(); //origen de documento si es la rais o es compartido
+            $table->string('description')->nullable();//descripsion del documentos
             $table->unsignedBigInteger('company_id');//Empresa id
             $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();

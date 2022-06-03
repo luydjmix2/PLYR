@@ -50,7 +50,7 @@
                     @foreach($registers as $register)
                         <tr>
                             <td class="fw-semibold fs-sm">
-                                <a href="#">{{$register->first_name}}</a>
+                                <a href="{{route('dashboard.register.edit',$register->id)}}">{{$register->first_name}}</a>
                             </td>
                             <td class="fw-semibold fs-sm">
                                 {{$register->last_name}}
@@ -100,29 +100,36 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($documents as $document)
                     <tr>
                         <td class="fw-semibold fs-sm">
-                            <a href="#">Docuemnt01</a>
+                            <a href="{{route('dashboard.document.edit',$document->id)}}">{{$document->document_name}}</a>
                         </td>
                         <td class="fw-semibold fs-sm">
-                            28-04-22
+                            {{$document->created_at}}
                         </td>
                         <td class="fw-semibold fs-sm">
-                            Is the principal Document
+                            {{$document->description}}
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                <a href="{{route('dashboard.document.edit',$document->id)}}" target="_blank"
+                                   class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                   data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
+                                    <i class="fa fa-fw fa-pencil-alt"></i>
+                                </a>
+                                <a href="{{route('dashboard.document.download',$document->id)}}" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
                                         data-bs-toggle="tooltip" title="" data-bs-original-title="Edit">
                                     <i class="fa fa-fw fa-download"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                                        data-bs-toggle="tooltip" title="" data-bs-original-title="Delete">
+                                </a>
+                                <a href="{{route('dashboard.document.delete',$document->id)}}" class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                        data-bs-toggle="tooltip" title="" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')">
                                     <i class="fa fa-fw fa-times"></i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

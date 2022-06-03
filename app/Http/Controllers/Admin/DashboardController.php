@@ -27,7 +27,8 @@ class DashboardController extends Controller
 //        dd($dataUserCompany);
         $registers = Register::where('company_id', $dataUserCompany->company_id)->get();
 //        dd($registers);
-        return view("admin.dashboard.dashboard", compact('dataUserCompany', 'registers'));
+        $documents = Document::where('company_id', $dataUserCompany->company_id)->get();
+        return view("admin.dashboard.dashboard", compact('dataUserCompany', 'registers', 'documents'));
     }
 
     /**
@@ -112,9 +113,9 @@ class DashboardController extends Controller
         $arrayFile = explode(".", $fileName);
         $url_file = $path . $fileName;
         $newPath = Storage::disk('public')->putFileAs($path, $files[0], $fileName);
-        $newPath = str_replace('//','/',$newPath);
+        $newPath = str_replace('//', '/', $newPath);
 //        dd($newPath);
-        if(!Document::where(['document_name_full' => $fileName,'company_id' => $user->company_id])->exists()) {
+        if (!Document::where(['document_name_full' => $fileName, 'company_id' => $user->company_id])->exists()) {
             Document::create([
                 'document_name_full' => $fileName,
                 'document_name' => $arrayFile[0],
@@ -123,11 +124,11 @@ class DashboardController extends Controller
                 'origin' => 'file-documents',
                 'company_id' => $user->company_id,
             ]);
-        }else{
-            return response()->json(['code'=>401, 'message'=>"The file exist."]);
+        } else {
+            return response()->json(['code' => 401, 'message' => "The file exist."]);
         }
 
-        return response()->json(['code'=>200, 'message'=>"Ok upload."]);
+        return response()->json(['code' => 200, 'message' => "Ok upload."]);
     }
 
     /**
@@ -161,8 +162,13 @@ class DashboardController extends Controller
 
     public function editDocuments($id)
     {
+        $helper = new Helpers();
+        $user = $helper->UserData();
+//        dd($user);
+        $documents = Document::where('company_id', $user->company_id)->get();
+        $document = Document::where('id', $id)->first();
 
-        return $id;
+        return view('admin.dashboard.editDocument', compact('document', 'documents'));
     }
 
     /**
@@ -207,7 +213,20 @@ class DashboardController extends Controller
 
     public function updateDocuments(Request $request, $id)
     {
-        //
+//        dd($id, $request->description);
+        Document::where('id', $id)->update([
+            "description" => $request->description
+        ]);
+        return redirect()->route('dashboard');
+    }
+
+    public function downloadDocuments($id)
+    {
+        $document = Document::where('id', $id)->first();
+        $url = Storage::disk('public')->download($document->document_url);
+//        dd($url);
+
+        return response()->download('storage/' . $document->document_url);
     }
 
     /**
@@ -227,6 +246,12 @@ class DashboardController extends Controller
 
     public function destroyDocuments($id)
     {
-        //
+        $document = Document::find($id);
+        Storage::disk('public')->delete($document->document_url);
+        if ($document->delete()) {
+            return back()->withErrors('An error occurred while processing the information, check your internet connection and try again');
+        }
+
+        return redirect()->back()->with('success', 'successfully removed');
     }
 }
