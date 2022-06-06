@@ -50,40 +50,25 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-left">Group 1</td>
-                                        <td class="text-center">25-05-2050</td>
-                                        <td class="text-left">POWER OF ATTORNEY</td>
-                                        <td class="text-center">
-                                            <div class="block-options">
-                                                <a href="{{route("mygroups.edit", '1')}}" class="btn btn-primary"
-                                                   data-toggle="tooltip" title="Edit Client">
-                                                    Edit
-                                                </a>
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                                        title="Remove Client">
-                                                    Delete
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-left">Group 2</td>
-                                        <td class="text-center">25-05-2055</td>
-                                        <td class="text-left">POWER OF ATTORNEY</td>
-                                        <td class="text-center">
-                                            <div class="block-options">
-                                                <a href="{{route("mygroups.edit", '1')}}" class="btn btn-primary"
-                                                   data-toggle="tooltip" title="Edit Client">
-                                                    Edit
-                                                </a>
-                                                <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                                        title="Remove Client">
-                                                    Delete
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @foreach($groups as $group)
+                                        <tr>
+                                            <td class="text-left">{{$group->name}}</td>
+                                            <td class="text-center">{{$group->created_at}}</td>
+                                            <td class="text-left">{{$group->description}}</td>
+                                            <td class="text-center">
+                                                <div class="block-options">
+                                                    <a href="{{route("mygroups.edit", $group->id)}}" class="btn btn-primary"
+                                                       data-toggle="tooltip" title="Edit Client">
+                                                        Edit
+                                                    </a>
+                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip"
+                                                            title="Remove Client">
+                                                        Delete
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

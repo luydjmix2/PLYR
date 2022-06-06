@@ -26,7 +26,7 @@
                 @php
                     //dd($Company);
                 @endphp
-                <h3>{{__('register.t1')}}</h3>
+                <h3>{{__('document.t2')}}</h3>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

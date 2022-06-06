@@ -26,7 +26,16 @@
                 @php
                     //dd($Company);
                 @endphp
-                <h3>{{__('register.t1')}}</h3>
+                <h3>{{__('document.t2')}}</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div id="page-container" class="page-header-dark content main-content-boxed col-xl-8">
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
@@ -75,7 +84,7 @@
                                                 {{$document->created_at}}
                                             </td>
                                             <td class="fw-semibold fs-sm">
-                                                {{$document->document_name}}
+                                                {{$document->description}}
                                             </td>
                                         </tr>
                                     @endforeach

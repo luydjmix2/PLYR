@@ -30,13 +30,17 @@
                 <div id="page-container" class="page-header-dark content main-content-boxed col-xl-8">
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
+                        {{Form::open(['route' => ['mygroups.update', $gRecors["group"]->id], 'method' => 'post'])}}
                         <div class="block">
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <input type="text" value="Group 1" class="col-6 form-control" id="group_name" name="group_name" placeholder="Group Name">
+                                    <input type="text" value="{{$gRecors["group"]->name}}"
+                                           class="col-6 form-control" id="group_name" name="group_name"
+                                           placeholder="Group Name">
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description">Empresa Tecnologica pionera en Buscadores</textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="4"
+                                              placeholder="Description">{{$gRecors["group"]->description}}</textarea>
                                 </div>
                             </div>
                             <div class="block-content">
@@ -53,45 +57,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
-                                    </tr>
+{{--                                    $gRecors["register"]--}}
+                                    @foreach($registers as $key => $valReg)
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
+
+                                                    <input type="checkbox" class="custom-control-input" id="checked-register-group-edit-{{$valReg->id}}" name="checked-register-group-edit[{{$valReg->id}}]" value="{{$valReg->id}}" {{$valReg->check? 'checked=""': '' }}>
+                                                    <label class="custom-control-label" for="checked-register-group-edit-{{$valReg->id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td class="text-left">{{$valReg->first_name}}</td>
+                                            <td class="text-left">{{$valReg->last_name}}</td>
+                                            <td class="text-left">{{$valReg->position}}</td>
+                                            <td class="text-left">{{$valReg->email}}</td>
+                                            <td class="text-left">{{$valReg->movil}}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -106,28 +88,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Document 1</td>
-                                        <td class="text-left">25-25-2502</td>
-                                        <td class="text-center">POWER OF ATTORNEY</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Document 2</td>
-                                        <td class="text-left">30-30-3205</td>
-                                        <td class="text-center">POWER OF ATTORNEY</td>
-                                    </tr>
+                                    @foreach($documents as $valDoc)
+                                        <tr>
+                                            <td class="text-center">
+                                                <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
+
+                                                    <input type="checkbox" class="custom-control-input" id="checked-document-group-edit-{{$valDoc->id}}" name="checked-document-group-edit[{{$valDoc->id}}]" value="{{$valDoc->id}}" {{$valDoc->check ? 'checked=""': '' }}>
+                                                    <label class="custom-control-label" for="checked-document-group-edit-{{$valDoc->id}}"></label>
+                                                </div>
+                                            </td>
+                                            <td class="text-center">{{$valDoc->document_name}}</td>
+                                            <td class="text-left">{{$valDoc->created_at}}</td>
+                                            <td class="text-center">{{$valDoc->description}}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                                 <div class="block-options-item">
@@ -135,6 +109,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{Form::close()}}
                         <!-- END Bordered Table -->
                     </div>
                 </div>

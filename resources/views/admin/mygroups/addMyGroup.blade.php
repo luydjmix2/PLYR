@@ -11,7 +11,7 @@
     <script src="{{ asset('js/plyr.js') }}"></script>
     <script src="{{ asset('js/pages/viewGroup.js') }}"></script>
 @section('title-page')
-    {{--    {{ trans($proyect_data[0]['proyect_name'])}}--}}
+    {{__('myGroups.opt01')}}
 @endsection
 @section('breadcrumbs')
     {{--    {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}--}}
@@ -27,13 +27,36 @@
                     //dd($Company);
                 @endphp
                 <h3>{{__('myGroups.opt01')}}</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        @if(is_array(session('success')))
+                            <ul>
+                                @foreach (session('success') as $succes)
+                                    <li>{{ $succes }}</li>
+                                @endforeach
+                            </ul>
+                        @else
+                            {{ session('success') }}
+                        @endif
+                    </div>
+                @endif
                 <div id="page-container" class="page-header-dark content main-content-boxed col-xl-8">
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
+                        {{Form::open(['route' => 'mygroups.store', 'method' => 'post'])}}
                         <div class="block">
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <input type="text" class="col-6 form-control" id="group_name" name="group_name" placeholder="Group Name">
+                                    <input type="text"  class="col-6 form-control" id="group_name" name="group_name" placeholder="Group Name">
                                 </div>
                                 <div class="form-group">
                                     <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description"></textarea>
@@ -53,45 +76,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($registers as $register)
                                     <tr>
                                         <td class="text-center">
                                             <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
+                                                <input type="checkbox" class="custom-control-input" id="check-register-group-{{$register->id}}" name="check-register-group[{{$register->id}}]" value="{{$register->id}}" checked="">
+                                                <label class="custom-control-label" for="check-register-group-{{$register->id}}"></label>
                                             </div>
                                         </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
+                                        <td class="text-left">{{$register->first_name}}</td>
+                                        <td class="text-left">{{$register->last_name}}</td>
+                                        <td class="text-left">{{$register->position}}</td>
+                                        <td class="text-left">{{$register->email}}</td>
+                                        <td class="text-left">{{$register->movil}}</td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-left">Carlos</td>
-                                        <td class="text-left">Dalton</td>
-                                        <td class="text-left">Gerente de Ventas</td>
-                                        <td class="text-left">carlos@demo.com</td>
-                                        <td class="text-left">758 947 2563</td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -106,35 +105,27 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($documents as $document)
                                     <tr>
                                         <td class="text-center">
                                             <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
+                                                <input type="checkbox" class="custom-control-input" id="check-document-group-{{$document->id}}" name="check-document-group[{{$document->id}}]" value="{{$document->id}}" checked="">
+                                                <label class="custom-control-label" for="check-document-group-{{$document->id}}"></label>
                                             </div>
                                         </td>
-                                        <td class="text-center">Document 1</td>
-                                        <td class="text-left">25-25-2502</td>
-                                        <td class="text-center">POWER OF ATTORNEY</td>
+                                        <td class="text-center">{{$document->document_name}}</td>
+                                        <td class="text-left">{{$document->created_at}}</td>
+                                        <td class="text-center">{{$document->description}}</td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <div class="custom-control custom-checkbox custom-checkbox-rounded-circle custom-control-dark mb-1">
-                                                <input type="checkbox" class="custom-control-input" id="example-cb-custom-circle1" name="example-cb-custom-circle1" checked="">
-                                                <label class="custom-control-label" for="example-cb-custom-circle1"></label>
-                                            </div>
-                                        </td>
-                                        <td class="text-center">Document 2</td>
-                                        <td class="text-left">30-30-3205</td>
-                                        <td class="text-center">POWER OF ATTORNEY</td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                                 <div class="block-options-item">
-                                    <button type="button" class="btn btn-primary btn-sm col-2">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
                                 </div>
                             </div>
                         </div>
+                        {{Form::close()}}
                         <!-- END Bordered Table -->
                     </div>
                 </div>

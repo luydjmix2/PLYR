@@ -13,6 +13,7 @@ return [
     */
 
     'name' => 'Document',
-    "t1" => "New record",
-    "t2" => "Documents Shared",
+    "t1" => "New document",
+    "t2" => "Add Document",
+    "t3" => "Documents Shared",
 ];
