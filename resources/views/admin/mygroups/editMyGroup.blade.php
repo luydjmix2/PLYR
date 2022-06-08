@@ -105,7 +105,7 @@
                                     </tbody>
                                 </table>
                                 <div class="block-options-item">
-                                    <button type="button" class="btn btn-primary btn-sm col-2">Save</button>
+                                    <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
                                 </div>
                             </div>
                         </div>
