@@ -151,23 +151,27 @@ class MyGroupController extends Controller
             }
         }
         $registers = [];
-        foreach ($regis as $valuReg) {
-            $collection = collect($gRecors["register"]);
+        if (!empty($gRecors["register"]) && isset($gRecors["register"])) {
+            foreach ($regis as $valuReg) {
+                $collection = collect($gRecors["register"]);
 //            dd($collection->contains('id', $valuReg->id), $valuReg->id, $gRecors["register"]);
-            $active = 0;
-            if ($collection->contains('id', $valuReg->id))
-                $active = 1;
-            $registers[] = $valuReg->setAttribute('check', $active);
+                $active = 0;
+                if ($collection->contains('id', $valuReg->id))
+                    $active = 1;
+                $registers[] = $valuReg->setAttribute('check', $active);
+            }
         }
 //        dd($registers);
 
         $documents = [];
-        foreach ($docum as $valuDoc) {
-            $collection = collect($gRecors["document"]);
-            $active = 0;
-            if ($collection->contains('id', $valuDoc->id))
-                $active = 1;
-            $documents[] = $valuDoc->setAttribute('check', $active);
+        if (!empty($gRecors["document"]) && isset($gRecors["document"])) {
+            foreach ($docum as $valuDoc) {
+                $collection = collect($gRecors["document"]);
+                $active = 0;
+                if ($collection->contains('id', $valuDoc->id))
+                    $active = 1;
+                $documents[] = $valuDoc->setAttribute('check', $active);
+            }
         }
 //        dd($documents);
 //        dd($gRecors);
