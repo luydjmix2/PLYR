@@ -61,10 +61,10 @@
                                                        data-toggle="tooltip" title="Edit Client">
                                                         Edit
                                                     </a>
-                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                                            title="Remove Client">
+                                                    <a href="{{route("mygroups.delete", $group->id)}}" class="btn btn-primary" data-toggle="tooltip"
+                                                            title="Remove Group" onclick="return confirm('Are you sure?')">
                                                         Delete
-                                                    </button>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>

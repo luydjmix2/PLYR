@@ -131,46 +131,83 @@ class MyGroupController extends Controller
         $regis = Register::where('company_id', $user->company->id)->get();
 //        dd($regis);
         $docum = Document::where('company_id', $user->company->id)->get();
-        $grouRecors = Groupbyregisteranddocument::where("group_id", $id)->get();
+
+        $countRecorsG = Groupbyregisteranddocument::where("group_id", $id)->count();
+//        dd($countRecorsG);
+        if ($countRecorsG > 0) {
+            $grouRecors = Groupbyregisteranddocument::where("group_id", $id)->get();
 //        dd($grouRecors[0]->register->id);
-        $gRecors = [];
-        foreach ($grouRecors as $valuesGR) {
+            $gRecors = [];
+            foreach ($grouRecors as $valuesGR) {
 
-            if ($valuesGR->group_id) {
-//                dd($valuesGR);
-                $gRecors["group"] = $valuesGR->group;
-            }
+                if ($valuesGR->group_id) {
+                    dd($valuesGR);
+                    $gRecors["group"] = $valuesGR->group;
+                }
 
-            if ($valuesGR->register_id) {
+                if ($valuesGR->register_id) {
 //                dd($valuesGR);
-                $gRecors["register"][] = $valuesGR->register;
-            }
-            if ($valuesGR->document_id) {
+                    $gRecors["register"][] = $valuesGR->register;
+                }
+                if ($valuesGR->document_id) {
 //                dd($valuesGR);
-                $gRecors["document"][] = $valuesGR->document;
+                    $gRecors["document"][] = $valuesGR->document;
+                }
             }
-        }
-        $registers = [];
-        if (!empty($gRecors["register"]) && isset($gRecors["register"])) {
-            foreach ($regis as $valuReg) {
-                $collection = collect($gRecors["register"]);
+            $registers = [];
+            if (!empty($gRecors["register"]) && isset($gRecors["register"])) {
+                foreach ($regis as $valuReg) {
+                    $collection = collect($gRecors["register"]);
 //            dd($collection->contains('id', $valuReg->id), $valuReg->id, $gRecors["register"]);
-                $active = 0;
-                if ($collection->contains('id', $valuReg->id))
-                    $active = 1;
-                $registers[] = $valuReg->setAttribute('check', $active);
+                    $active = 0;
+                    if ($collection->contains('id', $valuReg->id))
+                        $active = 1;
+                    $registers[] = $valuReg->setAttribute('check', $active);
+                }
+            } else {
+                foreach ($regis as $valuReg) {
+                    $active = 0;
+                    $registers[] = $valuReg->setAttribute('check', $active);
+                }
             }
-        }
 //        dd($registers);
 
-        $documents = [];
-        if (!empty($gRecors["document"]) && isset($gRecors["document"])) {
-            foreach ($docum as $valuDoc) {
-                $collection = collect($gRecors["document"]);
-                $active = 0;
-                if ($collection->contains('id', $valuDoc->id))
-                    $active = 1;
-                $documents[] = $valuDoc->setAttribute('check', $active);
+            $documents = [];
+            if (!empty($gRecors["document"]) && isset($gRecors["document"])) {
+                foreach ($docum as $valuDoc) {
+                    $collection = collect($gRecors["document"]);
+                    $active = 0;
+                    if ($collection->contains('id', $valuDoc->id))
+                        $active = 1;
+                    $documents[] = $valuDoc->setAttribute('check', $active);
+                }
+            } else {
+                foreach ($docum as $valuDoc) {
+                    $active = 0;
+                    $documents[] = $valuDoc->setAttribute('check', $active);
+                }
+            }
+        } else {
+            $gRecors["group"] = Group::where("id", $id)->first();
+            $gRecors["register"] = $regis;
+            $gRecors["document"] = $docum;
+
+//            dd($regis->count());
+            $registers = [];
+            if ($regis->count() > 0) {
+                foreach ($regis as $valuReg) {
+                    $active = 0;
+                    $registers[] = $valuReg->setAttribute('check', $active);
+                }
+            }
+//        dd($registers);
+
+            $documents = [];
+            if ($docum->count() > 0) {
+                foreach ($docum as $valuDoc) {
+                    $active = 0;
+                    $documents[] = $valuDoc->setAttribute('check', $active);
+                }
             }
         }
 //        dd($documents);
@@ -187,7 +224,56 @@ class MyGroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return $request;
+        $validated = $request->validate([
+            'group_name' => 'required',
+            'description' => 'required',
+        ]);
+        $helper = new Helpers();
+        $user = $helper->UserData();
+//        dd($user);
+
+        $group = Group::where('id', $id)->update([
+            'name' => $validated['group_name'],
+            'description' => $validated['description'],
+            'usercompany_id' => $user->company->id,
+            'status' => '1'
+        ]);
+        Groupbyregisteranddocument::where('group_id', $id)->delete();
+//        dd(isset($request->{"checked-register-group-edit"}), isset($request->{"checked-document-group-edit"}));
+        if (isset($request->{"checked-register-group-edit"}) || isset($request->{"checked-document-group-edit"})) {
+
+            if (!empty($request->{"checked-register-group-edit"})) {
+//                dd($request->{"checked-register-group-edit"});
+                foreach ($request->{"checked-register-group-edit"} as $valReg) {
+                    $existReg = Groupbyregisteranddocument::where('register_id', $valReg)->where('group_id', $id)->count();
+                    if ($existReg === 0) {
+                        Groupbyregisteranddocument::create([
+                            "group_id" => $id,
+                            "register_id" => $valReg,
+                            "status" => "1"
+                        ]);
+                    }
+                }
+            }
+
+            if (!empty($request->{"checked-document-group-edit"})) {
+//                dd($request->{"checked-document-group-edit"});
+                foreach ($request->{"checked-document-group-edit"} as $valDoc) {
+//                    dd($valDoc);
+                    $existReg = Groupbyregisteranddocument::where('document_id', $valDoc)->where('group_id', $id)->count();
+                    if ($existReg === 0) {
+                        Groupbyregisteranddocument::create([
+                            "group_id" => $id,
+                            "document_id" => $valDoc,
+                            "status" => "1"
+                        ]);
+                    }
+                }
+            }
+        }
+//        dd($request);
+        return redirect()->route("mygroups.edit", $id)->with('success', 'successful record');
+//        return $request;
     }
 
     /**
@@ -198,6 +284,14 @@ class MyGroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $countGRD = Groupbyregisteranddocument::where('group_id', $id)->count();
+        if ($countGRD > 0) {
+            Groupbyregisteranddocument::where('group_id', $id)->delete();
+        }
+        $countG = Group::where("id", $id)->count();
+        if ($countG > 0) {
+            Group::where("id", $id)->delete();
+        }
+        return redirect()->route("mygroups");
     }
 }

@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::post("/mygroups/store", [App\Http\Controllers\Admin\MyGroupController::class, "store"])->name("mygroups.store");
     Route::get("/mygroups/edit/{id}", [App\Http\Controllers\Admin\MyGroupController::class, "edit"])->name("mygroups.edit");
     Route::post("/mygroups/update/{id}", [App\Http\Controllers\Admin\MyGroupController::class, "update"])->name("mygroups.update");
+    Route::get("/mygroups/delete/{id}", [App\Http\Controllers\Admin\MyGroupController::class, "destroy"])->name("mygroups.delete");
 
     Route::get("/counterparties", [App\Http\Controllers\Admin\CounterPartiesController::class, "index"])->name("counterparties");
     Route::get("/counterparties/create", [App\Http\Controllers\Admin\CounterPartiesController::class, "create"])->name("counterparties.create");
