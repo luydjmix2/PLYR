@@ -141,7 +141,7 @@ class MyGroupController extends Controller
             foreach ($grouRecors as $valuesGR) {
 
                 if ($valuesGR->group_id) {
-                    dd($valuesGR);
+//                    dd($valuesGR);
                     $gRecors["group"] = $valuesGR->group;
                 }
 
