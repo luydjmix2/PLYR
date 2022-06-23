@@ -7,23 +7,30 @@
 Dropzone.autoDiscover = false;
 jQuery(document).ready(function ($) {
 //       alert($('#my-dropzone').attr("action"));
-    var urlform = $('#my-dropzone').attr("action");
+    var urlformTwo = $('#upload-form-logo-company').data("action");
+    console.log(urlformTwo);
+    var tok = $('[name="_token"]').val();
+    console.log(tok);
+    var paramsSet = {'_token':tok};
 
-    let myDropzone = new Dropzone("#my-dropzone", {
-        url: urlform,
-        uploadMultiple: true,
+    let myDropzone = new Dropzone("#upload-form-logo-company", {
+        method: 'POST',
+        url: urlformTwo,
+        uploadMultiple: false,
         addRemoveLinks: true,
-        acceptedFiles: '.doc, .docx, .pdf, .xls, .xlsx, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf',
+        acceptedFiles: '.jpg, .png',
         parallelUploads: 1,
-        maxFiles: 25,
-
+        maxFiles: 1,
+        params: paramsSet,
         accept: function (file, done) {
             console.log("uploaded");
             done();
         },
 
         init: function () {
-            this.on("maxfilesexceeded", function () {
+            this.on("maxfilesexceeded", function (file) {
+                this.removeAllFiles();
+                this.addFile(file);
                 alert('Se realizara la carga de los achivos. ');
             });
         }
@@ -31,14 +38,15 @@ jQuery(document).ready(function ($) {
 
 
     myDropzone.on("queuecomplete", file => {
-        if (confirm('The files were loaded you want to load more Ok, if you want to reload Cancel?')) {
-            console.log('si.');
-        } else {
-            console.log('no.');
-            location.reload();
-        }
+        // if (confirm('The files were loaded you want to load more Ok, if you want to reload Cancel?')) {
+        //     console.log('si.');
+        // } else {
+        //     console.log('no.');
+        //     location.reload();
+        // }
     });
 
+    // -------------------******------------------
 
 //    var submitBtn = document.querySelector("#submit");
 //    submitBtn.addEventListener("click", function (e) {

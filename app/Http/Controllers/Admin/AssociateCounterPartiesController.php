@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
-use App\Models\UserCompamy;
 use Illuminate\Http\Request;
-use App\Models\Company;
-use App\Models\Group;
 
-class CounterPartiesController extends Controller
+class AssociateCounterPartiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +14,7 @@ class CounterPartiesController extends Controller
      */
     public function index()
     {
-        $helper = new Helpers();
-        $user = $helper->UserData();
-        $companies = Company::where('id', 'not like', $user->company->id)->get();
-//        dd($companies);
-        $groups = Group::where('usercompany_id', $user->id)->get();
-        return view("admin.myCounterparties.myCounterparties", compact("user", "companies", "groups"));
+        //
     }
 
     /**
@@ -33,8 +24,7 @@ class CounterPartiesController extends Controller
      */
     public function create()
     {
-
-        return view("admin.myCounterparties.createMyCounterparties");
+        //
     }
 
     /**
@@ -45,8 +35,7 @@ class CounterPartiesController extends Controller
      */
     public function store(Request $request)
     {
-        $helper = new Helpers();
-        $user = $helper->UserData();
+        //
     }
 
     /**

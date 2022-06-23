@@ -9,8 +9,8 @@
         "color": null,
         "parent_id": null,
         "order": 1,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.dashboard",
         "parameters": null
     },
@@ -24,8 +24,8 @@
         "color": null,
         "parent_id": null,
         "order": 5,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.media.index",
         "parameters": null
     },
@@ -39,8 +39,8 @@
         "color": null,
         "parent_id": null,
         "order": 3,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.users.index",
         "parameters": null
     },
@@ -54,8 +54,8 @@
         "color": null,
         "parent_id": null,
         "order": 2,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.roles.index",
         "parameters": null
     },
@@ -69,8 +69,8 @@
         "color": null,
         "parent_id": null,
         "order": 9,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": null,
         "parameters": null
     },
@@ -84,8 +84,8 @@
         "color": null,
         "parent_id": 5,
         "order": 10,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.menus.index",
         "parameters": null
     },
@@ -99,8 +99,8 @@
         "color": null,
         "parent_id": 5,
         "order": 11,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.database.index",
         "parameters": null
     },
@@ -114,8 +114,8 @@
         "color": null,
         "parent_id": 5,
         "order": 12,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.compass.index",
         "parameters": null
     },
@@ -129,8 +129,8 @@
         "color": null,
         "parent_id": 5,
         "order": 13,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:02",
+        "updated_at": "2022-06-20 14:43:02",
         "route": "voyager.bread.index",
         "parameters": null
     },
@@ -144,24 +144,9 @@
         "color": null,
         "parent_id": null,
         "order": 14,
-        "created_at": "2022-05-01 22:11:56",
-        "updated_at": "2022-05-01 22:11:56",
+        "created_at": "2022-06-20 14:43:03",
+        "updated_at": "2022-06-20 14:43:03",
         "route": "voyager.settings.index",
-        "parameters": null
-    },
-    {
-        "id": 12,
-        "menu_id": 1,
-        "title": "Companies",
-        "url": "",
-        "target": "_self",
-        "icon_class": null,
-        "color": null,
-        "parent_id": null,
-        "order": 15,
-        "created_at": "2022-05-02 00:30:06",
-        "updated_at": "2022-05-02 00:30:06",
-        "route": "voyager.companies.index",
         "parameters": null
     },
     {
@@ -177,6 +162,21 @@
         "created_at": "2022-05-02 00:33:54",
         "updated_at": "2022-05-02 00:33:54",
         "route": "voyager.usercompany.index",
+        "parameters": null
+    },
+    {
+        "id": 14,
+        "menu_id": 1,
+        "title": "Companies",
+        "url": "",
+        "target": "_self",
+        "icon_class": null,
+        "color": null,
+        "parent_id": null,
+        "order": 17,
+        "created_at": "2022-06-20 17:18:58",
+        "updated_at": "2022-06-20 17:18:58",
+        "route": "voyager.companies.index",
         "parameters": null
     }
 ]

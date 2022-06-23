@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\UserCompamy;
 
 class CompanyController extends Controller
 {
@@ -14,7 +20,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view("admin.company.company");
+        $helper = new Helpers();
+        $user = $helper->UserData();
+        return view("admin.company.company", compact("user"));
     }
 
     /**
@@ -69,8 +77,67 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'company_name' => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required|numeric',
+            'address_1' => 'required',
+            'address_2' => 'required',
+            'zip_code' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'website' => 'nullable',
+            'password' => 'nullable',
+            'logo' => 'nullable|dimensions:min_width=100,min_height=100,max_width=900,max_height=900,ratio=2/2',
+        ]);
+//        dd($request);
+        $helper = new Helpers();
+        $user = $helper->UserData();
+        $company = Company::where('id',$user->company_id)->first();
+        $newPath = $company->company_url_logo;
+        if($request->file('logo')){
+            $files = $request->file('logo');
+//        dd($files);
+//        $user->company_id = "2";
+            $path = 'company/' . $user->company_id . '/logo/';
+
+            $fileName = $files->getClientOriginalName();
+            $fileName = $helper->eliminarEspacios($helper->eliminarAcentos($fileName));
+//        dd($fileName);
+            $arrayFile = explode(".", $fileName);
+            $fileName = $user->company->company_name."Logo".$user->company_id.'.'.$arrayFile[1];
+//        dd($fileName);
+            $url_file = $path . $fileName;
+            $newPath = Storage::disk('public')->putFileAs($path, $files, $fileName);
+            $newPath = str_replace('//', '/', $newPath);
+//        dd($newPath);
+        }
+        Company::where('id',$user->company_id)->
+            update([
+            'company_name'=>$validated["company_name"],
+            'company_email'=>$validated["email"],
+            'company_number'=>$validated["phone_number"],
+            'company_address'=>$validated["address_1"],
+            'company_address_two'=>$validated["address_2"],
+            'company_code'=>$validated["zip_code"],
+            'company_country'=>$validated["country"],
+            'company_state'=>$validated["state"],
+            'company_city'=>$validated["city"],
+            'company_web'=>$validated["website"],
+            'company_url_logo'=>$newPath,
+            ]);
+        if($validated["password"]) {
+            $user = User::where('id', $user->user_id)
+                ->update(['password' => Hash::make($validated["password"])]);
+        }
+        return redirect()->back();
     }
+
+//    public function updateLogo(Request $request, $id)
+//    {
+//        return $id;
+//    }
 
     /**
      * Remove the specified resource from storage.

@@ -273,7 +273,6 @@ class MyGroupController extends Controller
         }
 //        dd($request);
         return redirect()->route("mygroups.edit", $id)->with('success', 'successful record');
-//        return $request;
     }
 
     /**

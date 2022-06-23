@@ -2,7 +2,7 @@
 
 @section('content')
 @section('title-page')
-    {{ __('Register')}}
+    {{ __('register.name')}}
 @endsection
 <!-- Page Content -->
 <div class="hero-static loginbackground">
@@ -123,7 +123,7 @@
                                         <div class="col-md-12 col-xl-12 justify-content-center">
                                             <button type="submit" class="btn btn-block btn-primary registerbtn"
                                                     style="width: 12vw; margin: 0 auto;"><i
-                                                    class="fa fa-fw fa-plus mr-1"></i> {{ __('Register') }}</button>
+                                                    class="fa fa-fw fa-plus mr-1"></i> {{ __('register.name') }}</button>
                                         </div>
                                     </div>
                                 </form>
