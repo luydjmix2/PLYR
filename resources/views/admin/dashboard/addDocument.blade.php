@@ -41,7 +41,8 @@
                         <!-- Bordered Table -->
                         <div class="block">
                             <div class="content col-xl-10">
-                                <h4>Upload Document</h4>
+                                <h4 style="margin-bottom: 0px;">Upload Document</h4>
+                                <p>Drag and drop one or more files from your device into the box below or click the box to manually select files.</p>
                                 {{--                                <form class="dropzone dz-clickable" action="Plastillas Nuevas_03- Home sell side.html">--}}
                                 {{--                                    <div class="dz-default dz-message" style="border: .125rem dashed #e1e1e1;">--}}
                                 {{--                                        <button type="button" class="dz-button">Drop files here to upload</button>--}}
@@ -54,23 +55,21 @@
                                 {{--                                </form>--}}
                                 {!! Form::open(['route'=> 'dashboard.document.store', 'method' => 'POST', 'files'=>'true', 'id' => 'my-dropzone' , 'class' => 'dropzone']) !!}
                                 <div class="dz-message" style="height:200px;">
-                                    Drop your files here
+                                    Use drag and drop or click here to manually upload your files.
                                     <br>
-                                    Maximum weight per file is 20 MG
+                                    Maximum weight per file is 20 MB and 10 files limit per upload.
                                     <br>
-                                    10 files at a time per upload
-                                    <br>
-                                    Only allows documents (word, excel and pdf) and images
+                                    Allowed file types: Ms Word, Ms Excel and PDF files.
                                 </div>
                                 <div class="dropzone-previews"></div>
                                 {!! Form::close() !!}
                             </div>
-                            <div class="block-content col-xl-10">
+                            <div class="block-content col-xl-12">
                                 <table class="table table-bordered table-hover table-vcenter">
                                     <thead>
                                     <tr class="table-primary">
-                                        <th>Document to shared</th>
-                                        <th class="d-none d-md-table-cell">Date</th>
+                                        <th>Document Name</th>
+                                        <th class="d-none d-md-table-cell">Uploaded Date</th>
                                         <th class="d-none d-sm-table-cell">Description</th>
                                     </tr>
                                     </thead>

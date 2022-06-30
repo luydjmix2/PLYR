@@ -66,12 +66,12 @@
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-6">
-                                                <label for="example-email-input">Email</label>
+                                                <label for="example-email-input">Email</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="email" name="email"
                                                        value="{{$user->company->company_email? $user->company->company_email :@old('email')}}" placeholder="Email">
                                             </div>
                                             <div class="col-6">
-                                                <label for="example-text-input">Phone Number</label>
+                                                <label for="example-text-input">Phone Number</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="phone_number"
                                                        name="phone_number" value="{{$user->company->company_number? $user->company->company_number :@old('phone_number')}}"
                                                        placeholder="Phone Number">
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Address 1</label>
+                                                <label for="example-text-input">Address 1</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="address_1" name="address_1"
                                                        value="{{$user->company->company_address? $user->company->company_address :@old('address_1')}}"
                                                        placeholder="Address 1">
@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Address 2</label>
+                                                <label for="example-text-input">Address 2</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="address_2" name="address_2"
                                                        value="{{$user->company->company_address_two? $user->company->company_address_two :@old('address_2')}}"
                                                        placeholder="Address 2">
@@ -95,14 +95,14 @@
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Zip Code</label>
+                                                <label for="example-text-input">Zip Code</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="zip_code" name="zip_code"
                                                        value="{{$user->company->company_code? $user->company->company_code :@old('zip_code')}}" placeholder="Zip Code">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Country</label>
+                                                <label for="example-text-input">Country</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="country" name="country"
                                                        value="{{$user->company->company_country? $user->company->company_country :@old('country')}}"
                                                        placeholder="Country">
@@ -110,12 +110,12 @@
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-6">
-                                                <label for="example-text-input">State</label>
+                                                <label for="example-text-input">State</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="state" name="state"
                                                        value="{{$user->company->company_state? $user->company->company_state :@old('state')}}" placeholder="State">
                                             </div>
                                             <div class="col-6">
-                                                <label for="example-email-input">City</label>
+                                                <label for="example-email-input">City</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="city" name="city"
                                                        value="{{$user->company->company_city? $user->company->company_city :@old('city')}}" placeholder="City">
                                             </div>
@@ -164,7 +164,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                    <div class="col-6">
+                                        <div class="form-group form-row">
+                                            <div class="col-12">
+                                                <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-row">
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
