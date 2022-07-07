@@ -5,7 +5,7 @@
         <!-- Left Section -->
         <div class="d-flex align-items-center">
             <!-- Logo -->
-            <a class="font-w600 font-size-h5 tracking-wider text-dual mr-3" href="/dashboard">
+            <a class="font-w600 font-size-h5 tracking-wider text-dual mr-3" href="{{route('dashboard')}}">
                 <img src="/img/logoPLR.png" width="275px"/>
             </a>
             <!-- END Logo -->
