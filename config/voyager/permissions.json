@@ -243,5 +243,110 @@
         "table_name": "companies",
         "created_at": "2022-06-20 17:18:58",
         "updated_at": "2022-06-20 17:18:58"
+    },
+    {
+        "id": 46,
+        "key": "browse_groupbyregisteranddocument",
+        "table_name": "groupbyregisteranddocument",
+        "created_at": "2022-06-29 11:57:51",
+        "updated_at": "2022-06-29 11:57:51"
+    },
+    {
+        "id": 47,
+        "key": "read_groupbyregisteranddocument",
+        "table_name": "groupbyregisteranddocument",
+        "created_at": "2022-06-29 11:57:51",
+        "updated_at": "2022-06-29 11:57:51"
+    },
+    {
+        "id": 48,
+        "key": "edit_groupbyregisteranddocument",
+        "table_name": "groupbyregisteranddocument",
+        "created_at": "2022-06-29 11:57:51",
+        "updated_at": "2022-06-29 11:57:51"
+    },
+    {
+        "id": 49,
+        "key": "add_groupbyregisteranddocument",
+        "table_name": "groupbyregisteranddocument",
+        "created_at": "2022-06-29 11:57:51",
+        "updated_at": "2022-06-29 11:57:51"
+    },
+    {
+        "id": 50,
+        "key": "delete_groupbyregisteranddocument",
+        "table_name": "groupbyregisteranddocument",
+        "created_at": "2022-06-29 11:57:51",
+        "updated_at": "2022-06-29 11:57:51"
+    },
+    {
+        "id": 56,
+        "key": "browse_groups",
+        "table_name": "groups",
+        "created_at": "2022-06-29 12:01:42",
+        "updated_at": "2022-06-29 12:01:42"
+    },
+    {
+        "id": 57,
+        "key": "read_groups",
+        "table_name": "groups",
+        "created_at": "2022-06-29 12:01:42",
+        "updated_at": "2022-06-29 12:01:42"
+    },
+    {
+        "id": 58,
+        "key": "edit_groups",
+        "table_name": "groups",
+        "created_at": "2022-06-29 12:01:42",
+        "updated_at": "2022-06-29 12:01:42"
+    },
+    {
+        "id": 59,
+        "key": "add_groups",
+        "table_name": "groups",
+        "created_at": "2022-06-29 12:01:42",
+        "updated_at": "2022-06-29 12:01:42"
+    },
+    {
+        "id": 60,
+        "key": "delete_groups",
+        "table_name": "groups",
+        "created_at": "2022-06-29 12:01:42",
+        "updated_at": "2022-06-29 12:01:42"
+    },
+    {
+        "id": 61,
+        "key": "browse_counterparts",
+        "table_name": "counterparts",
+        "created_at": "2022-06-29 13:20:14",
+        "updated_at": "2022-06-29 13:20:14"
+    },
+    {
+        "id": 62,
+        "key": "read_counterparts",
+        "table_name": "counterparts",
+        "created_at": "2022-06-29 13:20:14",
+        "updated_at": "2022-06-29 13:20:14"
+    },
+    {
+        "id": 63,
+        "key": "edit_counterparts",
+        "table_name": "counterparts",
+        "created_at": "2022-06-29 13:20:14",
+        "updated_at": "2022-06-29 13:20:14"
+    },
+    {
+        "id": 64,
+        "key": "add_counterparts",
+        "table_name": "counterparts",
+        "created_at": "2022-06-29 13:20:14",
+        "updated_at": "2022-06-29 13:20:14"
+    },
+    {
+        "id": 65,
+        "key": "delete_counterparts",
+        "table_name": "counterparts",
+        "created_at": "2022-06-29 13:20:14",
+        "updated_at": "2022-06-29 13:20:14"
     }
 ]
