@@ -84,7 +84,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role_id' => $role->id,
         ]);
-        $user->roles()->attach("6");
+        if($role->id == "5") {
+            $user->roles()->attach("7");
+        }else{
+            $user->roles()->attach("6");
+        }
 
         UserCompamy::create([
             'user_id' => $user->id,

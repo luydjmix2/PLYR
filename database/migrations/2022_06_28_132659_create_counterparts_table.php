@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('counterparts', function (Blueprint $table) {
             $table->id();
+            $table->string('company_id');//user id
             $table->unsignedBigInteger('groupbyregisteranddocument_id');//Group id
             $table->unsignedBigInteger('usercompany_id');//Group id
             $table->foreign('groupbyregisteranddocument_id')->references('id')->on('groupbyregisteranddocument');

@@ -47,10 +47,12 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::get("/counterparties", [App\Http\Controllers\Admin\CounterPartiesController::class, "index"])->name("counterparties");
     Route::get("/counterparties/create", [App\Http\Controllers\Admin\CounterPartiesController::class, "create"])->name("counterparties.create");
     Route::get("/counterparties/store", [App\Http\Controllers\Admin\CounterPartiesController::class, "store"])->name("counterparties.store");
+    Route::get("/counterparties/destroy/{id}", [App\Http\Controllers\Admin\CounterPartiesController::class, "destroy"])->name("counterparties.destroy");
 
     Route::get("/company", [App\Http\Controllers\Admin\CompanyController::class, "index"])->name("company");
     Route::post("/company/update/{id}", [App\Http\Controllers\Admin\CompanyController::class, "update"])->name("company.update");
     Route::post("/company/update/logo/{id}", [App\Http\Controllers\Admin\CompanyController::class, "update"])->name("company.update.logo");
+    Route::post("/company/store", [App\Http\Controllers\Admin\CompanyController::class, "store"])->name("company.store");
 
     Route::get("/profile", [App\Http\Controllers\Admin\ProfileController::class, "index"])->name("profile");
 

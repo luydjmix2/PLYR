@@ -11,6 +11,13 @@ class Counterpart extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id',
+        'company_id',
+        'groupbyregisteranddocument_id',
+        'usercompany_id',
+    ];
+
     public function groupbyregisteranddocument()
     {
         return $this->belongsTo(Groupbyregisteranddocument::class);
@@ -18,7 +25,7 @@ class Counterpart extends Model
 
     public function usercompamy()
     {
-        return $this->belongsTo(UserCompamy::class);
+        return $this->belongsTo(UserCompamy::class, "usercompany_id", "id");
     }
 
 }

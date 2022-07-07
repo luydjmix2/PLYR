@@ -11,7 +11,7 @@
     <script src="{{ asset('js/plyr.js') }}"></script>
     <script src="{{ asset('js/pages/viewGroup.js') }}"></script>
 @section('title-page')
-    {{--    {{ trans($proyect_data[0]['proyect_name'])}}--}}
+    {{__('myCounterparties.opt01')}}
 @endsection
 @section('breadcrumbs')
     {{--    {{ Breadcrumbs::render('group.view', $proyect_data[0]['proyect_name']) }}--}}
@@ -27,26 +27,36 @@
                     //dd($Company);
                 @endphp
                 <h3>{{__('myCounterparties.opt01')}}</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div id="page-container" class="page-header-dark content main-content-boxed col-xl-8">
                     <div class="col-xl-12">
                         <!-- Bordered Table -->
                         <div class="block">
                             <div class="content col-xl-10">
-                                <form action="" method="POST" enctype="multipart/form-data" onsubmit="return false;"></form>
+                                <form action="{{route('company.store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group form-row">
                                     <div class="col-12">
-                                        <label for="example-text-input">Name</label>
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                        <label for="example-text-input">Name User</label>
+                                        <input type="text" class="form-control" id="name_user" name="name_user" value="{{old('name_user')}}" placeholder="Name User">
                                     </div>
                                 </div>
                                 <div class="form-group form-row">
                                     <div class="col-6">
-                                        <label for="example-email-input">Company</label>
-                                        <input type="text" class="form-control" id="company" name="company" placeholder="Company">
+                                        <label for="example-email-input">Name Company</label>
+                                        <input type="text" class="form-control" id="name_company" name="name_company" value="{{old('name_company')}}" placeholder="Name Company">
                                     </div>
                                     <div class="col-6">
-                                        <label for="example-text-input">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                                        <label for="example-text-input">Email User</label>
+                                        <input type="text" class="form-control" id="email_user" name="email_user" value="{{old('email_user')}}" placeholder="Email User">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>

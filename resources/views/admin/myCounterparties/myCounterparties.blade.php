@@ -48,32 +48,24 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="text-center">Coca Cola</td>
-                                            <td class="text-left">Carlosd@cocacola.com</td>
-                                            <td class="text-left">Group 1</td>
-                                            <td class="text-center">
-                                                <div class="block-options">
-                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                                            title="Remove Client">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">Coca Cola</td>
-                                            <td class="text-left">Carlosd@cocacola.com</td>
-                                            <td class="text-left">Group 1</td>
-                                            <td class="text-center">
-                                                <div class="block-options">
-                                                    <button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                                            title="Remove Client">
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @foreach($counterparts as $counterpart)
+                                            <tr>
+                                                <td class="text-center">{{$counterpart->usercompamy->company->company_name}}</td>
+                                                <td class="text-left">{{$counterpart->usercompamy->company->company_email}}</td>
+                                                <td class="text-left">{{$counterpart->groupbyregisteranddocument->group->name}}</td>
+                                                <td class="text-center">
+                                                    <div class="block-options">
+                                                        <a href="{{route('counterparties.destroy', $counterpart->id)}}"
+                                                           class="btn btn-primary"
+                                                           data-bs-toggle="tooltip" title=""
+                                                           data-bs-original-title="Delete"
+                                                           onclick="return confirm('Are you sure?')">
+                                                            Delete <i class="fa fa-fw fa-times"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -94,24 +86,29 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($companies as $itemCompa)
+                                            @foreach($companiesInternal as $itemCompa)
                                                 <tr>
-                                                    <form type="post" action="#">
+                                                    <form type="post" action="{{route('counterparties.store')}}">
+                                                        @csrf
+                                                        <input type="hidden" name="company_id"
+                                                               value="{{$itemCompa->id}}">
                                                         <td class="text-center">{{$itemCompa->company_name}}</td>
                                                         <td class="text-center">{{$itemCompa->company_email}}</td>
                                                         <td class="text-center">
                                                             <select class="form-control" id="group" name="group">
                                                                 @foreach($groups as $itemGroup)
-                                                                    <option value="0">{{$itemGroup->name}}</option>
+                                                                    <option
+                                                                        value="{{$itemGroup->id}}">{{$itemGroup->name}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </td>
                                                         <td class="text-center">
                                                             <div class="block-options">
                                                                 <button type="submit" class="btn btn-primary"
-                                                                        id="btn-add-counterparty-{{$itemCompa->id}}"
-                                                                        data-toggle="tooltip" title="Remove Client">
-                                                                    Add
+                                                                        data-bs-toggle="tooltip" title=""
+                                                                        data-bs-original-title="Add"
+                                                                        onclick="return confirm('Are you sure?')">
+                                                                    Add <i class="fa fa-fw fa-plus"></i>
                                                                 </button>
                                                             </div>
                                                         </td>
@@ -142,66 +139,35 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td class="text-center">Coca Cola</td>
-                                                <td class="text-center">Carlos@cocacola.com</td>
-                                                <td class="text-center">
-                                                    <select class="form-control" id="example-select"
-                                                            name="example-select">
-                                                        <option value="0" selected>Grupo 1</option>
-                                                        <option value="1">Grupo 2</option>
-                                                        <option value="2">Grupo 3</option>
-                                                    </select>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="block-options">
-                                                        <button type="button" class="btn btn-primary"
-                                                                data-toggle="tooltip" title="Remove Client">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">Google</td>
-                                                <td class="text-center">David@google.com</td>
-                                                <td class="text-center">
-                                                    <select class="form-control" id="example-select"
-                                                            name="example-select">
-                                                        <option value="0">Grupo 1</option>
-                                                        <option value="1">Grupo 2</option>
-                                                        <option value="2" selected>Grupo 3</option>
-                                                    </select>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="block-options">
-                                                        <button type="button" class="btn btn-primary"
-                                                                data-toggle="tooltip" title="Remove Client">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-center">Amazon</td>
-                                                <td class="text-center">Andres@amazon.com</td>
-                                                <td class="text-center">
-                                                    <select class="form-control" id="example-select"
-                                                            name="example-select">
-                                                        <option value="0">Grupo 1</option>
-                                                        <option value="1" selected>Grupo 2</option>
-                                                        <option value="2">Grupo 3</option>
-                                                    </select>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="block-options">
-                                                        <button type="button" class="btn btn-primary"
-                                                                data-toggle="tooltip" title="Remove Client">
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach($companiesExternal as $itemCompaExter)
+                                                <tr>
+                                                    <form type="post" action="{{route('counterparties.store')}}">
+                                                        @csrf
+                                                        <input type="hidden" name="company_id"
+                                                               value="{{$itemCompaExter->id}}">
+                                                        <td class="text-center">{{$itemCompaExter->company_name}}</td>
+                                                        <td class="text-center">{{$itemCompaExter->company_email}}</td>
+                                                        <td class="text-center">
+                                                            <select class="form-control" id="group" name="group">
+                                                                @foreach($groups as $itemGroup)
+                                                                    <option
+                                                                        value="{{$itemGroup->id}}">{{$itemGroup->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="block-options">
+                                                                <button type="submit" class="btn btn-primary"
+                                                                        data-bs-toggle="tooltip" title=""
+                                                                        data-bs-original-title="Add"
+                                                                        onclick="return confirm('Are you sure?')">
+                                                                    Add <i class="fa fa-fw fa-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
