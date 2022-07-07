@@ -44,7 +44,7 @@
                                     <thead>
                                     <tr class="table-primary">
                                         <th class="d-sm-table-cell text-center">Group Name</th>
-                                        <th class="d-sm-table-cell text-center">Date</th>
+                                        <th class="d-sm-table-cell text-center">Creation Date</th>
                                         <th class="d-sm-table-cell text-center">Description</th>
                                         <th class="d-sm-table-cell text-center">Actions</th>
                                     </tr>

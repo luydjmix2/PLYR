@@ -59,13 +59,13 @@
                                     @csrf
                                     <div class="form-group form-row">
                                         <div class="col-6">
-                                            <label for="example-text-input">First Name</label>
+                                            <label for="example-text-input">First Name</label> <span class="text-danger"> *</span>
                                             <input type="text" class="form-control" id="First_Name"
                                                    name="First_Name"
                                                    placeholder="First Name">
                                         </div>
                                         <div class="col-6">
-                                            <label for="example-email-input">Last Name</label>
+                                            <label for="example-email-input">Last Name</label><span class="text-danger"> *</span>
                                             <input type="text" class="form-control" id="Last_Name"
                                                    name="Last_Name"
                                                    placeholder="Last Name">
@@ -73,13 +73,13 @@
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-6">
-                                            <label for="example-text-input">Position</label>
+                                            <label for="example-text-input">Position</label><span class="text-danger"> *</span>
                                             <input type="text" class="form-control" id="Position"
                                                    name="Position"
                                                    placeholder="Position">
                                         </div>
                                         <div class="col-6">
-                                            <label for="example-email-input">Email</label>
+                                            <label for="example-email-input">Email</label><span class="text-danger"> *</span>
                                             <input type="email" class="form-control" id="Email"
                                                    name="Email"
                                                    placeholder="Email">
@@ -87,22 +87,29 @@
                                     </div>
                                     <div class="form-group form-row">
                                         <div class="col-6">
-                                            <label for="example-text-input">Email Bloomberg</label>
+                                            <label for="example-text-input">Email Bloomberg</label><span class="text-danger"> *</span>
                                             <input type="email" class="form-control" id="Email_Bloomberg"
                                                    name="Email_Bloomberg"
                                                    placeholder="Email">
                                         </div>
                                         <div class="col-6">
-                                            <label for="example-email-input">Mobile</label>
+                                            <label for="example-email-input">Mobile Number</label><span class="text-danger"> *</span>
                                             <input type="number" class="form-control" id="Mobile"
                                                    name="Mobile"
-                                                   placeholder="Mobile">
+                                                   placeholder="Mobile Number">
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                    <div class="form-group form-row">
+                                        <div class="col-6">
+                                            <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
-                            <div class="block-content col-xl-10">
+                            <div class="block-content col-xl-12">
                                 <table class="table table-bordered table-hover table-vcenter">
                                     <thead>
                                     <tr class="table-primary">

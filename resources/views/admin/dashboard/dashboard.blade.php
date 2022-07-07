@@ -42,7 +42,7 @@
                         <th class="d-none d-md-table-cell">Last Name</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Position</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Email</th>
-                        <th class="d-none d-sm-table-cell" style="width: 15%;">Movil</th>
+                        <th class="d-none d-sm-table-cell" style="width: 15%;">Mobile</th>
                         <th class="text-center" style="width: 100px;">Actions</th>
                     </tr>
                     </thead>
@@ -93,7 +93,7 @@
                 <table class="table table-bordered table-striped table-vcenter">
                     <thead>
                     <tr class="table-primary">
-                        <th>Document to shared</th>
+                        <th>Document name</th>
                         <th class="d-none d-md-table-cell">Date</th>
                         <th class="d-none d-sm-table-cell">Description</th>
                         <th class="text-center" style="width: 100px;">Actions</th>

@@ -14,6 +14,6 @@ return [
 
     'name' => 'Document',
     "t1" => "New document",
-    "t2" => "Add Document",
+    "t2" => "Add New Document",
     "t3" => "Documents Shared",
 ];

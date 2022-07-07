@@ -56,15 +56,20 @@
                         <div class="block">
                             <div class="col-xl-12">
                                 <div class="form-group">
+                                    <label for="example-text-input">Group Name</label><span class="text-danger"> *</span>
                                     <input type="text"  class="col-6 form-control" id="group_name" name="group_name" placeholder="Group Name">
                                 </div>
                                 <div class="form-group">
+                                    <label for="example-text-input">Description</label><span class="text-danger"> *</span>
                                     <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
                                 </div>
                             </div>
                             <div class="block-content">
                                 <table class="table table-bordered table-hover table-vcenter">
-                                    <h1>Shared Records</h1>
+                                    <h4>Shared Records</h4>
                                     <thead>
                                     <tr class="table-primary">
                                         <th class="d-sm-table-cell text-center">Shared</th>
@@ -96,6 +101,7 @@
                             </div>
                             <div class="block-content">
                                 <table class="table table-bordered table-hover table-vcenter">
+                                    <h4>Shared Documents</h4>
                                     <thead>
                                     <tr class="table-primary">
                                         <th class="d-sm-table-cell text-center">Shared</th>

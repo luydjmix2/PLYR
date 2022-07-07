@@ -35,24 +35,31 @@
                                 <form action="" method="POST" enctype="multipart/form-data" onsubmit="return false;"></form>
                                 <div class="form-group form-row">
                                     <div class="col-12">
-                                        <label for="example-text-input">Name</label>
+                                        <label for="example-text-input">Name</label><span class="text-danger"> *</span>
                                         <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="form-group form-row">
                                     <div class="col-6">
-                                        <label for="example-email-input">Company</label>
+                                        <label for="example-email-input">Company</label><span class="text-danger"> *</span>
                                         <input type="text" class="form-control" id="company" name="company" placeholder="Company">
                                     </div>
                                     <div class="col-6">
-                                        <label for="example-text-input">Email</label>
+                                        <label for="example-text-input">Email</label><span class="text-danger"> *</span>
                                         <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                <div class="form-group form-row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
+                                    </div>
+                                </div>
                                 </form>
                             </div>
-                            <div class="block-content col-xl-10">
+                            <div class="block-content col-xl-12">
                                 <table class="table table-bordered table-hover table-vcenter">
                                     <thead>
                                     <tr class="table-primary">
