@@ -17,9 +17,9 @@ return [
       | you want to customize your views to better match your application.
       |
      */
-    'name' => 'My CounterParties',
-    'opt01' => "New CounterPartie",
-    'opt02' => "Edit CounterPartie",
+    'name' => 'My Counterparties',
+    'opt01' => "Add New Counterparty",
+    'opt02' => "Edit Counterparty",
     'opt0' => ['title'=>'My Groups', 'icon'=>'object-group'],
 ];
 ?>

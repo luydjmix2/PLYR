@@ -36,39 +36,39 @@
                                     <div class="col-6">
                                         <div class="form-group form-row">
                                             <div class="col-6">
-                                                <label for="example-email-input">First Name</label>
+                                                <label for="example-email-input">First Name</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
                                             </div>
                                             <div class="col-6">
-                                                <label for="example-text-input">Last Name</label>
+                                                <label for="example-text-input">Last Name</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-6">
-                                                <label for="example-email-input">Email</label>
+                                                <label for="example-email-input">Email</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                                             </div>
                                             <div class="col-6">
-                                                <label for="example-text-input">Phone Number</label>
+                                                <label for="example-text-input">Phone Number</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Company Name</label>
+                                                <label for="example-text-input">Company Name</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Company Name">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Address</label>
+                                                <label for="example-text-input">Address</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="address" name="address" placeholder="Address">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Zip Code</label>
+                                                <label for="example-text-input">Zip Code</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code">
                                             </div>
                                         </div>
@@ -76,19 +76,19 @@
                                     <div class="col-6">
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">City</label>
+                                                <label for="example-text-input">City</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="city" name="city" placeholder="City">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">State</label>
+                                                <label for="example-text-input">State</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="state" name="state" placeholder="State">
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
                                             <div class="col-12">
-                                                <label for="example-text-input">Country</label>
+                                                <label for="example-text-input">Country</label><span class="text-danger"> *</span>
                                                 <input type="text" class="form-control" id="country" name="country" placeholder="Country">
                                             </div>
                                         </div>
@@ -103,9 +103,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group form-row">
-                                            <div class="col-12">
+                                            <div class="col-4">
                                                 <label style="visibility: hidden;"for="example-text-input">Boton de Guardar</label><br>
-                                                <button type="submit" class="btn btn-primary col-2">Save</button>
+                                                <button type="submit" class="btn btn-primary col-6">Save</button>
+                                            </div>
+                                            <div class="col-8"><br><br>
+                                                <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
                                             </div>
                                         </div>
                                     </div>

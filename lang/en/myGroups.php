@@ -18,7 +18,7 @@ return [
       |
      */
     'name' => 'My Groups',
-    'opt01' => "New Group",
+    'opt01' => "Add New Group",
     'opt02' => "Edit Group",
     'opt0' => ['title'=>'My Groups', 'icon'=>'object-group'],
 ];

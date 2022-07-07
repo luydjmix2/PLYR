@@ -38,6 +38,7 @@
                             <!-- Bordered Table -->
                             <div class="block">
                                 <div class="block-content">
+                                    <h4>Companies Shared with Me</h4>
                                     <table class="table table-bordered table-hover table-vcenter">
                                         <thead>
                                         <tr class="table-primary">
@@ -70,10 +71,8 @@
                                     </table>
                                 </div>
                                 <div class="block">
-                                    <div class="block-header">
-                                        <h4>Search Company</h4>
-                                    </div>
                                     <div class="block-content block-content-full">
+                                        <h4>Existing Companies</h4>
                                         <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
                                         <table
                                             class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -120,13 +119,8 @@
                                     </div>
                                 </div>
                                 <div class="block">
-                                    <div class="block-header">
-                                        <div class="block-options-item">
-                                            <a href="{{route("counterparties.create")}}" class="btn btn-primary col-12">Add
-                                                External Company</a>
-                                        </div>
-                                    </div>
                                     <div class="block-content block-content-full">
+                                        <h4>External Companies</h4>
                                         <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
                                         <table
                                             class="table table-bordered table-striped table-vcenter js-dataTable-full">
@@ -170,6 +164,7 @@
                                             @endforeach
                                             </tbody>
                                         </table>
+                                        <a href="{{route("counterparties.create")}}" class="btn btn-primary col-3">Add External Company</a>
                                     </div>
                                 </div>
                             </div>

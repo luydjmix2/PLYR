@@ -45,24 +45,31 @@
                                 @csrf
                                 <div class="form-group form-row">
                                     <div class="col-12">
-                                        <label for="example-text-input">Name User</label>
+                                        <label for="example-text-input">Name User <span class="text-danger"> *</span></label>
                                         <input type="text" class="form-control" id="name_user" name="name_user" value="{{old('name_user')}}" placeholder="Name User">
                                     </div>
                                 </div>
                                 <div class="form-group form-row">
                                     <div class="col-6">
-                                        <label for="example-email-input">Name Company</label>
+                                        <label for="example-email-input">Name Company <span class="text-danger"> *</span></label>
                                         <input type="text" class="form-control" id="name_company" name="name_company" value="{{old('name_company')}}" placeholder="Name Company">
                                     </div>
                                     <div class="col-6">
-                                        <label for="example-text-input">Email User</label>
+                                        <label for="example-text-input">Email User <span class="text-danger"> *</span></label>
                                         <input type="text" class="form-control" id="email_user" name="email_user" value="{{old('email_user')}}" placeholder="Email User">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                <div class="form-group form-row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary btn-sm col-2">Save</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <p>Fields marked with (<span class="text-danger">*</span>) means are required</p>
+                                    </div>
+                                </div>
                                 </form>
                             </div>
-                            <div class="block-content col-xl-10">
+                            <div class="block-content col-xl-12">
                                 <table class="table table-bordered table-hover table-vcenter">
                                     <thead>
                                     <tr class="table-primary">
