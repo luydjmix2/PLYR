@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Helpers;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -14,7 +17,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view("admin.profile.profile");
+        $helper = new Helpers();
+        $userCom = $helper->UserData();
+        return view("admin.profile.profile", compact("userCom"));
     }
 
     /**
@@ -69,7 +74,38 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validated = $request->validate([
+            "first_name"=>"required",
+            "last_name"=>"required",
+            "email"=>"nullable|email",
+            "phone_number"=>"required|numeric",
+            "address"=>"required",
+            "zip_code"=>"required",
+            "city"=>"required",
+            "state"=>"required",
+            "country"=>"required",
+            "password"=>"nullable",
+            "confirm_password"=>"nullable|same:password"
+        ]);
+
+        User::where('id', $id)
+            ->update([
+                'first_name' => $validated["first_name"],
+                'last_name' => $validated["last_name"],
+                'phone_number' => $validated["phone_number"],
+                'address' => $validated["address"],
+                'zip_code' => $validated["zip_code"],
+                'city' => $validated["city"],
+                'state' => $validated["state"],
+                'country' => $validated["country"],
+            ]);
+//        dd($id, $request);
+        if ($validated["password"]) {
+            $user = User::where('id', $id)
+                ->update(['password' => Hash::make($validated["password"])]);
+        }
+        return redirect()->back()->with('success', 'successful record');
     }
 
     /**

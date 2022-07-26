@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth','prefix' => 'manager-panel'], function () {
     Route::post("/company/store", [App\Http\Controllers\Admin\CompanyController::class, "store"])->name("company.store");
 
     Route::get("/profile", [App\Http\Controllers\Admin\ProfileController::class, "index"])->name("profile");
+    Route::post("/profile/update/{id}", [App\Http\Controllers\Admin\ProfileController::class, "update"])->name("profile.update");
 
     Route::get("/authorized", [App\Http\Controllers\Admin\AuthorizedController::class, "index"])->name("authorized");
 
